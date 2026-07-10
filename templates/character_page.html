@@ -1,0 +1,426 @@
+<!--
+  ШАБЛОН: Протокол 0 — страница персонажа.
+  Это ИСХОДНИК для tools/index.html (форма + живой рендер), не файл для прямой вставки
+  на Toyhouse. Полный синтаксис плейсхолдеров и инструкция по созданию своих шаблонов —
+  в templates/README.md.
+-->
+<div id="protocol0-app" style="
+  --void:#ffffff; --panel:#f4f6fa; --panel2:#ffffff; --panel3:#eef1f6;
+  --edge:rgba(15,23,42,.10); --edge2:rgba(15,23,42,.16);
+  --signal:#0089a3; --signal-dim:rgba(0,137,163,.10); --flare:#c62a52; --flare-dim:rgba(198,42,82,.08);
+  --ink:#12161f; --mute:#5c6472; --dim:#8b93a1;
+  --mono:'Consolas','SFMono-Regular','Cascadia Code',monospace;
+  --sans:'Segoe UI',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  background:var(--void); color:var(--ink); font-family:var(--sans); max-width:1000px; margin:0 auto; min-height:100vh; -webkit-font-smoothing:antialiased;">
+
+  <div class="row no-gutters align-content-start" style="min-height:100vh;">
+
+    <!-- ============================== LEFT RAIL / NAV ============================== -->
+    <div class="col-12 col-md-3">
+      <div class="d-flex flex-column" style="position:sticky; top:0; z-index:30; background:var(--panel); border-right:1px solid var(--edge); border-bottom:1px solid var(--edge);">
+
+        <!-- brand + mobile hamburger toggle -->
+        <div class="d-flex align-items-center justify-content-between px-3 py-3" style="border-bottom:1px solid var(--edge);">
+          <div class="d-flex flex-column align-items-start">
+            <div class="d-flex align-items-center">
+              <div style="font-family:var(--mono); font-size:12px; letter-spacing:3px; font-weight:700; color:var(--ink); white-space:nowrap; margin-right:6px;">ПРОТОКОЛ</div>
+              <div class="d-flex align-items-center justify-content-center" style="width:16px; height:16px; border:1px solid var(--signal); color:var(--signal); font-family:var(--mono); font-weight:700; font-size:9px; border-radius:3px; background:var(--signal-dim); flex:0 0 auto;">0</div>
+            </div>
+            <div class="d-none d-md-block mt-1" style="font-family:var(--mono); font-size:9px; letter-spacing:2px; color:var(--dim); white-space:nowrap;">СЕТЬ N-МИРОВ</div>
+          </div>
+          <!-- гамбургер виден только на мобилке (d-md-none), раскрывает/прячет #mobileNav через готовый Bootstrap-collapse -->
+          <a class="d-md-none" data-toggle="collapse" href="#mobileNav" role="button" style="width:34px; height:34px; display:flex; align-items:center; justify-content:center; border-radius:6px; border:1px solid var(--edge); color:var(--ink); text-decoration:none; flex:0 0 auto;">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+        </div>
+
+        <!-- nav items: на мобилке свёрнуто по умолчанию (collapse), раскрывается по тапу на гамбургер;
+             на десктопе (md+) видно всегда — d-md-block перебивает display:none коллапса через !important.
+             ВАЖНО: collapse и id висят на ОТДЕЛЬНОЙ обёртке без класса nav — на Toyhouse собранный
+             Bootstrap компилирует .collapse{display:none} БЕЗ :not(.show) (в отличие от CDN-версии), той же
+             специфичности что и .nav{display:flex}, и .nav в их файле идёт позже — если оба класса висят на
+             одном элементе, .nav побеждает и элемент никогда не скрывается. -->
+        <div class="collapse d-md-block" id="mobileNav">
+        <ul class="nav nav-pills flex-column px-2 py-2">
+          {{#вкладка_профиль_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_профиль_старт|checkbox=1}}active{{/вкладка_профиль_старт}}" data-toggle="tab" href="#tab-profile" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <img src="{{аватар_url=https://placehold.co/64x64/f4f6fa/0089a3?text=%D0%98.%D0%A1.}}" style="width:16px; height:16px; border-radius:50%; object-fit:cover; flex:0 0 auto; margin-right:10px;"><span>Профиль</span>
+            </a>
+          </li>
+          {{/вкладка_профиль_показать}}
+          {{#вкладка_доппрофили_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_доппрофили_старт|checkbox}}active{{/вкладка_доппрофили_старт}}" data-toggle="tab" href="#tab-altprofiles" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-clone" style="width:16px; text-align:center; color:var(--signal); margin-right:10px;"></i><span>Доп. профили</span>
+            </a>
+          </li>
+          {{/вкладка_доппрофили_показать}}
+          {{#вкладка_досье_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_досье_старт|checkbox}}active{{/вкладка_досье_старт}}" data-toggle="tab" href="#tab-dosye" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-folder-open" style="width:16px; text-align:center; color:var(--signal); margin-right:10px;"></i><span>Досье</span>
+            </a>
+          </li>
+          {{/вкладка_досье_показать}}
+          {{#вкладка_биоданные_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_биоданные_старт|checkbox}}active{{/вкладка_биоданные_старт}}" data-toggle="tab" href="#tab-biodata" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-dna" style="width:16px; text-align:center; color:var(--signal); margin-right:10px;"></i><span>Внешние данные</span>
+            </a>
+          </li>
+          {{/вкладка_биоданные_показать}}
+          {{#вкладка_галерея_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_галерея_старт|checkbox}}active{{/вкладка_галерея_старт}}" data-toggle="tab" href="#tab-gallery" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-images" style="width:16px; text-align:center; color:var(--signal); margin-right:10px;"></i><span>Галерея</span>
+            </a>
+          </li>
+          {{/вкладка_галерея_показать}}
+          {{#вкладка_друзья_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_друзья_старт|checkbox}}active{{/вкладка_друзья_старт}}" data-toggle="tab" href="#tab-friends" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-user-group" style="width:16px; text-align:center; color:var(--signal); margin-right:10px;"></i><span>Друзья</span>
+            </a>
+          </li>
+          {{/вкладка_друзья_показать}}
+          {{#вкладка_инциденты_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_инциденты_старт|checkbox}}active{{/вкладка_инциденты_старт}}" data-toggle="tab" href="#tab-incidents" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-triangle-exclamation" style="width:16px; text-align:center; color:var(--signal); margin-right:10px;"></i><span>Инциденты</span>
+            </a>
+          </li>
+          {{/вкладка_инциденты_показать}}
+          {{#вкладка_соцсети_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_соцсети_старт|checkbox}}active{{/вкладка_соцсети_старт}}" data-toggle="tab" href="#tab-social" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-share-nodes" style="width:16px; text-align:center; color:var(--signal); margin-right:10px;"></i><span>Соцсети</span>
+            </a>
+          </li>
+          {{/вкладка_соцсети_показать}}
+        </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== CONTENT ============================== -->
+    <div class="col-12 col-md-9">
+      <div class="tab-content">
+
+        <!-- ==================== ПРОФИЛЬ ==================== -->
+        {{#вкладка_профиль_показать}}
+        <div class="tab-pane fade {{#вкладка_профиль_старт}}show active{{/вкладка_профиль_старт}}" id="tab-profile">
+
+          <!-- cover: картинка и градиент-плашка — ОТДЕЛЬНЫМИ слоями, не одним составным background (составной background:gradient,url()center/cover ломается санитайзером стилей на Toyhouse) -->
+          <div style="position:relative; height:190px;">
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background-image:url('{{обложка_url=https://placehold.co/1000x260/eef1f6/c7ced9?text=%20}}'); background-position:center; background-size:cover;"></div>
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(0deg, var(--panel) 0%, rgba(3,5,10,0) 55%);"></div>
+            <a href="{{ссылка_мир|url=LINK}}" style="position:absolute; right:14px; top:14px; display:flex; align-items:center; padding:5px 10px; background:rgba(3,5,10,.55); border:1px solid rgba(255,255,255,.18); border-radius:20px; font-family:var(--mono); font-size:10px; letter-spacing:1px; color:rgba(255,255,255,.85); text-decoration:none; backdrop-filter:blur(2px);">
+              <i class="fa-solid fa-earth-americas" style="color:var(--signal); margin-right:6px;"></i>МИР: {{мир~АРКТУР-9}}
+            </a>
+
+            <!-- avatar with corner-bracket signature frame, overlaps bottom edge of cover -->
+            <div style="position:absolute; left:20px; bottom:-40px; width:104px; height:104px;">
+              <img src="{{аватар_url}}" style="width:104px; height:104px; border-radius:50%; object-fit:cover; border:3px solid var(--void); background:var(--panel2); display:block;">
+              <div style="position:absolute; top:-6px; left:-6px; width:18px; height:18px; border-top:2px solid var(--signal); border-left:2px solid var(--signal);"></div>
+              <div style="position:absolute; top:-6px; right:-6px; width:18px; height:18px; border-top:2px solid var(--signal); border-right:2px solid var(--signal);"></div>
+              <div style="position:absolute; bottom:-6px; left:-6px; width:18px; height:18px; border-bottom:2px solid var(--signal); border-left:2px solid var(--signal);"></div>
+              <div style="position:absolute; bottom:-6px; right:-6px; width:18px; height:18px; border-bottom:2px solid var(--signal); border-right:2px solid var(--signal);"></div>
+            </div>
+          </div>
+
+          <div class="px-3 px-md-4" style="padding-top:12px;">
+            <div style="padding-left:118px; min-height:44px;">
+              <div style="font-size:22px; font-weight:700; color:var(--ink); line-height:1.1;">{{имя~Ирэн Соколова}}</div>
+              <div class="d-inline-block mt-1" style="font-family:var(--mono); font-size:11px; color:{{статус_цвет|color=#0089a3}}; background:{{статус_цвет}}1a; border:1px solid {{статус_цвет}}40; padding:2px 8px; border-radius:20px;">{{статус_тег~◈ на задании}}</div>
+            </div>
+
+            <!-- meta row -->
+            <div class="d-flex flex-wrap mt-3" style="font-size:12.5px; color:var(--mute);">
+              <span style="margin-right:18px; margin-bottom:8px;"><i class="fa-solid fa-cake-candles mr-1" style="color:var(--dim);"></i>{{день_рождения~22 июля}}</span>
+              <span style="margin-right:18px; margin-bottom:8px;"><i class="fa-solid fa-hourglass-half mr-1" style="color:var(--dim);"></i>{{возраст_физ~27 лет}} (физ.)</span>
+              <span style="margin-right:18px; margin-bottom:8px;"><i class="fa-solid fa-brain mr-1" style="color:var(--dim);"></i>{{возраст_мент~142 года}} (мент.)</span>
+              <span style="margin-right:18px; margin-bottom:8px;"><i class="fa-solid fa-location-dot mr-1" style="color:var(--dim);"></i>{{город~Норт-Хэвен}}, {{мир}}</span>
+              <span style="margin-right:18px; margin-bottom:8px;"><i class="fa-solid fa-venus-mars mr-1" style="color:var(--dim);"></i>{{гендер~агендер}}</span>
+              <span style="margin-right:18px; margin-bottom:8px;"><i class="fa-solid fa-heart mr-1" style="color:var(--dim);"></i>{{семейное_положение~не замужем}}</span>
+              <span style="margin-right:18px; margin-bottom:8px;"><i class="fa-solid fa-briefcase mr-1" style="color:var(--dim);"></i>{{должность~архивариус-связной}}</span>
+              <span style="margin-bottom:8px;"><i class="fa-solid fa-satellite mr-1" style="color:var(--dim);"></i>на Протоколе с {{дата_регистрации~14.03.2019}}</span>
+            </div>
+
+            <!-- stats strip -->
+            <div class="d-flex mt-4" style="border-top:1px solid var(--edge); border-bottom:1px solid var(--edge);">
+              <div class="text-center py-3" style="flex:1; border-right:1px solid var(--edge);">
+                <div style="font-family:var(--mono); font-size:19px; font-weight:700; color:var(--ink);">{{постов=342}}</div>
+                <div style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">постов</div>
+              </div>
+              <div class="text-center py-3" style="flex:1; border-right:1px solid var(--edge);">
+                <div style="font-family:var(--mono); font-size:19px; font-weight:700; color:var(--signal);">{{подписчиков=5.1K}}</div>
+                <div style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">подписчиков</div>
+              </div>
+              <div class="text-center py-3" style="flex:1;">
+                <div style="font-family:var(--mono); font-size:19px; font-weight:700; color:var(--ink);">{{подписок=618}}</div>
+                <div style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">подписок</div>
+              </div>
+            </div>
+
+            <!-- feed -->
+            <div class="mt-4" style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim);">// ЛЕНТА</div>
+
+            {{#each посты}}
+            <div class="mt-3 p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:8px;">
+              <div class="d-flex align-items-center">
+                <img src="{{../аватар_url}}" style="width:30px; height:30px; border-radius:50%; object-fit:cover; margin-right:8px;">
+                <div style="font-size:12.5px; font-weight:600; color:var(--ink); margin-right:8px;">{{../имя}}</div>
+                <div style="font-size:11px; color:var(--dim);">· {{время~2 дня назад}}</div>
+              </div>
+              {{#текст}}
+              <div class="mt-2" style="font-size:13.5px; color:var(--ink); line-height:1.55;">{{текст~Текст поста...}}</div>
+              {{/текст}}
+              {{#картинка_url}}
+              <img src="{{картинка_url~https://...}}" class="mt-2 w-100" style="border-radius:6px; display:block;">
+              {{/картинка_url}}
+              <div class="d-flex mt-3" style="font-size:12px; color:var(--dim);">
+                <span style="margin-right:22px;"><i class="fa-regular fa-heart mr-1"></i>{{лайки}}</span>
+                <span style="margin-right:22px;"><i class="fa-regular fa-comment mr-1"></i>{{комменты}}</span>
+                <span style="margin-right:22px;"><i class="fa-solid fa-retweet mr-1"></i>{{репосты}}</span>
+                <span><i class="fa-regular fa-eye mr-1"></i>{{просмотры}}</span>
+              </div>
+            </div>
+            {{/each}}
+
+          </div>
+        </div>
+        {{/вкладка_профиль_показать}}
+
+        <!-- ==================== ДОП. ПРОФИЛИ ==================== -->
+        {{#вкладка_доппрофили_показать}}
+        <div class="tab-pane fade {{#вкладка_доппрофили_старт}}show active{{/вкладка_доппрофили_старт}}" id="tab-altprofiles">
+          <div class="px-3 px-md-4 py-4">
+            <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:14px;">// СВЯЗАННЫЕ ПРОФИЛИ</div>
+
+            <div class="row">
+              {{#each доп_профили}}
+              <div class="col-12 col-md-6 mb-3 mb-md-0">
+                <div class="d-flex align-items-center p-3" style="position:relative; background:var(--panel2); border:1px solid var(--edge); border-radius:6px;">
+                  <img src="{{аватар_url~https://placehold.co/96x96}}" style="width:44px; height:44px; border-radius:50%; object-fit:cover; flex:0 0 auto; margin-right:12px;">
+                  <div style="margin-right:12px;">
+                    <div style="font-size:13px; font-weight:600; color:var(--ink);">{{имя~Ирэн Соколова · рабочий}}</div>
+                    <div style="font-size:11px; color:var(--dim);">{{описание~официальный аккаунт архива}}</div>
+                  </div>
+                  <i class="fa-solid fa-arrow-right ml-auto" style="color:var(--signal);"></i>
+                  <a href="{{ссылка|url}}" class="stretched-link"></a>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        {{/вкладка_доппрофили_показать}}
+
+        <!-- ==================== ДОСЬЕ ==================== -->
+        {{#вкладка_досье_показать}}
+        <div class="tab-pane fade {{#вкладка_досье_старт}}show active{{/вкладка_досье_старт}}" id="tab-dosye">
+          <div class="px-3 px-md-4 py-4">
+
+            <!-- classification banner: относится ко всему разделу "Досье", а не только к краткой сводке -->
+            <div class="d-flex flex-wrap align-items-center justify-content-between mb-3" style="padding:8px 14px; border:1px solid rgba(198,42,82,.3); background:var(--flare-dim); border-radius:4px;">
+              <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:1.5px; color:var(--flare); font-weight:700; margin-right:8px;"><i class="fa-solid fa-lock mr-1"></i>УРОВЕНЬ ДОПУСКА: ОГРАНИЧЕННЫЙ</div>
+              <div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim);">ДОСТУП: СЛУЖБА БЕЗОПАСНОСТИ</div>
+            </div>
+
+            <!-- id header with corner-bracket frame -->
+            <div style="position:relative; padding:16px 18px; border:1px solid var(--edge2); background:var(--panel2); border-radius:6px;">
+              <div style="position:absolute; top:-1px; left:-1px; width:16px; height:16px; border-top:2px solid var(--flare); border-left:2px solid var(--flare);"></div>
+              <div style="position:absolute; top:-1px; right:-1px; width:16px; height:16px; border-top:2px solid var(--flare); border-right:2px solid var(--flare);"></div>
+              <div style="position:absolute; bottom:-1px; left:-1px; width:16px; height:16px; border-bottom:2px solid var(--flare); border-left:2px solid var(--flare);"></div>
+              <div style="position:absolute; bottom:-1px; right:-1px; width:16px; height:16px; border-bottom:2px solid var(--flare); border-right:2px solid var(--flare);"></div>
+
+              <div style="font-family:var(--mono); font-size:11px; letter-spacing:2px; color:var(--dim);">ID: {{id_номер=PR0-88214-С}}</div>
+
+              <div class="mt-3" style="font-family:var(--mono); font-size:13.5px; line-height:1.7; color:var(--ink); border-left:2px solid var(--edge2); padding-left:12px;">{{досье_кратко|textarea~Соколова И. А. Эльф, 27 лет (физ.) / 142 года (мент.). Проживает в Норт-Хэвене, Арктур-9. Должность — архивариус-связной, организация — Архив Протокола, сектор 4.}}</div>
+            </div>
+
+            <!-- reveal full dossier -->
+            <a data-toggle="collapse" href="#dosye-full" class="d-flex align-items-center justify-content-center mt-3" style="padding:10px; border:1px dashed var(--edge2); border-radius:6px; color:var(--signal); font-family:var(--mono); font-size:11.5px; letter-spacing:1.5px; text-decoration:none;">
+              <i class="fa-solid fa-lock-open" style="margin-right:8px;"></i>ПОКАЗАТЬ ПОЛНОЕ ДОСЬЕ<i class="fa-solid fa-chevron-down" style="margin-left:8px;"></i>
+            </a>
+
+            <div class="collapse" id="dosye-full">
+              <div id="dosyeAccordion" class="mt-3">
+
+                {{#each главы}}
+                <div class="mb-2" style="border:1px solid var(--edge); border-radius:6px; overflow:hidden;">
+                  <a data-toggle="collapse" href="#ch{{@index}}" data-parent="#dosyeAccordion" class="d-flex align-items-center justify-content-between px-3 py-2" style="background:var(--panel3); color:var(--ink); text-decoration:none; font-size:12.5px; font-weight:600;">
+                    <span><span style="color:var(--signal); font-family:var(--mono);">{{@index}}</span> · {{заголовок~Ранние годы}}</span>
+                    <i class="fa-solid fa-chevron-down" style="color:var(--dim); font-size:10px;"></i>
+                  </a>
+                  <div id="ch{{@index}}" class="collapse" data-parent="#dosyeAccordion">
+                    <div class="px-3 py-3" style="font-size:13px; line-height:1.7; color:var(--mute);">{{текст|textarea~Текст главы досье...}}</div>
+                  </div>
+                </div>
+                {{/each}}
+
+              </div>
+
+              <!-- structured field grid -->
+              <div class="row mt-3">
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Имя</div><div style="font-size:13px; color:var(--ink);">{{имя}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Вид</div><div style="font-size:13px; color:var(--ink);">{{вид~Эльф}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Мир</div><div style="font-size:13px; color:var(--ink);">{{мир}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Возраст (физ.)</div><div style="font-size:13px; color:var(--ink);">{{возраст_физ}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Возраст (мент.)</div><div style="font-size:13px; color:var(--ink);">{{возраст_мент}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Дата рождения</div><div style="font-size:13px; color:var(--ink);">{{день_рождения}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Город</div><div style="font-size:13px; color:var(--ink);">{{город}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Семейное положение</div><div style="font-size:13px; color:var(--ink);">{{семейное_положение}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Ориентация</div><div style="font-size:13px; color:var(--ink);">{{ориентация~—}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Должность</div><div style="font-size:13px; color:var(--ink);">{{должность}}</div></div>
+                <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Организация</div><div style="font-size:13px; color:var(--ink);">{{организация~Архив Протокола, сектор 4}}</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        {{/вкладка_досье_показать}}
+
+        <!-- ==================== ГАЛЕРЕЯ / ДРУЗЬЯ / ИНЦИДЕНТЫ (внешние ссылки) ==================== -->
+        {{#вкладка_галерея_показать}}
+        <div class="tab-pane fade {{#вкладка_галерея_старт}}show active{{/вкладка_галерея_старт}}" id="tab-gallery">
+          <div class="d-flex align-items-center justify-content-center" style="min-height:360px;">
+            <div class="text-center px-4">
+              <div class="mx-auto mb-3 d-flex align-items-center justify-content-center" style="width:56px; height:56px; border-radius:50%; background:var(--signal-dim); border:1px solid rgba(0,137,163,.25); color:var(--signal); font-size:20px;"><i class="fa-solid fa-images"></i></div>
+              <div style="font-size:16px; font-weight:700; color:var(--ink);">Галерея</div>
+              <div class="mt-1" style="font-size:12.5px; color:var(--mute); max-width:280px;">Медиаархив персонажа вынесен во внешнее хранилище.</div>
+              <a href="{{ссылка_галерея|url=LINK}}" class="d-inline-block mt-3" style="padding:9px 20px; border:1px solid var(--signal); color:var(--signal); border-radius:20px; font-size:12.5px; font-weight:600; text-decoration:none;">Открыть раздел <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        {{/вкладка_галерея_показать}}
+
+        {{#вкладка_друзья_показать}}
+        <div class="tab-pane fade {{#вкладка_друзья_старт}}show active{{/вкладка_друзья_старт}}" id="tab-friends">
+          <div class="d-flex align-items-center justify-content-center" style="min-height:360px;">
+            <div class="text-center px-4">
+              <div class="mx-auto mb-3 d-flex align-items-center justify-content-center" style="width:56px; height:56px; border-radius:50%; background:var(--signal-dim); border:1px solid rgba(0,137,163,.25); color:var(--signal); font-size:20px;"><i class="fa-solid fa-user-group"></i></div>
+              <div style="font-size:16px; font-weight:700; color:var(--ink);">Друзья</div>
+              <div class="mt-1" style="font-size:12.5px; color:var(--mute); max-width:280px;">Список связей хранится в отдельном разделе Протокола.</div>
+              <a href="{{ссылка_друзья|url=LINK}}" class="d-inline-block mt-3" style="padding:9px 20px; border:1px solid var(--signal); color:var(--signal); border-radius:20px; font-size:12.5px; font-weight:600; text-decoration:none;">Открыть раздел <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        {{/вкладка_друзья_показать}}
+
+        {{#вкладка_инциденты_показать}}
+        <div class="tab-pane fade {{#вкладка_инциденты_старт}}show active{{/вкладка_инциденты_старт}}" id="tab-incidents">
+          <div class="d-flex align-items-center justify-content-center" style="min-height:360px;">
+            <div class="text-center px-4">
+              <div class="mx-auto mb-3 d-flex align-items-center justify-content-center" style="width:56px; height:56px; border-radius:50%; background:var(--flare-dim); border:1px solid rgba(198,42,82,.3); color:var(--flare); font-size:20px;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div style="font-size:16px; font-weight:700; color:var(--ink);">Инциденты</div>
+              <div class="mt-1" style="font-size:12.5px; color:var(--mute); max-width:280px;">Реестр инцидентов доступен по защищённой ссылке.</div>
+              <a href="{{ссылка_инциденты|url=LINK}}" class="d-inline-block mt-3" style="padding:9px 20px; border:1px solid var(--flare); color:var(--flare); border-radius:20px; font-size:12.5px; font-weight:600; text-decoration:none;">Открыть раздел <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+        {{/вкладка_инциденты_показать}}
+
+        <!-- ==================== ВНЕШНИЕ ДАННЫЕ ==================== -->
+        {{#вкладка_биоданные_показать}}
+        <div class="tab-pane fade {{#вкладка_биоданные_старт}}show active{{/вкладка_биоданные_старт}}" id="tab-biodata">
+          <div class="px-3 px-md-4 py-4">
+            <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:14px;">// БИОМЕТРИЧЕСКИЕ ДАННЫЕ</div>
+
+            <div class="row">
+              <div class="col-6 col-md-4 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-leaf" style="color:var(--signal);"></i>
+                  <div class="mt-2" style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Вид</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{вид}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-venus-mars" style="color:var(--signal);"></i>
+                  <div class="mt-2" style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Гендер</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{гендер}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-heart-pulse" style="color:var(--signal);"></i>
+                  <div class="mt-2" style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Состояние здоровья</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{здоровье~стабильное}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-ruler-vertical" style="color:var(--signal);"></i>
+                  <div class="mt-2" style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Рост</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{рост~170 см}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-eye" style="color:var(--signal);"></i>
+                  <div class="mt-2" style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Глаза</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{глаза~серо-зелёные}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-water" style="color:var(--signal);"></i>
+                  <div class="mt-2" style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Волосы</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{волосы~пепельный блонд}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-person" style="color:var(--signal);"></i>
+                  <div class="mt-2" style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Телосложение</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{телосложение~худощавое}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-gem" style="color:var(--signal);"></i>
+                  <div class="mt-2" style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Особые приметы</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{приметы~прокол брови, шрам на кисти}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-shirt" style="color:var(--signal);"></i>
+                  <div class="mt-2" style="font-size:10.5px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Стиль одежды</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{стиль_одежды~строгая форма архива}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-3 p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; font-size:13px; line-height:1.7; color:var(--mute);">{{биодата_доп|textarea~Почти всегда в тёмно-синей форме архива поверх свитера — по слухам, ни разу не видели её без старого латунного значка связного на воротнике, даже вне смены.}}</div>
+          </div>
+        </div>
+        {{/вкладка_биоданные_показать}}
+
+        <!-- ==================== СОЦСЕТИ ==================== -->
+        {{#вкладка_соцсети_показать}}
+        <div class="tab-pane fade {{#вкладка_соцсети_старт}}show active{{/вкладка_соцсети_старт}}" id="tab-social">
+          <div class="px-3 px-md-4 py-4">
+            <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:14px;">// ВНЕШНИЕ ПЛОЩАДКИ</div>
+
+            <div class="row">
+              {{#each соцсети}}
+              <div class="col-12 col-md-6 mb-3 mb-md-0">
+                <div class="d-flex align-items-center p-3" style="position:relative; background:var(--panel2); border:1px solid var(--edge); border-radius:6px;">
+                  <i class="fa-brands fa-{{иконка}}" style="font-size:20px; color:var(--signal); margin-right:12px;"></i>
+                  <div><div style="font-size:13px; font-weight:600; color:var(--ink);">{{платформа~Discord}}</div><div style="font-size:11px; color:var(--dim);">{{значение~irene#0192}}</div></div>
+                  <a href="{{ссылка|url}}" class="stretched-link" data-toggle="tooltip" title="{{значение}}"></a>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        {{/вкладка_соцсети_показать}}
+
+      </div>
+    </div>
+  </div>
+</div>

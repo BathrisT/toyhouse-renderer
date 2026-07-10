@@ -1,0 +1,943 @@
+<div class="card w-100 border-0 rounded-0 modal-open" style="
+--bg:#d6d6d6;
+--accent:#b81722;
+--accent-dark:#841119;
+--text:#1a1a1a;
+--text-top:#444;
+--bg-dark:#1f1f1f;
+--decor:#a3a3a3;
+background-color:var(--bg); font-family: arial narrow, sans-serif;">
+
+    <!-- Continuous Slideshow snippet BY AUROREAN
+        https://toyhou.se/36767283.snippet-continuous-slideshow
+        // rednorth: original comments were edited here. check out original snippet to get full info.
+        // rednorth: as with my credit, you can edit credit to the snippet, but you can NOT fully remove it.
+
+        You can add up to 12 images in one set
+            // rednorth: strings are used here and they will most likely truncate on smaller screens if too long
+        You can mix-and-match the amount of images in a set to change the width of images
+        To add more sets, copy-paste any IMAGE SET section (NOT the "FIRST SET OF IMAGES")
+
+        See link below on how to customize this code:
+        https://toyhou.se/35338876.customizing-codes
+        -->
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="
+        --slideshow-speed:50s;
+        --strings-height:32pt; height:20pt;background-color:var(--decor)">
+        <div>
+            <div id="Continuous-Slideshow-Carousel" class="carousel slide" data-ride="carousel" data-pause="false" data-interval="1">
+            <div class="carousel-inner" style="height:var(--strings-height); font-size:30pt; margin-top:-11pt; font-weight:600; color:#444">
+
+                <!-------------------------->
+
+                <!--FIRST SET OF STRINGS-->
+                <div class="carousel-item h-100 active" style="transition:linear var(--slideshow-speed);">
+                <div class="row no-gutters h-100">
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+
+                </div>
+                </div> <!-- STRING set end-->
+
+                <!-------------------------->
+
+                <!-- STRING SET-->
+                <div class="carousel-item h-100" style="transition:linear var(--slideshow-speed);">
+                <div class="row no-gutters h-100">
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+                    <!--STR-->
+                    <div class="col">
+                    <div class="h-100" style="">LOREM IPSUM</div>
+                    </div>
+
+
+                </div>
+                </div> <!-- STRING set end-->
+
+                <!--------------------------Add more string sets ABOVE this line------------->
+
+            </div>
+            </div>
+
+
+  </div>
+</div>
+    <!-- END Continuous Slideshow snippet BY AUROREAN -->
+
+    <!-- TOP BANNER -->
+    <div class="mt-lg-0 mt-n2 card w-100 rounded-0 text-center justify-content-center align-items-center" style="height:50vh; min-height:300px;background-color:var(--bg-dark); overflow:hidden;">
+
+        <!-- BANNER IMAGE
+            automatically grayscaled and uses hard-light blend mode so the whole thing looks darker.
+            adjust opacity and position to your preference. delete mix-blend-mode:hard-light; filter:grayscale(100%) if not needed
+        -->
+        <img class="w-100" src="LINKHERE" style="
+            position:absolute;
+            top:0;
+            opacity:.37;
+            min-height:100%;
+            mix-blend-mode:hard-light;
+            filter:grayscale(100%)" >
+        <!-- END BANNER IMAGE -->
+
+        <!-- SMALL TEXT
+            this thing can be a) a text or b) an image.
+
+            if you want to use text option, delete the image and hidden-xs-up in card class. check link below to see web-safe fonts:
+            https://toyhou.se/23372355.fonts
+
+            if you want to use image option, fontmeme is here to help you: https://fontmeme.com/de/kalligrafie-schriftarten/
+            i used MrsSaintDelafield-Regular font colored #d6d6d6 (bg color)
+        -->
+        <div class="mb-4 card rounded-0 border-0 bg-transparent w-100 text-center align-items-center justify-content-center hidden-xs-up" style="mix-blend-mode:difference;z-index:3; position:absolute;"><i class="display-2" style="font-family: pristina, cursive; text-transform:none; position:absolute; color:var(--bg);  ">
+
+            Lorem Ipsum
+
+        </i></div>
+
+        <img class="mb-5" src="
+
+        https://fontmeme.com/permalink/260708/cf3e26a8.png
+
+        "  style="mix-blend-mode:difference;z-index:3; position:absolute; max-height:4em">
+        <!-- END SMALL TEXT -->
+
+        <!-- BIG ACCENT TEXT -->
+        <p class="mb-5" style="font-family: Times, serif; text-transform:uppercase; z-index:2; color:var(--accent); font-size:7em; line-height:100%; text-shadow:0px 0px 7px var(--accent);">
+
+            lorem ipsum
+
+        </p>
+        <!-- END BIG ACCENT TEXT -->
+
+        <!-- CREDITS -->
+        <div class="hidden-md-down" style="z-index:2; position:absolute; bottom:10px; opacity:.5">
+            <a class="pull-right border-0 tooltipster ml-2" title="code by rednorth" href="https://toyhou.se/rednorth" style="color:var(--bg)"><i class="fat fa-feather-pointed"></i></a>
+            <a class="pull-right border-0 tooltipster ml-2" title="art by fishfoodnoodle" href="https://fishfoodnoodle.carrd.co/" style="color:var(--bg)"><i class="fat fa-paintbrush"></i></a>
+            <a class="pull-right border-0 tooltipster" title="continuous slideshow snippet by Aurorean" href="https://toyhou.se/36767283.snippet-continuous-slideshow" style="color:var(--bg)"><i class="fat fa-calendar-image"></i></a>
+        </div>
+        <!-- END CREDITS -->
+    </div>
+    <!-- END TOP BANNER -->
+
+    <!-- FOLDER INFO -->
+    <div style="margin-top:-44px;">
+
+        <div class="row no-gutters justify-content-between">
+
+            <!-- INFO COL -->
+            <div class="col-lg-4 col-12 ">
+                <!-- TOP PARALLELOGRAM -->
+                <div class="card mb-1 rounded-0 border-0 ml-n2" style="height:5px; background-color:var(--decor); width:43%; transform:skewX(45deg);"></div>
+                <div class="card rounded-0 border-0 ml-n4" style="background-color:var(--bg); transform:skewX(45deg); min-height:35px">
+                    <!-- MOVING BG -->
+                    <div class="row no-gutters justify-content-between">
+                        <!-- MOVING BG LEFT -->
+                        <div class="col-2 modal-open" style="border:var(--text) solid; border-width:0px 1px 1px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="background-color:var(--decor); width:150%; transform:skewX(-45deg); opacity:.7; height:35px;"></div>
+                        </div>
+                        <!-- END MOVING BG LEFT -->
+                        <!-- MOVING BG RIGHT-->
+                        <div class="col-3 modal-open" style="border:var(--text) solid; border-width:0px 0px 1px 1px; ">
+                            <div class="progress-bar progress-bar-animated progress-bar-striped mx-n5" style="height:35px; width:170%; transform:skewX(-45deg); background-color:var(--decor); opacity:.7"></div>
+                        </div>
+                        <!-- END MOVING BG RIGHT -->
+                    </div>
+                    <!-- END MOVING BG -->
+                </div>
+                <!-- END TOP PARALLELOGRAM -->
+
+                <!-- CONTENT -->
+                <div class="card rounded-0 mr-3 ml-4 mb-3" style="background-color:var(--bg);border:var(--text) solid; border-width:0px 1px 1px; z-index:1;color:var(--text)">
+                    <div class="row no-gutters w-100 d-flex mx-n4 mt-n2 d-flex" style="z-index:2; ">
+                        <!-- NAV COL -->
+                        <div class="col-auto flex-column flex-shrink-1 mt-3">
+
+                        <ul class="nav flex-column ml-n1 py-2 pl-3 "  style="font-size:1.2em">
+                            <!-- LINK MAIN -->
+                            <li class="nav-item mb-1 " >
+                                <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                <a class="nav-link active p-0 " data-toggle="tab" href="#info" style="background-color:var(--accent);">
+                                    <i class="fas fa-pen-nib m-1" style="color:var(--bg);"></i>
+                                </a>
+                            </li>
+                            <!-- END LINK MAIN -->
+                            <!-- LINK WARNINGS -->
+                            <li class="nav-item  mb-1">
+                                <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                <a class="nav-link p-0" data-toggle="tab" href="#warns" style="background-color:var(--accent)">
+                                    <i class="fas fa-triangle-exclamation m-1" style="color:var(--bg);"></i>
+                                </a>
+                                <div class="card mt-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                            </li>
+                            <!-- END LINK WARNINGS -->
+                            <!-- LINK PLAYLIST -->
+                            <li class="nav-item mb-2">
+                                <a class="nav-link p-0" data-toggle="tab" href="#smth" style="background-color:var(--accent)">
+                                    <i class="fas fa-record-vinyl m-1" style="color:var(--bg)"></i>
+                                </a>
+                                <div class="card mt-2 rounded-0 border-0" style="background-color:var(--accent-dark); height:12px"></div>
+                            </li>
+                            <!-- END LINK PLAYLIST -->
+                        </ul>
+
+                        </div>
+                        <!-- END NAV COL -->
+
+                        <!-- INFO COL -->
+                        <div class="col flex-column flex-grow-1 " style="margin-top:-30px">
+                            <div class="tab-content pl-3 pb-3" style="min-height:215px">
+
+                            <!-- MAIN TAB -->
+                            <div class="tab-pane active" id="info">
+                                <!-- HEADER -->
+                                <p class="mx-3" style="font-family:arial black, sans-serif; color:var(--accent); text-transform:uppercase; font-size:30px">
+                                    story
+                                </p>
+                                <!-- END HEADER -->
+                                <!-- TEXT -->
+                                <div class="mt-1 text-justify" style="overflow:auto; scrollbar-width:none; max-height:150px;line-height:135%;">
+                                    <!-- TEXT PART -->
+                                    <p>
+                                        <b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit. Duis sollicitudin elit sed tellus blandit viverra sed eget odioempor lacus, et venenatis elit feugiat non. Duis porta eros et velit blandit dapibus. Curabitur ac finibus eros. Duis placerat velit vitae massa sodales, eget mattis nibh pellentesque.
+                                    </p>
+                                    <!-- END TEXT PART -->
+
+                                    <!-- DIVIDER -->
+                                    <div class="text-right mb-2" style="color:var(--text-top); font-size:.9em"><hr class="mt-1 mb-0 p-0" style="background-color:var(--decor);"><div class="justify-content-between"><i class="fass fa-bookmark" style="color:var(--accent-dark); font-size:1.2em"></i><p style="opacity:.7; transform:scaleY(1.1)">subheader</p></div></div>
+                                    <!-- END DIVIDER -->
+
+                                    <!-- TEXT PART -->
+                                    <p>
+                                        <b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit. Duis sollicitudin elit sed tellus blandit viverra sed eget odioempor lacus, et venenatis elit feugiat non. Duis porta eros et velit blandit dapibus. Curabitur ac finibus eros. Duis placerat velit vitae massa sodales, eget mattis nibh pellentesque.
+                                    </p>
+                                    <!-- END TEXT PART -->
+
+                                    <!-- ADD MORE ABOVE -->
+                                </div>
+                                <!-- END TEXT -->
+                            </div>
+                            <!-- END MAIN TAB -->
+
+                            <!-- WARNINGS TAB -->
+                            <div class="tab-pane" id="warns">
+                                <!-- HEADER -->
+                                <p class="mx-3" style="font-family:arial black, sans-serif; color:var(--accent); text-transform:uppercase; font-size:30px">
+                                    warnings
+                                </p>
+                                <!-- END HEADER -->
+                                <!-- TEXT PART -->
+                                <div  style=" max-height:150px; overflow:auto; scrollbar-width:none"><p class="text-justify mt-1" style="line-height:135%;">List of general warnings that applies to every character in this folder. or any other text description. but better keep it short... </p>
+                                <!-- END TEXT PART -->
+
+                                <!-- WARNINGS LIST
+                                i honestly am bad at warning themes, so i took reference from this code:
+                                https://toyhou.se/19711420.f2u-let-the-living-beware
+                                -->
+                                <div class="row no-gutters text-justify mt-2" style="line-height:135%;">
+                                    <!-- WARNING 1 -->
+                                    <div class="col-6 pr-2" style="font-size:16px">
+                                        <p class="mb-n1"><i class="fas fa-skull mr-1" style="color:var(--accent-dark); font-size:14px"></i>Death</p>
+
+                                        <div class="row no-gutters d-flex ">
+                                            <div class="col-auto flex-grow-1 my-auto pr-1"><hr class="w-100 m-0" style="background-color:var(--decor)"></div>
+                                            <!-- SEVERITY STARS -->
+                                            <div class="col-auto">
+                                                <div class="text-right" style="font-size:9px">
+                                                    <i class="fass fa-star"></i><i class="fass fa-star"></i><i class="fass fa-star pr-2"></i>
+                                                </div>
+                                            </div>
+                                            <!-- END SEVERITY STARS -->
+                                        </div>
+
+                                    </div>
+                                    <!-- END WARNING 1 -->
+                                    <!-- WARNING 2 -->
+                                    <div class="col-6 pl-2" style="font-size:16px">
+                                        <p class="mb-n1"><i class="fas fa-droplet mr-1" style="color:var(--accent-dark); font-size:14px"></i>Gore</p>
+
+                                        <div class="row no-gutters d-flex ">
+                                            <div class="col-auto flex-grow-1 my-auto pr-1"><hr class="w-100 m-0" style="background-color:var(--decor)"></div>
+                                            <!-- SEVERITY STARS -->
+                                            <div class="col-auto">
+                                                <div class="text-right" style="font-size:9px">
+                                                    <i class="fass fa-star"></i><i class="fass fa-star"></i><i class="fast fa-star pr-2"></i>
+                                                </div>
+                                            </div>
+                                            <!-- END SEVERITY STARS -->
+                                        </div>
+
+                                    </div>
+                                    <!-- END WARNING 2 -->
+                                    <!-- WARNING 3 -->
+                                    <div class="col-6 pr-2" style="font-size:16px">
+                                        <p class="mb-n1"><i class="fas fa-scale-unbalanced mr-1" style="color:var(--accent-dark); font-size:14px"></i>Gray morality</p>
+
+                                        <div class="row no-gutters d-flex ">
+                                            <div class="col-auto flex-grow-1 my-auto pr-1"><hr class="w-100 m-0" style="background-color:var(--decor)"></div>
+                                            <!-- SEVERITY STARS -->
+                                            <div class="col-auto">
+                                                <div class="text-right" style="font-size:9px">
+                                                    <i class="fass fa-star"></i><i class="fass fa-star"></i><i class="fass fa-star pr-2"></i>
+                                                </div>
+                                            </div>
+                                            <!-- END SEVERITY STARS -->
+                                        </div>
+
+                                    </div>
+                                    <!-- END WARNING 3 -->
+                                    <!-- WARNING 4 -->
+                                    <div class="col-6 pl-2" style="font-size:16px">
+                                        <p class="mb-n1"><i class="fas fa-fire mr-1" style="color:var(--accent-dark); font-size:14px"></i>Fire</p>
+
+                                        <div class="row no-gutters d-flex ">
+                                            <div class="col-auto flex-grow-1 my-auto pr-1"><hr class="w-100 m-0" style="background-color:var(--decor)"></div>
+                                            <!-- SEVERITY STARS -->
+                                            <div class="col-auto">
+                                                <div class="text-right" style="font-size:9px">
+                                                    <i class="fass fa-star"></i><i class="fast fa-star"></i><i class="fast fa-star pr-2"></i>
+                                                </div>
+                                            </div>
+                                            <!-- END SEVERITY STARS -->
+                                        </div>
+
+                                    </div>
+                                    <!-- WARNING 4 -->
+                                    <!-- WARNING 5 -->
+                                    <div class="col-6 pr-2" style="font-size:16px">
+                                        <p class="mb-n1"><i class="fas fa-burst mr-1" style="color:var(--accent-dark); font-size:14px"></i>Abuse</p>
+
+                                        <div class="row no-gutters d-flex ">
+                                            <div class="col-auto flex-grow-1 my-auto pr-1"><hr class="w-100 m-0" style="background-color:var(--decor)"></div>
+                                            <!-- SEVERITY STARS -->
+                                            <div class="col-auto">
+                                                <div class="text-right" style="font-size:9px">
+                                                    <i class="fass fa-star"></i><i class="fass fa-star"></i><i class="fast fa-star pr-2"></i>
+                                                </div>
+                                            </div>
+                                            <!-- END SEVERITY STARS -->
+                                        </div>
+
+                                    </div>
+                                    <!-- END WARNING 5 -->
+                                    <!-- WARNING 6 -->
+                                    <div class="col-6 pl-2" style="font-size:16px">
+                                        <p class="mb-n1"><i class="fas fa-person-dress-burst mr-1" style="color:var(--accent-dark); font-size:14px"></i>Misogony</p>
+
+                                        <div class="row no-gutters d-flex ">
+                                            <div class="col-auto flex-grow-1 my-auto pr-1"><hr class="w-100 m-0" style="background-color:var(--decor)"></div>
+                                            <!-- SEVERITY STARS -->
+                                            <div class="col-auto">
+                                                <div class="text-right" style="font-size:9px">
+                                                    <i class="fass fa-star"></i><i class="fast fa-star"></i><i class="fast fa-star pr-2"></i>
+                                                </div>
+                                            </div>
+                                            <!-- END SEVERITY STARS -->
+                                        </div>
+
+                                    </div>
+                                    <!-- END WARNING 6 -->
+                                </div>
+                                <!-- END WARNING LIST -->
+
+                                </div>
+
+                                </div>
+                            <!-- END WARNINGS TAB -->
+
+                            <!-- PLAYLIST TAB -->
+                            <div class="tab-pane" id="smth">
+                                <!-- HEADER -->
+                                <p class="mx-3" style="font-family:arial black, sans-serif; color:var(--accent); text-transform:uppercase; font-size:30px">
+                                    playlist
+                                </p>
+                                <!-- END HEADER -->
+                                <div style="max-height:150px; overflow:auto; scrollbar-width:none;">
+                                    <!-- SONG 1 -->
+                                    <div class="row no-gutters w-100 justify-content-between mt-2 d-flex">
+                                        <!-- COVER -->
+                                        <div class="col-auto">
+                                            <div class="card" style="height:40px; width:40px; background-image:url(
+
+                                            LINKHERE
+
+                                            ); background-size:cover; border:1px var(--text) solid"></div>
+                                        </div>
+                                        <!-- END COVER -->
+                                        <!-- NAME -->
+                                        <div class="col flex-column flex-grow-1 ml-2">
+                                            <p style="line-height:135%; color:var(--text-top)"><b style="color:var(--text)">London</b><br>Noonday Underground</p>
+                                        </div>
+                                        <!-- END NAME -->
+                                        <!-- PLAY BTN -->
+                                        <div class="col-auto ml-2 flex-column">
+                                            <div class="d-flex justify-content-center align-items-center" style="position: relative; height: 40px;">
+                                                <i class="fas fa-play" style="font-size: 14px;"></i>
+                                                <div class="d-flex justify-content-center align-items-center" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: .0001; overflow: hidden;">
+                                                    <iframe src="https://www.youtube.com/embed/VIDEOID?controls=0" frameborder="0" style="height: 250%; min-height: 250px; width: 100%;"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END PLAY BTN -->
+                                        <!-- LENGTH -->
+                                        <div class="col-auto flex-column my-auto ml-2"><p style="color:var(--text-top)">03:11</p></div>
+                                        <!-- END LENGTH -->
+                                    </div>
+                                    <!-- END SONG 1 -->
+
+                                    <!-- SONG 2 -->
+                                    <div class="row no-gutters w-100 justify-content-between mt-2 d-flex">
+                                        <!-- COVER -->
+                                        <div class="col-auto">
+                                            <div class="card" style="height:40px; width:40px; background-image:url(
+
+                                            LINKHERE
+
+                                            ); background-size:cover; border:1px var(--text) solid"></div>
+                                        </div>
+                                        <!-- END COVER -->
+                                        <!-- NAME -->
+                                        <div class="col flex-column flex-grow-1 ml-2">
+                                            <p style="line-height:135%; color:var(--text-top)"><b style="color:var(--text)">2000 Elefanten</b><br>Die Wilde Jagd</p>
+                                        </div>
+                                        <!-- END NAME -->
+                                        <!-- PLAY BTN -->
+                                        <div class="col-auto ml-2 flex-column">
+                                            <div class="d-flex justify-content-center align-items-center" style="position: relative; height: 40px;">
+                                                <i class="fas fa-play" style="font-size: 14px;"></i>
+                                                <div class="d-flex justify-content-center align-items-center" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: .0001; overflow: hidden;">
+                                                    <iframe src="https://www.youtube.com/embed/VIDEOID?controls=0" frameborder="0" style="height: 250%; min-height: 250px; width: 100%;"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END PLAY BTN -->
+                                        <!-- LENGTH -->
+                                        <div class="col-auto flex-column my-auto ml-2"><p style="color:var(--text-top)">07:19</p></div>
+                                        <!-- END LENGTH -->
+                                    </div>
+                                    <!-- END SONG 2 -->
+
+                                    <!-- SONG 3 -->
+                                    <div class="row no-gutters w-100 justify-content-between mt-2 d-flex">
+                                        <!-- COVER -->
+                                        <div class="col-auto">
+                                            <div class="card" style="height:40px; width:40px; background-image:url(
+
+                                            LINKHERE
+
+                                            ); background-size:cover; border:1px var(--text) solid"></div>
+                                        </div>
+                                        <!-- END COVER -->
+                                        <!-- NAME -->
+                                        <div class="col flex-column flex-grow-1 ml-2">
+                                            <p style="line-height:135%; color:var(--text-top)"><b style="color:var(--text)">Curator</b><br>Surganova & Orchestra</p>
+                                        </div>
+                                        <!-- END NAME -->
+                                        <!-- PLAY BTN -->
+                                        <div class="col-auto ml-2 flex-column">
+                                            <div class="d-flex justify-content-center align-items-center" style="position: relative; height: 40px;">
+                                                <i class="fas fa-play" style="font-size: 14px;"></i>
+                                                <div class="d-flex justify-content-center align-items-center" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: .0001; overflow: hidden;">
+                                                    <iframe src="https://www.youtube.com/embed/VIDEOID?controls=0" frameborder="0" style="height: 250%; min-height: 250px; width: 100%;"></iframe>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!-- END PLAY BTN -->
+                                        <!-- LENGTH -->
+                                        <div class="col-auto flex-column my-auto ml-2"><p style="color:var(--text-top)">03:55</p></div>
+                                        <!-- END LENGTH -->
+                                </div>
+                                    <!-- END SONG 3 -->
+
+                                    <!-- SONG 4 -->
+                                    <div class="row no-gutters w-100 justify-content-between mt-2 d-flex">
+                                        <!-- COVER -->
+                                        <div class="col-auto">
+                                            <div class="card" style="height:40px; width:40px; background-image:url(
+
+                                            LINKHERE
+
+                                            ); background-size:cover; border:1px var(--text) solid"></div>
+                                        </div>
+                                        <!-- END COVER -->
+                                        <!-- NAME -->
+                                        <div class="col flex-column flex-grow-1 ml-2">
+                                            <p style="line-height:135%; color:var(--text-top)"><b style="color:var(--text)">Climbing Up the Walls</b><br>Radiohead</p>
+                                        </div>
+                                        <!-- END NAME -->
+                                        <!-- PLAY BTN -->
+                                        <div class="col-auto ml-2 flex-column">
+                                            <div class="d-flex justify-content-center align-items-center" style="position: relative; height: 40px;">
+                                                <i class="fas fa-play" style="font-size: 14px;"></i>
+                                                <div class="d-flex justify-content-center align-items-center" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; opacity: .0001; overflow: hidden;">
+                                                    <iframe src="https://www.youtube.com/embed/VIDEOID?controls=0" frameborder="0" style="height: 250%; min-height: 250px; width: 100%;"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END PLAY BTN -->
+                                        <!-- LENGTH -->
+                                        <div class="col-auto flex-column my-auto ml-2"><p style="color:var(--text-top)">04:45</p></div>
+                                        <!-- END LENGTH -->
+                                    </div>
+                                    <!-- END SONG 4 -->
+                                </div>
+                            </div>
+                            <!-- END PLAYLIST TAB -->
+                            </div></div>
+                        <!-- END INFO COL -->
+                    </div>
+                </div>
+                <!-- END CONTENT -->
+            </div>
+            <!-- END INFO COL -->
+
+            <!-- FEAUTURED COL -->
+            <div class="col-lg-4 col-12 justify-content-center">
+                <ul class="mt-lg-5 mb-5 pb-5 h-100 nav" style="overflow:hidden">
+
+                    <!-- CHAR1 LINK -->
+                    <li class="mr-3 nav-item" >
+                        <!-- LINK DESKTOP -->
+                        <a class="mt-3 nav-link p-0 active ml-1 hidden-md-down" style="transform:rotate(90deg); position:absolute; z-index:2; top:105px;font-family:Times, serif; color:var(--bg); text-shadow:0px 0px 3px var(--decor); text-decoration:none" href="#c1" data-toggle="tab">
+
+                            <i>the magpie</i>
+
+                        </a>
+                        <!-- END LINK DESKTOP -->
+                        <!-- LINK MOBILE -->
+                        <a class=" nav-link px-2 py-0 hidden-lg-up text-center" style=" position:absolute; z-index:2; top:50px;font-family:Times, serif; color:var(--bg); text-shadow:0px 0px 3px var(--decor); max-width:70px;text-decoration:none" href="#c1" data-toggle="tab">
+
+                            <i>the magpie</i>
+
+                        </a>
+                        <!-- END LINK MOBILE -->
+                        <!-- IMAGE -->
+                        <div class="card h-100 w-100  mt-2 p-4 rounded-0 border-0 justify-content-center" style="background-color:var(--accent-dark); max-height:150px;background-image:url(
+
+                        LINKHERE
+
+                        ); background-blend-mode:hard-light; background-size:cover;min-width:70px">
+                        </div>
+                        <!-- END IMAGE -->
+                        <!-- GRAY BAR -->
+                        <div class="progress-bar progress-bar-striped mt-1 mb-1" style="background-color:var(--decor);"></div>
+                        <!-- END GRAY BAR -->
+                    </li>
+                    <!-- END CHAR1 LINK -->
+
+                    <!-- CHAR2 LINK -->
+                    <li class="mr-3 nav-item">
+                        <!-- LINK DESKTOP -->
+                        <a class="mt-5 nav-link ml-2 p-0 hidden-md-down" style="transform:rotate(90deg); font-family:Times, serif; color:var(--accent); position:absolute; z-index:2; top:90px;text-shadow:0px 0px 3px var(--accent-dark); text-decoration:none" href="#c2" data-toggle="tab">
+
+                            <i>the swift</i>
+
+                        </a>
+                        <!-- END LINK DESKTOP -->
+                        <!-- LINK MOBILE -->
+                        <a class=" nav-link px-2 py-0 hidden-lg-up text-center" style=" position:absolute; z-index:2; top:70px;font-family:Times, serif; color:var(--accent); text-shadow:0px 0px 3px var(--accent-dark); max-width:70px;text-decoration:none" href="#c2" data-toggle="tab">
+
+                            <i>the swift</i>
+
+                        </a>
+                        <!-- END LINK MOBILE -->
+                        <!-- GRAY BAR -->
+                        <div class="progress-bar progress-bar-striped mt-1 mb-1" style="background-color:var(--decor);"></div>
+                        <!-- END GRAY BAR -->
+                        <!-- IMAGE -->
+                        <div class="card h-100 w-100 mb-2  p-4 rounded-0 border-0 justify-content-center" style="background-color:var(--bg-dark); max-height:150px;background-image:url(
+
+                        LINKHERE
+
+                        ); background-blend-mode:soft-light; background-size:cover;min-width:70px">
+                        </div>
+                        <!-- END IMAGE -->
+                    </li>
+                    <!-- END CHAR2 LINK -->
+
+                    <!-- CHAR3 LINK -->
+                    <li class="mr-3 nav-item">
+                        <!-- LINK DESKTOP -->
+                        <a class="mt-3 nav-link p-0 hidden-md-down" style="transform:rotate(90deg); position:absolute; z-index:2; top:105px;font-family:Times, serif; color:var(--bg); text-shadow:0px 0px 3px var(--decor); text-decoration:none" href="#c3" data-toggle="tab">
+
+                            <i>the swallow</i>
+
+                        </a>
+                        <!-- END LINK DESKTOP -->
+                        <!-- LINK MOBILE -->
+                        <a class=" nav-link px-2 py-0 hidden-lg-up text-center" style=" position:absolute; z-index:2; top:50px;font-family:Times, serif; color:var(--bg); text-shadow:0px 0px 3px var(--decor); max-width:70px;text-decoration:none" href="#c3" data-toggle="tab">
+
+                            <i>the swallow</i>
+
+                        </a>
+                        <!-- END LINK MOBILE -->
+                        <!-- IMAGE -->
+                        <div class="card h-100 w-100  mt-2 p-4 rounded-0 border-0 justify-content-center" style="background-color:var(--accent-dark); max-height:150px;background-image:url(
+
+                        LINKHERE
+
+                        ); background-blend-mode:hard-light; background-size:cover; min-width:70px">
+                        </div>
+                        <!-- END IMAGE -->
+                        <!-- GRAY BAR -->
+                        <div class="progress-bar progress-bar-striped mt-1 mb-1" style="background-color:var(--decor);"></div>
+                        <!-- END GRAY BAR -->
+                    </li>
+                    <!-- END CHAR3 LINK -->
+
+                    <!-- CHAR4 LINK -->
+                    <li class="mr-lg-3 nav-item ">
+                        <!-- LINK DESKTOP -->
+                        <a class="mt-5 nav-link ml-2 p-0 hidden-md-down" style="transform:rotate(90deg); position:absolute; top:90px; font-family:Times, serif; color:var(--accent); text-shadow:0px 0px 3px var(--accent-dark); z-index:3; text-decoration:none" href="#c4" data-toggle="tab">
+
+                            <i>the cobra</i>
+
+                        </a>
+                        <!-- END LINK DESKTOP -->
+                        <!-- LINK MOBILE -->
+                        <a class=" nav-link px-2 py-0 hidden-lg-up text-center" style=" position:absolute; z-index:2; top:70px;font-family:Times, serif; color:var(--accent); text-shadow:0px 0px 3px var(--accent-dark); max-width:70px;text-decoration:none" href="#c4" data-toggle="tab">
+
+                            <i>the cobra</i>
+
+                        </a>
+                        <!-- END LINK MOBILE-->
+                        <!-- GRAY BAR -->
+                        <div class="progress-bar progress-bar-striped mt-1 mb-1" style="background-color:var(--decor);"></div>
+                        <!-- END GRAY BAR -->
+                        <!-- IMAGE -->
+                        <div class="card h-100 w-100 mb-2  p-4 rounded-0 border-0 justify-content-center" style="background-color:var(--bg-dark); max-height:150px;background-image:url(
+
+                        LINKHERE
+
+                        ); background-blend-mode:soft-light; background-size:cover;min-width:70px">
+                        </div>
+                        <!-- END IMAGE -->
+                    </li>
+                    <!-- END CHAR4 LINK -->
+                </ul>
+            </div>
+            <!-- END FEAUTURED COL -->
+
+            <!-- CAST DESCRIPTION COL  -->
+            <div class="col-lg-4 col-12">
+
+                <!-- TOP PARALLELOGRAM -->
+                <div class="w-100 align-items-end justify-content-end">
+                    <div class="card mb-1 rounded-0 border-0 mr-n2 hidden-md-down" style="height:5px; background-color:var(--decor); width:43%; transform:skewX(-45deg);"></div>
+                </div>
+                <div class="hidden-lg-up card rounded-0 border-0 align-items-center" style="height:70px; margin-bottom:-35px; background-color:var(--bg-dark)" >
+                    <!-- CREDITS MOBILE -->
+                    <div class="mx-auto mt-1" style="z-index:2;   opacity:.5">
+                        <a class="pull-right border-0 tooltipster ml-2" title="code by rednorth" href="https://toyhou.se/rednorth" style="color:var(--bg)"><i class="fat fa-feather-pointed"></i></a>
+                        <a class="pull-right border-0 tooltipster ml-2" title="art by fishfoodnoodle" href="https://fishfoodnoodle.carrd.co/" style="color:var(--bg)"><i class="fat fa-paintbrush"></i></a>
+                        <a class="pull-right border-0 tooltipster" title="continuous slideshow snippet by Aurorean" href="https://toyhou.se/36767283.snippet-continuous-slideshow" style="color:var(--bg)"><i class="fat fa-calendar-image"></i></a>
+                    </div>
+                    <!-- END CREDITS MOBILE -->
+                </div>
+                <div class="card rounded-0 border-0 mr-n4 " style="background-color:var(--bg); transform:skewX(-45deg); height:35px;z-index:2">
+                    <!-- MOVING BG -->
+                    <div class="row no-gutters justify-content-between">
+                        <!-- MOVING BG LEFT -->
+                        <div class="col-3 modal-open" style="border:var(--text) solid; border-width:0px 1px 1px;">
+                            <div class="ml-n5 progress-bar progress-bar-striped progress-bar-animated" style="background-color:var(--decor); width:200%; transform:skewX(45deg); opacity:.7; height:35px;"></div>
+                        </div>
+                        <!-- END MOVING BG LEFT -->
+                        <!-- MOVING BG RIGHT -->
+                        <div class="col-2 modal-open" style="border:var(--text) solid; border-width:0px 0px 1px 1px; ">
+                            <div class="progress-bar progress-bar-animated progress-bar-striped mx-n5" style="height:35px; width:170%; transform:skewX(45deg); background-color:var(--decor); opacity:.7"></div>
+                        </div>
+                        <!-- END MOVING BG RIGHT -->
+                    </div>
+                    <!-- END MOVING BG -->
+                    <!-- HEADER -->
+                    <div class="w-100 text-right mr-5 pr-5" style="margin-top:-35px; z-index:20; transform:skewX(45deg)">
+                        <p class="mr-4 pr-3" style="font-family:arial black, sans-serif; color:var(--accent); text-transform:uppercase; font-size:30px">
+
+                            cast
+
+                        </p>
+                    </div>
+                    <!-- END HEADER -->
+                </div>
+                <!-- END TOP PARALLELOGRAM -->
+
+                <!-- CAST DESCRIPTION -->
+                <div class="tab-content mr-2 " style="color:var(--text);  ">
+                    <!-- CHAR1 DESCRIPTION -->
+                    <div class="tab-pane active " id="c1">
+                        <div class="card rounded-0 mr-3 ml-4 mb-3 " style="background-color:var(--bg);border:var(--text) solid; border-width:0px 1px 1px; z-index:1;color:var(--text); height:175px">
+                            <!-- DESCRIPTION -->
+                            <div class="row no-gutters w-100 d-flex mr-n4 mt-n2 d-flex" style="z-index:2; ">
+                                    <div class="col flex-column flex-grow-1 mt-3">
+                                        <!-- TEXT -->
+                                        <div class="text-justify ml-4 mr-2 pb-2" style=" border:solid var(--decor); border-width:0px 0px 1px">
+                                            <p style="max-height:6em; overflow:auto; scrollbar-width:none;">
+
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin elit sed tellus blandit viverra sed eget odio. Donec accumsan tempor lacus, et venenatis elit feugiat non. Duis porta eros et velit blandit dapibus. Curabitur ac finibus eros. Duis placerat velit vitae massa sodales, eget mattis nibh pellentesque.
+
+                                            </p>
+                                        </div>
+                                        <!-- END TEXT -->
+                                    </div>
+                                    <div class="col-auto flex-column flex-shrink-1 mr-n1">
+                                        <!-- BUTTONS -->
+                                        <div class=" flex-column mr-n2 py-2 pl-3 mt-3"  style="font-size:1.2em">
+                                            <!-- LINK TO PAGE -->
+                                            <div class="mb-1 " >
+                                                <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:12px"></div>
+                                                <a class="p-1" href="
+
+                                                LINKHERE
+
+                                                " style="background-color:var(--accent);">
+                                                    <i class="fas fa-link" style="color:var(--bg);"></i>
+                                                </a>
+                                            </div>
+                                            <!-- END LINK TO PAGE -->
+                                            <!-- ICON -->
+                                            <div class="nav-item  mb-1">
+                                                <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                                <p class="p-1" style="background-color:var(--accent)">
+
+                                                    <i class="fas fa-crow" style="color:var(--bg);"></i>
+
+                                                </p>
+                                                <div class="card mt-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                            </div>
+                                            <!-- END ICON -->
+                                        </div>
+                                        <!-- END BUTTONS -->
+                                    </div></div>
+                            <!-- END DESCRIPTION -->
+                            <!-- NAME -->
+                            <div class="display-2 px-2 pb-2 mt-n1 text-right text-truncate" style="text-transform:uppercase; color:var(--accent); font-family: times, serif;">
+
+                                the magpie
+
+                            </div>
+                            <!-- END NAME -->
+                        </div>
+                    </div>
+                    <!-- END CHAR1 DESCRIPTION -->
+
+                    <!-- CHAR2 DESCRIPTION -->
+                    <div class="tab-pane" id="c2">
+                        <div class="card rounded-0 mr-3 ml-4 mb-3 " style="background-color:var(--bg);border:var(--text) solid; border-width:0px 1px 1px; z-index:1;color:var(--text); height:175px">
+                            <!-- DESCRIPTION -->
+                            <div class="row no-gutters w-100 d-flex mr-n4 mt-n2 d-flex" style="z-index:2; ">
+                                <div class="col flex-column flex-grow-1 mt-3">
+                                    <!-- TEXT -->
+                                    <div class="text-justify ml-4 mr-2 pb-2" style=" border:solid var(--decor); border-width:0px 0px 1px">
+                                        <p style="max-height:6em; overflow:auto; scrollbar-width:none;">
+
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin elit sed tellus blandit viverra sed eget odio. Donec accumsan tempor lacus, et venenatis elit feugiat non. Duis porta eros et velit blandit dapibus. Curabitur ac finibus eros. Duis placerat velit vitae massa sodales, eget mattis nibh pellentesque.
+
+                                        </p>
+                                    </div>
+                                    <!-- END TEXT -->
+                                </div>
+                                <div class="col-auto flex-column flex-shrink-1 mr-n1">
+                                    <!-- BUTTONS -->
+                                    <div class=" flex-column mr-n2 py-2 pl-3 mt-3"  style="font-size:1.2em">
+                                        <!-- LINK TO PAGE -->
+                                        <div class="mb-1 " >
+                                            <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:12px"></div>
+                                            <a class="p-1" href="
+
+                                            LINKHERE
+
+                                            " style="background-color:var(--accent);">
+                                                <i class="fas fa-link" style="color:var(--bg);"></i>
+                                            </a>
+                                        </div>
+                                        <!-- END LINK TO PAGE -->
+                                        <!-- ICON -->
+                                        <div class="nav-item  mb-1">
+                                            <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                            <p class="p-1 text-center" style="background-color:var(--accent)">
+                                                <i class="fas fa-bird" style="color:var(--bg);"></i>
+                                            </p>
+                                            <div class="card mt-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                        </div>
+                                        <!-- END ICON -->
+                                    </div>
+                                    <!-- END BUTTONS -->
+                                </div>
+                            </div>
+                            <!-- END DESCRIPTION -->
+                            <!-- NAME -->
+                            <div class="display-2 px-2 pb-2 mt-n1 text-right text-truncate" style="text-transform:uppercase; color:var(--accent); font-family: times, serif;">
+
+                                the swift
+
+                            </div>
+                            <!-- END NAME -->
+                        </div>
+                    </div>
+                    <!-- END CHAR2 DESCRIPTION -->
+
+                    <!-- CHAR3 DESCRIPTION -->
+                    <div class="tab-pane" id="c3">
+                        <div class="card rounded-0 mr-3 ml-4 mb-3 " style="background-color:var(--bg);border:var(--text) solid; border-width:0px 1px 1px; z-index:1;color:var(--text); height:175px">
+                            <!-- DESCRIPTION -->
+                            <div class="row no-gutters w-100 d-flex mr-n4 mt-n2 d-flex" style="z-index:2; ">
+                                <div class="col flex-column flex-grow-1 mt-3">
+                                    <!-- TEXT -->
+                                    <div class="text-justify ml-4 mr-2 pb-2" style=" border:solid var(--decor); border-width:0px 0px 1px">
+                                        <p style="max-height:6em; overflow:auto; scrollbar-width:none;">
+
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin elit sed tellus blandit viverra sed eget odio. Donec accumsan tempor lacus, et venenatis elit feugiat non. Duis porta eros et velit blandit dapibus. Curabitur ac finibus eros. Duis placerat velit vitae massa sodales, eget mattis nibh pellentesque.
+
+                                        </p>
+                                    </div>
+                                    <!-- END TEXT -->
+                                </div>
+                                <div class="col-auto flex-column flex-shrink-1 mr-n1">
+                                    <!-- BUTTONS -->
+                                    <div class=" flex-column mr-n2 py-2 pl-3 mt-3"  style="font-size:1.2em">
+                                        <!-- LINK TO PAGE -->
+                                        <div class="mb-1 " >
+                                            <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:12px"></div>
+                                            <a class="p-1" href="
+
+                                            LINKHERE
+
+                                            " style="background-color:var(--accent);">
+                                                <i class="fas fa-link" style="color:var(--bg);"></i>
+                                            </a>
+                                        </div>
+                                        <!-- END LINK TO PAGE -->
+                                        <!-- ICON -->
+                                        <div class="nav-item  mb-1">
+                                            <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                            <p class="p-1 text-center" style="background-color:var(--accent)">
+                                                    <i class="fas fa-sparkle" style="color:var(--bg);"></i>
+                                            </p>
+                                            <div class="card mt-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                        </div>
+                                        <!-- END ICON -->
+                                    </div>
+                                    <!-- END BUTTONS -->
+                                    </div>
+                                </div>
+                            <!-- END DESCRIPTION -->
+                            <!-- NAME -->
+                            <div class="display-2 mr-2 pb-2 mt-n1 text-right text-truncate" style="text-transform:uppercase; color:var(--accent); font-family: times, serif;">
+
+                                the swallow
+
+                            </div>
+                            <!-- END NAME -->
+                        </div>
+                    </div>
+                    <!-- END CHAR3 DESCRIPTION -->
+
+                    <!-- CHAR4 DESCRIPTION -->
+                    <div class="tab-pane" id="c4">
+                        <div class="card rounded-0 mr-3 ml-4 mb-3 " style="background-color:var(--bg);border:var(--text) solid; border-width:0px 1px 1px; z-index:1;color:var(--text); height:175px">
+                            <!-- DESCRIPTION -->
+                            <div class="row no-gutters w-100 d-flex mr-n4 mt-n2 d-flex" style="z-index:2; ">
+                                <div class="col flex-column flex-grow-1 mt-3">
+                                    <!-- TEXT -->
+                                    <div class="text-justify ml-4 mr-2 pb-2" style=" border:solid var(--decor); border-width:0px 0px 1px">
+                                        <p style="max-height:6em; overflow:auto; scrollbar-width:none;">
+
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin elit sed tellus blandit viverra sed eget odio. Donec accumsan tempor lacus, et venenatis elit feugiat non. Duis porta eros et velit blandit dapibus. Curabitur ac finibus eros. Duis placerat velit vitae massa sodales, eget mattis nibh pellentesque.
+
+                                        </p>
+                                    </div>
+                                    <!-- END TEXT -->
+                                </div>
+                                <div class="col-auto flex-column flex-shrink-1 mr-n1">
+                                    <!-- BUTTONS -->
+                                    <div class=" flex-column mr-n2 py-2 pl-3 mt-3"  style="font-size:1.2em">
+                                        <!-- LINK TO PAGE -->
+                                        <div class="mb-1 " >
+                                            <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:12px"></div>
+                                            <a class="p-1" href="
+
+                                            LINKHERE
+
+                                            " style="background-color:var(--accent);">
+                                                <i class="fas fa-link" style="color:var(--bg);"></i>
+                                            </a>
+                                        </div>
+                                        <!-- END LINK TO PAGE -->
+                                        <!-- ICON -->
+                                        <div class="nav-item  mb-1">
+                                            <div class="card mb-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                            <p class="p-1 text-center" style="background-color:var(--accent)">
+                                                <i class="fas fa-snake" style="color:var(--bg);"></i>
+                                            </p>
+                                            <div class="card mt-1 rounded-0 border-0" style="background-color:var(--accent-dark); height:2px"></div>
+                                        </div>
+                                        <!-- END ICON -->
+                                    </div>
+                                    <!-- END BUTTONS -->
+                                    </div>
+                                </div>
+                            <!-- END  DESCRIPTION -->
+                            <!-- NAME -->
+                            <div class="display-2 mr-2 pb-2 mt-n1 text-right text-truncate" style="text-transform:uppercase; color:var(--accent); font-family: times, serif;">
+
+                                the cobra
+
+                            </div>
+                            <!-- END NAME -->
+                        </div>
+                    </div>
+                    <!-- END CHAR4 DESCRIPTION -->
+                </div>
+                <!-- END CAST DESCRIPTION -->
+            </div>
+            <!-- END CAST DESCRIPTION COL  -->
+        </div>
+
+    </div>
+    <!-- END FOLDER INFO -->
+</div>

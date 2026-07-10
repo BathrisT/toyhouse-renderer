@@ -1,0 +1,421 @@
+<!-- // user profile - simple
+   I HIGHLY recommend to read up on some coding basics if you want to edit on your own
+   Here's some I use:
+   https://toyhou.se/Elithian/characters/folder:881832
+   https://www.w3schools.com
+   usually just googling "how to do this thing html" gives you good results
+
+   try using https://th.circlejourney.net to edit this code!
+   Also use https://fontawesome.com/search font awesome icons
+   (keep in mind fas for solid, fat for super thin, far for regular thickness, fal for decent thickness,
+   fad for different shades, and fab for any well known brands such as twitter, instagram etc)
+
+   any issues feel free to dm me anywhere, it's not a bother ^^ I'd be happy to offer full edits of the code for free i enjoy it lmao
+
+   -please don't : redistribute this code, claim it as your own, remove the credits
+   -you can : frankenstein, and edit to hell lol
+
+     //custom colours; use ctrl+h in circlejourney.net to replace!
+     background: #070711
+     boxes: #1b294f
+     white: #c4cfe0
+     muted 1: #8392ba
+     muted 2: #5c6b94
+     highlighted text: #7589c1
+
+     art status open: #389962
+     art status aks: #b39d46
+     art status closed: #99384a
+
+     -->
+
+  <!-- banner // replace the url in the brackets with your image address -->
+
+  <div class="container" style="height:200px;max-width:630px;background-image:
+
+	         url(https://i0.wp.com/theperfectroundgolf.com/wp-content/uploads/2022/04/placeholder.png?fit=1200%2C800&ssl=1);
+
+	         background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#070711">
+
+	<div class="row no-gutters justify-content-between">
+		<div class="column">
+
+			<!-- basic info card -->
+
+			<div class="card p-1 mb-1 border-0 rounded-0" style="top:35px;left:-10px;max-width:300px;max-height:125px;overflow:auto;background-color:#070711;border-radius: 40px 40px 40px 40px">
+				<div class="row no-gutters">
+					<div class="column">
+
+						<!-- pfp // replace the url in the brackets with your image address -->
+
+						<div class="card mt-2 mb-2 mx-2 rounded-circle" style="width:100px;height:100px;background-image:
+
+             url(https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010);
+
+             background-size:cover;background-position:center;border:solid 2px #c4cfe0">
+						</div>
+					</div>
+					<div class="column ml-1 mr-3">
+
+						<!-- names -->
+
+						<div class="card mt-4 bg-transparent border-0" style="overflow:auto; max-height:80px;max-width:150px">
+
+							<p class="mb-0" style="color:#c4cfe0;font-size:17px;letter-spacing:1.5px;font-family:trebuchet ms">
+							    nickname <span style="color:#8392ba"><i class="fat fa-stars fa-lg"></i>
+							</span></p>
+
+							<p class="mb-1" style="color:#5c688a;letter-spacing:1.5px;font-family:trebuchet ms"><i class="far fa-at fa-sm"></i>username</p>
+
+							<p class="mb-0 text-center">
+
+								<!-- pride flags // feel free to replace with something else, like pixel buttons, recommend using these flags! https://toyhou.se/21355465.my-tiny-pride-flags -->
+
+								<a href="https://toyhou.se/21355465.my-tiny-pride-flags/gallery"><img style="max-width:30px" src="https://f2.toyhou.se/file/f2-toyhou-se/images/64524683_tKSKififGiDZRr5.png"></a>
+
+								<a href="https://toyhou.se/21355465.my-tiny-pride-flags/gallery"><img style="max-width:30px" src="https://f2.toyhou.se/file/f2-toyhou-se/images/64470132_IE9ZPFxtH90d520.png?1682969193"></a>
+
+								<a href="https://toyhou.se/21355465.my-tiny-pride-flags/gallery"><img style="max-width:30px" src="https://f2.toyhou.se/file/f2-toyhou-se/images/64470118_1M83qdcLm67piPT.png?1682969198"></a>
+
+								<!-- add more above here, box will scroll! -->
+							</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		<!-- prns / adjectives -->
+
+			<div class="card p-1 text-center border-0 mb-1" style="top:35px;left:-10px;background-color:#070711;border-radius: 20px 20px 20px 20px">
+				<p class="mb-0 ml-1" style="color:#8392ba;font-size:13px;letter-spacing:px;font-family:trebuchet ms">prn / prn . adjective . or star sign </p>
+			    </div>
+		    </div><!-- end basic info box -->
+
+	    </div>
+    </div>
+
+    <div class="justify-content-center">
+
+	<!-- art status -->
+
+	<div class="card rounded-0 border-0 col-12 p-2 mb-2" style="max-width:630px;background-color:#070711;color:#c4cfe0">
+
+		<div class="row no-gutters justify-content-center mb-1">
+
+		    <!-- comms -->
+
+			<div class="card border-0 mx-1 mb-1" data-toggle="tooltip" title="click for commission info!" style="background-color:#1b294f">
+				<a class="stretched-link" href="LINK" style="color:#c4cfe0">
+					<p class="ml-1 mr-1"><i class="fas fa-question" style="color:#b39d46"></i> commissions</p>
+				</a>
+			</div>
+
+			<!-- trades -->
+
+			<div class="card border-0 mx-1 mb-1" data-toggle="tooltip" title="mutuals only" style="background-color:#1b294f">
+				<p class="ml-1 mr-1"><i class="fas fa-check" style="color:#389962"></i> trades</p>
+			</div>
+
+			<!-- requests -->
+
+			<div class="card border-0 mx-1 mb-1" data-toggle="tooltip" title="only among us related" style="background-color:#1b294f">
+				<p class="ml-1 mr-1"><i class="fas fa-xmark" style="color:#99384a"></i> art requests</p>
+			</div>
+
+			<!-- add more above here -->
+
+			<i class="ml-1" style="color:#5c6b94">[ hover for more info ]</i>
+		</div>
+
+		<!-- divider -->
+
+		<p class="text-center mb-2 p-1" style="color:#8392ba;border-bottom:solid 1px #5c6b94;border-top:solid 1px #5c6b94">·. <i class="fad fa-moon-stars fa-lg"></i> . </p>
+
+		<div class="row no-gutters justify-content-between">
+			<div class="column col mx-1">
+
+				<!-- folder links -->
+
+				<p class="text-center mb-1">
+
+					<!-- 1 -->
+
+					<span class="fa-stack fa-lg mb-1"><a href="LINK" data-toggle="tooltip" title="folder name">
+							<i class="fa-solid fa-circle fa-stack-2x" style="color:#1b294f"></i>
+							<i class="fat fa-stars fa-stack-1x" style="color:#c4cfe0"></i>
+					</span>
+					</a>
+
+					<!-- 2 -->
+
+					<span class="fa-stack fa-lg mb-1"><a href="LINK" data-toggle="tooltip" title="folder name">
+							<i class="fa-solid fa-circle fa-stack-2x" style="color:#1b294f"></i>
+							<i class="fat fa-dollar fa-stack-1x" style="color:#c4cfe0"></i>
+					</span>
+					</a>
+
+					<!-- 3 -->
+
+					<span class="fa-stack fa-lg mb-1"><a href="LINK" data-toggle="tooltip" title="folder name">
+							<i class="fa-solid fa-circle fa-stack-2x" style="color:#1b294f"></i>
+							<i class="fat fa-code fa-stack-1x" style="color:#c4cfe0"></i>
+					</span>
+					</a>
+
+					<!-- add more above here -->
+				</p>
+
+				<!-- playlist // replace the numbers/letters after /embed/ with the numbers/ that come after the watch?v= in your youtube url (recommend keeping it to 3 songs!) -->
+
+				<div class="card bg-transparent border-0 mb-2" style="font-size:13px;letter-spacing:px;font-family:trebuchet ms;color:#c4cfe0;overflow:auto;max-height:145px">
+					<p class="mb-1" style="color:#8392ba;font-size:13px;letter-spacing:.5px;font-style:italic">favourite songs rn :</p>
+
+					<!-- 1 -->
+
+					<p class="mb-1"><iframe frameborder="0" style="position:absolute;height:1rem;width:1rem;opacity:0.001"
+
+					src="https://www.youtube.com/embed/ONLY_REPLACE_THIS"
+
+					></iframe>
+						<i class="fas fa-circle-play"></i> <i>song</i> . artist
+					</p>
+
+					<!-- 2 -->
+
+					<p class="mb-1"><iframe frameborder="0" style="position:absolute;height:1rem;width:1rem;opacity:0.001"
+
+					src="https://www.youtube.com/embed/ONLY_REPLACE_THIS"
+
+					></iframe>
+						<i class="fas fa-circle-play"></i> <i>song</i> . artist
+					</p>
+
+					<!-- 3 -->
+
+					<p class="mb-1"><iframe frameborder="0" style="position:absolute;height:1rem;width:1rem;opacity:0.001"
+
+					src="https://www.youtube.com/embed/ONLY_REPLACE_THIS"
+
+					></iframe>
+						<i class="fas fa-circle-play"></i> <i>song</i> . artist
+					</p>
+
+					<!-- 4 -->
+
+					<p class="mb-1"><iframe frameborder="0" style="position:absolute;height:1rem;width:1rem;opacity:0.001"
+
+					src="https://www.youtube.com/embed/ONLY_REPLACE_THIS"
+
+					></iframe>
+						<i class="fas fa-circle-play"></i> <i>song</i> . artist
+					</p>
+
+					<!-- 5 -->
+
+					<p class="mb-1"><iframe frameborder="0" style="position:absolute;height:1rem;width:1rem;opacity:0.001"
+
+					src="https://www.youtube.com/embed/ONLY_REPLACE_THIS"
+
+					></iframe>
+						<i class="fas fa-circle-play"></i> <i>song</i> . artist
+						<!-- add more above here, box will scroll! -->
+
+				</div>
+
+				<!-- friends or characters -->
+
+				<div class="card p-2 text-left border-0" style="font-size:13px;letter-spacing:1px;font-family:trebuchet ms;background-color:#1b294f">
+					<p class="mb-2" style="color:#90a2d1;border-bottom:solid 1px #5c6b94"><i class="fat fa-heart"></i> cool people</p>
+
+					<p class="text-center">
+
+						<!-- 1 -->
+
+						<a href="LINK">
+							<img class="rounded-circle mx-1 mb-1" style="width:50px;height:50px;object-fit:cover;border:solid 2px #c4cfe0" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010" data-toggle="tooltip" title="username"></a>
+
+						<!-- 2 -->
+
+						<a href="LINK">
+							<img class="rounded-circle mx-1 mb-1" style="width:50px;height:50px;object-fit:cover;border:solid 2px #c4cfe0" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010" data-toggle="tooltip" title="username"></a>
+
+						<!-- 3 -->
+
+						<a href="LINK">
+							<img class="rounded-circle mx-1 mb-1" style="width:50px;height:50px;object-fit:cover;border:solid 2px #c4cfe0" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010" data-toggle="tooltip" title="username"></a>
+
+						<!-- 4 -->
+
+						<a href="LINK">
+							<img class="rounded-circle mx-1 mb-1" style="width:50px;height:50px;object-fit:cover;border:solid 2px #c4cfe0" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010" data-toggle="tooltip" title="username"></a>
+						<!-- add more above here, recommend keeping it in rows of 4! -->
+					</p>
+				</div>
+			</div>
+
+			<div class="column col-6 mx-1">
+
+				<!-- intro / description // box will scroll! -->
+
+				<div class="card p-2 text-center border-0" style="font-size:13px;letter-spacing:1px;font-family:trebuchet ms;background-color:#1b294f;color:#c4cfe0;overflow:auto;max-height:100px">
+
+					<p class="mb-0">hi welcome to my page (ﾟヮﾟ)</p>
+					<p class="mb-0">write stuff here, you can make text <span style="font-size:10px"> smol</span>, <b>bold</b>, <i>italic</i>, <u>underlined</u>, and <mark style="background-color:#7589c1">highlighted</mark>!</p>
+				</div>
+
+				<!-- interests / favourites -->
+
+				<div class="card mb-2" style="clip-path: polygon(19% 0, 0% 100%, 100% 0);height:20px;width:40px;border:solid #1b294f;background-color:#1b294f;top:-1px"></div>
+				<div class="row no-gutters mb-2">
+					<div class="column col-6">
+
+						<!-- interests -->
+
+						<div class="card bg-transparent border-0" style="font-size:13px;letter-spacing:px;font-family:trebuchet ms;color:#c4cfe0">
+							<p class="mb-1" style="color:#8392ba;font-size:13px;letter-spacing:px;font-family:trebuchet ms;border-bottom:solid 1px #5c6b94"><i class="fat fa-paper-plane"></i> interests</p>
+
+							<!-- 1 -->
+
+							<p class="mb-0">
+								<i class="fas fa-star fa-sm" style="color:#536492"></i> thing
+							</p>
+
+							<!-- 2 -->
+
+							<p class="mb-0">
+								<i class="fas fa-cards fa-sm" style="color:#536492"></i> thing
+							</p>
+
+							<!-- 3 -->
+
+							<p class="mb-0">
+								<i class="fas fa-tv-retro fa-sm" style="color:#536492"></i> thing
+							</p>
+
+							<!-- 4 -->
+
+							<p class="mb-0">
+								<i class="fab fa-youtube fa-sm" style="color:#536492"></i> thing
+							</p>
+							<!-- add more above here -->
+						</div>
+					</div>
+
+					<div class="column col-6">
+
+						<!-- favourties -->
+
+						<div class="card bg-transparent border-0" style="font-size:13px;letter-spacing:px;font-family:trebuchet ms;color:#c4cfe0">
+							<p class="mb-1" style="color:#8392ba;font-size:13px;letter-spacing:px;font-family:trebuchet ms;border-bottom:solid 1px #5c6b94"><i class="fat fa-sparkles"></i> favourites</p>
+
+							<!-- 1 -->
+
+							<p class="mb-0">
+								<i class="fas fa-coffee fa-sm" style="color:#536492"></i> fav drink
+							</p>
+
+							<!-- 2 -->
+
+							<p class="mb-0">
+								<i class="fas fa-pot-food fa-sm" style="color:#536492"></i> fav food
+							</p>
+
+							<!-- 3 -->
+
+							<p class="mb-0">
+								<i class="fas fa-palette fa-sm" style="color:#536492"></i> fav colour
+							</p>
+
+							<!-- 4 -->
+
+							<p class="mb-0">
+								<i class="fas fa-paw fa-sm" style="color:#536492"></i> fav animal
+							</p>
+							<!-- add more above here -->
+						</div>
+					</div>
+				</div>
+
+				<!-- extra link // feel free to remove / replace with smth -->
+
+				<div class="card p-2 text-center border-0" style="font-size:13px;letter-spacing:1px;font-family:trebuchet ms;background-color:#1b294f">
+
+					<a class="stretched-link" style="color:#7b96e0" href="https://toyhou.se/~bulletins/1242014.official-pinglist">
+
+						<p><i class="fat fa-feather"></i> Ping List for Raffles / Commissions </p>
+					  </a>
+				  </div>
+
+			  </div>
+		  </div>
+	  </div>
+  </div>
+
+    <!-- social box // change the icons etc to however -->
+
+    <div class="justify-content-center">
+	<div class="card p-1 text-center border-0 mb-1" style="max-width:640px;background-color:#070711;color:#c4cfe0;border-radius: 20px 20px 20px 20px">
+
+		<div class="row no-gutters mx-1"> 𓆩
+
+		    <!-- twitter -->
+
+			<a href="LINK" data-toggle="tooltip" title="twitter" class="mx-2">
+				<i class="fab fa-twitter" style="color:#c4cfe0"></i>
+			</a>
+
+			<!-- insta -->
+
+			<span class="mt-1" style="font-size:10px">·</span>
+			<a href="LINK" data-toggle="tooltip" title="insta" class="mx-2">
+				<i class="fab fa-instagram" style="color:#c4cfe0"></i>
+			</a>
+
+			<!-- carrd -->
+
+			<span class="mt-1" style="font-size:10px">·</span>
+			<a href="LINK" data-toggle="tooltip" title="carrd" class="mx-2">
+				<i class="fas fa-id-card" style="color:#c4cfe0"></i>
+			</a>
+
+			<!-- artfight -->
+
+			<span class="mt-1" style="font-size:10px">·</span>
+			<a href="LINK" data-toggle="tooltip" title="artfight" class="mx-2">
+				<i class="fas fa-paintbrush-pencil" style="color:#c4cfe0"></i>
+			</a>
+
+			<!-- kofi -->
+
+			<span class="mt-1" style="font-size:10px">·</span>
+			<a href="LINK" data-toggle="tooltip" title="kofi" class="mx-2">
+				<i class="fas fa-coffee" style="color:#c4cfe0"></i>
+			</a>
+
+			<!-- vgen -->
+
+			<span class="mt-1" style="font-size:10px">·</span>
+			<a href="LINK" data-toggle="tooltip" title="vgen" class="mx-2">
+				<i class="fas fa-comment" style="color:#c4cfe0"></i>
+			</a>
+			<!-- discord -->
+
+			<span class="mt-1" style="font-size:10px">·</span>
+			<span data-toggle="tooltip" title="username or user#1234" class="mx-2">
+				<i class="fab fa-discord" style="color:#c4cfe0"></i>
+			  </span>
+			  𓆪
+		  </div>
+	  </div>
+  </div><!-- end socials -->
+
+  <div class="justify-content-center">
+
+	<!-- credit // don't remove or i'll find you >:0 -->
+
+	<a href="https://toyhou.se/rainandhail" data-toggle="tooltip" title="[ code by rainandhail ]">
+		<span class="fa-stack fa-2x">
+			<i class="fas fa-circle fa-stack-1x" style="color:#070631"></i>
+			<i class="fad fa-cloud-moon-rain fa-stack-1x fa-2xs fa-inverse"></i></span></a>
+  </div>

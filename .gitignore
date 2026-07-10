@@ -1,0 +1,10 @@
+# IDE / editor
+.idea/
+.vscode/
+
+# Claude Code local session data
+.claude/
+
+# OS junk
+.DS_Store
+Thumbs.db

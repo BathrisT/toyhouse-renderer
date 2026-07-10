@@ -1,0 +1,678 @@
+        <!---------------------------------------------------
+-----------------------------------------------------
+
+    Hello! Ty for using this code!
+    Here's a few helpful tips on using and navigating the code:
+
+    1. Use circlejourney.net to easily edit the code
+    2. Make sure WYSIWYG is off when pasting the code into a character
+    3. This code has notations, follow them!
+
+    - - - CUSTOM COLORS - - -
+    Using ctrl+F or command+F you can easily replace colors:
+
+    First accent  : #C7B3FF (pastel purple)
+    Second accent : #9ED4FF (pastel blue)
+    Third accent  : #FFB3D9 (pastel pink)
+    Fourth accent : #B3FFD9 (pastel mint)
+    Fifth accent  : #FFEAB3 (pastel yellow)
+
+    /* SEMI-TRANSPARENT ACCENTS (using pastel colors with opacity) */
+    Semi-transparent 1 : rgba(199,179,255,0.15)  /* pastel purple at 15% */
+    Semi-transparent 2 : rgba(158,212,255,0.15)  /* pastel blue at 15% */
+    Semi-transparent 3 : rgba(255,179,217,0.15)  /* pastel pink at 15% */
+    Semi-transparent 4 : rgba(179,255,217,0.15)  /* pastel mint at 15% */
+    Semi-transparent 5 : rgba(199,179,255,0.1)   /* pastel purple at 10% */
+    Semi-transparent 6 : rgba(158,212,255,0.1)   /* pastel blue at 10% */
+    Semi-transparent 7 : rgba(255,179,217,0.1)   /* pastel pink at 10% */
+    Semi-transparent 8 : rgba(199,179,255,0.2)   /* pastel purple at 20% */
+    Semi-transparent 9 : rgba(158,212,255,0.2)   /* pastel blue at 20% */
+    Semi-transparent 10: rgba(255,179,217,0.2)   /* pastel pink at 20% */
+    Semi-transparent 11: rgba(179,255,217,0.2)   /* pastel mint at 20% */
+    Semi-transparent 12: rgba(255,234,179,0.2)   /* pastel yellow at 20% */
+    Semi-transparent 13: rgba(204,204,204,0.3)   /* neutral gray at 30% (for dividers) */
+
+    This code uses icons from FontAwesome
+    > https://fontawesome.com
+
+----------------------------------------------------
+---------------------------------------------------->
+
+
+
+<div class="container mx-auto" style="max-width: 1050px; font-family: 'Space Grotesk', sans-serif;">
+
+    <!--- HEADER ACCENT BAR --->
+    <div class="card bg-faded rounded-0 p-3" style="box-shadow: 3px 3px 8px rgba(0,0,0,0.3); background: linear-gradient(90deg, #C7B3FF 0%, #9ED4FF 25%, #FFB3D9 50%, #B3FFD9 75%, #FFEAB3 100%);">
+    </div>
+
+
+    <!--- FLOATING NEON DECOR ----->
+    <i class="fas fa-star" style="position:absolute; top:20px; left:-20px; font-size:18px; color:#C7B3FF; text-shadow:0 0 8px #C7B3FF, 0 0 15px #C7B3FF;"></i>
+
+    <i class="fas fa-sparkles" style="position:absolute; top:120px; right:-25px; font-size:20px; color:#9ED4FF; text-shadow:0 0 8px #9ED4FF, 0 0 15px #9ED4FF;"></i>
+
+    <i class="fas fa-circle" style="position:absolute; top:300px; left:-15px; font-size:10px; color:#FFB3D9; text-shadow:0 0 10px #FFB3D9;"></i>
+
+    <i class="fas fa-star" style="position:absolute; top:420px; right:-20px; font-size:16px; color:#B3FFD9; text-shadow:0 0 10px #B3FFD9;"></i>
+
+    <i class="fas fa-asterisk" style="position:absolute; bottom:120px; left:-20px; font-size:14px; color:#FFEAB3; text-shadow:0 0 10px #FFEAB3;"></i>
+
+    <i class="fas fa-meteor" style="position:absolute; bottom:40px; right:-30px; font-size:22px; color:#FFB3D9; text-shadow:0 0 12px #FFB3D9;"></i>
+
+    <i class="fas fa-satellite" style="position:absolute; top:200px; left:-30px; font-size:18px; color:#9ED4FF; text-shadow:0 0 12px #9ED4FF;"></i>
+
+    <i class="fas fa-moon" style="position:absolute; top:60px; right:-20px; font-size:16px; color:#C7B3FF; text-shadow:0 0 10px #C7B3FF;"></i>
+
+
+    <div class="row no-gutters">
+
+<!---------------------------------------------------
+-----------------------------------------------------
+
+            LEFT SECTION
+    Character image, name + subtitle
+
+----------------------------------------------------
+---------------------------------------------------->
+
+        <div class="col-md-4 pr-md-2 mb-3 mb-md-0 mt-3">
+
+        <!--- BACKGROUND COLOR / IMAGE BOX ----->
+        <div class="card rounded-0 p-0" style="overflow: hidden; box-shadow: 3px 3px 8px rgba(0,0,0,0.3); position: relative; height: 350px;background: linear-gradient(135deg, #C7B3FF, #9ED4FF);">
+
+            <!--- CHARACTER IMAGE ----->
+            <div class="h-100 w-100" style="background-image: url('IMGLINK_HERE'); background-repeat: no-repeat; background-position:center; background-size: cover; position: absolute; top:0; left: 0;"></div>
+
+            <!--- DECORATIVE STRIP ----->
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 8px; background: linear-gradient(90deg, #C7B3FF 0%, #9ED4FF 25%, #FFB3D9 50%, #B3FFD9 75%, #FFEAB3 100%); z-index: 3;">
+            </div>
+        </div>
+
+        <!--- CHARACTER NAME ----->
+        <div class="text-center mt-3" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 32px; background: linear-gradient(90deg, #C7B3FF, #9ED4FF, #FFB3D9); color:#fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);box-shadow: 3px 3px 8px rgba(0,0,0,0.3);">
+            CHARACTER NAME
+        </div>
+
+        <!--- CHARACTER SUBTITLE ----->
+        <div class="row no-gutters mt-2">
+            <div class="col">
+                <hr class="my-2 w-100" style="border-color: #C7B3FF;">
+            </div>
+            <div class="col-auto text-muted" style="font-family: 'Space Mono', monospace; font-size: 10px;">
+                ✦ THE SPACE WANDERER ✦
+            </div>
+            <div class="col-1">
+                <hr class="my-2 w-100" style="border-color: #9ED4FF;">
+            </div>
+        </div>
+        </div>
+
+<!---------------------------------------------------
+-----------------------------------------------------
+
+            RIGHT SECTION
+    Quote, music player, description
+
+----------------------------------------------------
+---------------------------------------------------->
+
+    <div class="col-md-8 pl-md-2">
+
+    <!--- QUOTE & MUSIC PLAYER ROW ----->
+
+    <div class="row no-gutters mt-3">
+
+        <!--- QUOTE SECTION ----->
+        <div class="col-md-7 pr-md-2 mb-3 mb-md-0">
+
+            <div class="card rounded-0 p-3" style="box-shadow: 3px 3px 8px rgba(0,0,0,0.3); background: linear-gradient(135deg, rgba(199,179,255,0.15), rgba(158,212,255,0.15)); height: 100%;">
+
+                <div class="text-muted" style="font-family: 'Space Mono', monospace; font-size: 11px; color: #666; line-height: 1.8;">
+
+                    <i class="fas fa-quote-left" style="font-size: 14px; color: #C7B3FF; margin-right: 8px;"></i>
+
+                    <span style="font-style: italic;">Your character quote or catchphrase. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+
+                    <i class="fas fa-quote-right" style="font-size: 14px; color: #9ED4FF; margin-left: 4px;"></i>
+                </div>
+            </div>
+        </div>
+
+        <!--- MUSIC PLAYER ----->
+        <div class="col-md-5">
+            <div class="card rounded-0 p-2" style="box-shadow: 3px 3px 8px rgba(0,0,0,0.3); background: linear-gradient(135deg, rgba(255,179,217,0.15), rgba(158,212,255,0.15)); height: 100%;">
+                <div class="row no-gutters align-items-center h-100">
+                    <div class="col-auto pr-2">
+                        <div style="position: relative;">
+                            <i class="fas fa-compact-disc fa-spin" style="font-size: 55px; color: #FFB3D9; opacity: 0.8;"></i>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 11px; color: #FFB3D9; margin-top: 2px;">
+                            <i class="fas fa-star"></i> SONG TITLE <i class="fas fa-star"></i>
+                        </div>
+                        <div class="text-muted px-1" style="font-family: 'Space Mono', monospace; font-size: 9px;">
+                            by Artist Name
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="d-flex justify-content-center align-items-center mt-2 mx-2">
+
+                        <!--- SONG EMBED - Replace YOUTUBEID ----->
+                                <a href="#" style="z-index:10;display:block;">
+                                <iframe style="opacity: 0.001; position: absolute;width:25%;transform:translate(-35%,-55%);" src="https://www.youtube.com/embed/YOUTUBEID_HERE"></iframe>
+
+                        <!-- Play Button -->
+                        <div style="background: #FFB3D9; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-play" style="color: white; font-size: 12px;"></i>
+                        </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--- SHORT DESCRIPTION BLURB ----->
+
+    <div class="card rounded-0 p-3 mt-3" style="box-shadow: 3px 3px 8px rgba(0,0,0,0.3); background: linear-gradient(135deg, rgba(199,179,255,0.1), rgba(158,212,255,0.1));">
+        <div class="row no-gutters">
+            <div class="col-auto pr-3 py-2">
+                <i class="fas fa-user-astronaut" style="color: #C7B3FF; font-size: 28px;"></i>
+            </div>
+            <div class="col-auto py-2">
+                <div class="card h-100" style="background: rgba(204,204,204,0.3); width: 2px;"></div>
+            </div>
+                <div class="col p-1 pl-2 text-justify text-muted" style="font-family: 'Space Mono', monospace; font-size: 10px; line-height: 1.7; opacity: 0.8;">
+                    A brief description of your character here.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin elit sed tellus blandit viverra sed eget odio.
+                </div>
+            </div>
+        </div>
+
+<!---------------------------------------------------
+-----------------------------------------------------
+
+            MAIN TABS NAVIGATION
+
+----------------------------------------------------
+---------------------------------------------------->
+
+    <div class="mt-3">
+        <div class="card rounded-0" style="box-shadow: 3px 3px 8px rgba(0,0,0,0.3);">
+
+            <!--- TAB NAVIGATION ----->
+            <div class="card-header rounded-0 p-0" style="background: linear-gradient(135deg, rgba(199,179,255,0.2), rgba(158,212,255,0.2)); border: none;">
+                <ul class="nav nav-tabs border-0" style="margin: 0;">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#info" style="font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: #C7B3FF; padding: 12px 20px; border: none; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                            <i class="fas fa-id-card"></i> INFO
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#persona" style="font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: #9ED4FF; padding: 12px 20px; border: none; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                            <i class="fas fa-brain"></i> PERSONA
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#abilities" style="font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: #FFB3D9; padding: 12px 20px; border: none; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                            <i class="fas fa-sparkles"></i> ABILITIES
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#relations" style="font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: #B3FFD9; padding: 12px 20px; border: none; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                            <i class="fas fa-users"></i> RELATIONS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--- TAB CONTENT ----->
+            <div class="tab-content p-3" style="overflow: auto; flex: 1; max-height: 200px;">
+
+<!---------------------------------------------------
+-----------------------------------------------------
+
+            INFO TAB
+
+----------------------------------------------------
+---------------------------------------------------->
+                <div class="tab-pane fade show active" id="info">
+                    <div class="row no-gutters">
+
+                        <!--- LEFT COLUMN: BASIC INFO ----->
+                        <div class="col-md-7 pr-md-2">
+
+                            <div class="mb-2">
+                                <div class="card rounded-0 p-2 mb-2" style="background: linear-gradient(135deg, rgba(199,179,255,0.2), rgba(158,212,255,0.2)); box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto pr-2" style="width: 90px;">
+                                            <div style="font-family: 'Space Grotesk', sans-serif; color: #C7B3FF; font-weight: 700; font-size: 10px; letter-spacing: 1px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1)">
+                                                <i class="fas fa-alien"></i> SPECIES
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><div style="background: rgba(204,204,204,0.3); width: 2px; height: 20px;"></div></div>
+                                        <div class="col pl-2">
+                                            <div style="font-family: 'Space Mono', monospace; font-size: 10px; opacity: 0.8">Alien Species Name</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card rounded-0 p-2 mb-2" style="background: linear-gradient(135deg, rgba(158,212,255,0.2), rgba(255,179,217,0.2)); box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto pr-2" style="width: 90px;">
+                                            <div style="font-family: 'Space Grotesk', sans-serif; color: #9ED4FF; font-weight: 700; font-size: 10px; letter-spacing: 1px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1)">
+                                                <i class="fas fa-calendar"></i> AGE
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><div style="background: rgba(204,204,204,0.3); width: 2px; height: 20px;"></div></div>
+                                        <div class="col pl-2">
+                                            <div style="font-family: 'Space Mono', monospace; font-size: 10px; opacity: 0.8">XX Cycles / Years</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card rounded-0 p-2 mb-2" style="background: linear-gradient(135deg, rgba(255,179,217,0.2), rgba(179,255,217,0.2)); box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto pr-2" style="width: 90px;">
+                                            <div style="font-family: 'Space Grotesk', sans-serif; color: #FFB3D9; font-weight: 700; font-size: 10px; letter-spacing: 1px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1)">
+                                                <i class="fas fa-venus-mars"></i> GENDER
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><div style="background: rgba(204,204,204,0.3); width: 2px; height: 20px;"></div></div>
+                                        <div class="col pl-2">
+                                            <div style="font-family: 'Space Mono', monospace; font-size: 10px; opacity: 0.8">Pronouns / Gender</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card rounded-0 p-2 mb-2" style="background: linear-gradient(135deg, rgba(179,255,217,0.2), rgba(255,234,179,0.2)); box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto pr-2" style="width: 90px;">
+                                            <div style="font-family: 'Space Grotesk', sans-serif; color: #B3FFD9; font-weight: 700; font-size: 10px; letter-spacing: 1px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1)">
+                                                <i class="fas fa-heart"></i> SEXUALITY
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><div style="background: rgba(204,204,204,0.3); width: 2px; height: 20px;"></div></div>
+                                        <div class="col pl-2">
+                                            <div style="font-family: 'Space Mono', monospace; font-size: 10px; opacity: 0.8;">Romantic / Sexual Orientation</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card rounded-0 p-2" style="background: linear-gradient(135deg, rgba(255,234,179,0.2), rgba(199,179,255,0.2)); box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto pr-2" style="width: 90px;">
+                                            <div style="font-family: 'Space Grotesk', sans-serif; color: #FFEAB3; font-weight: 700; font-size: 10px; letter-spacing: 1px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1)">
+                                                <i class="fas fa-star"></i> ROLE
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><div style="background: rgba(204,204,204,0.3); width: 2px; height: 20px;"></div></div>
+                                        <div class="col pl-2">
+                                            <div style="font-family: 'Space Mono', monospace; font-size: 10px; opacity: 0.8;">Occupation / Title</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--- RIGHT COLUMN: COLOR PALETTE & APPEARANCE ----->
+                        <div class="col-md-5">
+
+                            <!--- COLOR PALETTE ----->
+                            <div class="card rounded-0 p-3 mb-2" style="background: linear-gradient(135deg, rgba(199,179,255,0.1), rgba(158,212,255,0.1)); box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                                <div class="text-center mb-2" style="font-family: 'Space Mono', monospace; color: #C7B3FF; font-weight: 700; font-size: 10px; letter-spacing: 1px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
+                                    <i class="fas fa-palette mb-2"></i> COLORS
+                                </div>
+                                <div style="display: flex; height: 30px; border-radius: 8px; overflow: hidden; box-shadow: 2px 2px 4px rgba(0,0,0,0.15);">
+
+                                    <div style="flex:1; background:#C7B3FF;"></div>
+                                    <div style="width:2px;"></div>
+
+                                    <div style="flex:1; background:#9ED4FF;"></div>
+                                    <div style="width:2px;"></div>
+
+                                    <div style="flex:1; background:#FFB3D9;"></div>
+                                    <div style="width:2px;"></div>
+
+                                    <div style="flex:1; background:#B3FFD9;"></div>
+                                    <div style="width:2px;"></div>
+
+                                    <!--- ADD MORE ABOVE ----->
+
+                                    <div style="flex:1; background:#FFEAB3;"></div>
+
+                                </div>
+
+                            </div>
+
+                            <!--- ADDITIONAL INFO ----->
+                            <div class="card rounded-0 p-2" style="background: linear-gradient(135deg, rgba(199,179,255,0.1), rgba(255,179,217,0.1)); box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                                <div style="font-family: 'Space Mono', monospace; font-size: 9px; line-height: 1.7;opacity: 0.8;">
+                                    <div class="mb-1 mt-1">
+                                        <i class="fas fa-eye" style="color: #C7B3FF; margin-right: 6px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);"></i>
+                                        <strong>Eyes:</strong> <span style="opacity: 0.8;">Eye color & details</span>
+                                    </div>
+                                    <div class="mb-1">
+                                        <i class="fas fa-fingerprint" style="color: #9ED4FF; margin-right: 6px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);"></i>
+                                        <strong>Marks:</strong> <span style="opacity: 0.8;">Special markings</span>
+                                    </div>
+                                    <div class="mb-1">
+                                        <i class="fas fa-gem" style="color: #FFB3D9; margin-right: 6px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);"></i>
+                                        <strong>Features:</strong> <span style="opacity: 0.8;">Unique features</span>
+                                    </div>
+                                    <div class="mb-1">
+                                        <i class="fas fa-ruler" style="color: #B3FFD9; margin-right: 6px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);"></i>
+                                        <strong>Height:</strong> <span style="opacity: 0.8;">X'X" / XXX cm</span>
+                                    </div>
+                                    <div class="mb-1">
+                                        <i class="fas fa-person" style="color: #FFEAB3; margin-right: 6px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);"></i>
+                                        <strong>Build:</strong> <span style="opacity: 0.8;">Body type</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+<!---------------------------------------------------
+-----------------------------------------------------
+
+            PERSONA TAB
+
+----------------------------------------------------
+---------------------------------------------------->
+                <div class="tab-pane fade" id="persona">
+
+                    <div id="personaAccordion">
+
+                        <!--- PERSONALITY ----->
+                        <div class="card rounded-0 mb-2" style="box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                            <div class="card-header rounded-0 p-2" style="border: none; background: linear-gradient(135deg, #C7B3FF, #9ED4FF);">
+                                <a data-toggle="collapse" href="#personalitySection" data-parent="#personaAccordion" aria-expanded="true"
+                                   class="d-block text-white" style="text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 11px;">
+                                    <i class="fas fa-star"></i> PERSONALITY TRAITS
+                                </a>
+                            </div>
+
+                            <div id="personalitySection" class="collapse show" style="background: linear-gradient(135deg, rgba(255,179,217,0.15), rgba(158,212,255,0.15));">
+                                <div class="card-body p-2" style="max-height: 150px; overflow-y: auto;">
+                                    <div style="font-family: 'Space Mono', monospace; font-size: 10px; line-height: 1.7; opacity: 0.8; text-align: justify;">
+                                        Write a detailed description of your character's personality here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin elit sed tellus blandit viverra sed eget odio. Donec accumsan tempor lacus, et venenatis elit feugiat non. Duis porta eros et velit blandit dapibus. Curabitur ac finibus eros. Duis placerat velit vitae massa sodales, eget mattis nibh pellentesque.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--- LIKES & DISLIKES ----->
+                            <div class="row no-gutters mb-2">
+                            <div class="col-6 pr-1 d-flex">
+                                <div class="card rounded-0 p-2 w-100" style="background: linear-gradient(135deg, rgba(255,179,217,0.15), rgba(158,212,255,0.15));">
+                                    <div style="font-family: 'Space Mono', monospace; color: #FFB3D9; font-weight: 700; font-size: 10px; margin-bottom: 8px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
+                                        <i class="fas fa-heart"></i> LIKES
+                                    </div>
+                                    <div class="flex flex-row mb-1">
+                                        <i class="fas fa-star text-muted mr-1" style="font-size: 7px; margin-top: 2px; color: #C7B3FF !important;"></i>
+                                        <div style="font-family: 'Space Mono', monospace; font-size: 8px; opacity: 0.8">Like item 1</div>
+                                    </div>
+                                    <div class="flex flex-row mb-1">
+                                        <i class="fas fa-star text-muted mr-1" style="font-size: 7px; margin-top: 2px; color: #C7B3FF !important;"></i>
+                                        <div style="font-family: 'Space Mono', monospace; font-size: 8px; opacity: 0.8">Like item 2</div>
+                                    </div>
+                                    <div class="flex flex-row mb-1">
+                                        <i class="fas fa-star text-muted mr-1" style="font-size: 7px; margin-top: 2px; color: #C7B3FF !important;"></i>
+                                        <div style="font-family: 'Space Mono', monospace; font-size: 8px; opacity: 0.8">Like item 3</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 pl-1 d-flex">
+                                <div class="card rounded-0 p-2 w-100" style="background: linear-gradient(135deg, rgba(158,212,255,0.15),rgba(199,179,255,0.15));">
+                                    <div style="font-family: 'Space Mono', monospace; color: #9ED4FF; font-weight: 700; font-size: 10px; margin-bottom: 8px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
+                                        <i class="fas fa-heart-crack"></i> DISLIKES
+                                    </div>
+                                    <div class="flex flex-row mb-1">
+                                        <i class="fas fa-xmark text-muted mr-1" style="font-size: 7px; margin-top: 2px; color: #FFB3D9 !important;"></i>
+                                        <div style="font-family: 'Space Mono', monospace; font-size: 8px; opacity: 0.8">Dislike item 1</div>
+                                    </div>
+                                    <div class="flex flex-row mb-1">
+                                        <i class="fas fa-xmark text-muted mr-1" style="font-size: 7px; margin-top: 2px; color: #FFB3D9 !important;"></i>
+                                        <div style="font-family: 'Space Mono', monospace; font-size: 8px; opacity: 0.8">Dislike item 2</div>
+                                    </div>
+                                    <div class="flex flex-row mb-1">
+                                        <i class="fas fa-xmark text-muted mr-1" style="font-size: 7px; margin-top: 2px; color: #FFB3D9 !important;"></i>
+                                        <div style="font-family: 'Space Mono', monospace; font-size: 8px; opacity: 0.8">Dislike item 3</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!--- BACKSTORY ----->
+                        <div class="card rounded-0" style="box-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                            <div class="card-header rounded-0 p-2" style="border: none; background: linear-gradient(135deg, #FFB3D9, #B3FFD9);">
+                                <a data-toggle="collapse" href="#backstorySection" data-parent="#personaAccordion"
+                                   class="d-block text-white" style="text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 11px;">
+                                    <i class="fas fa-book"></i> BACKSTORY
+                                </a>
+                            </div>
+
+                            <div id="backstorySection" class="collapse" style="background: linear-gradient(135deg, rgba(158,212,255,0.15),rgba(199,179,255,0.15));">
+                                <div class="card-body p-2" style="max-height: 150px; overflow-y: auto;">
+                                    <div class="mb-3">
+                                      <div style="font-family: 'Space Mono', monospace;opacity: 0.8; font-weight: 600; font-size: 10px; margin-bottom: 5px;">
+                                        chapter 1: early life .
+                                      </div>
+                                      <div style="font-family: 'Space Mono', monospace; font-size: 9px; line-height: 1.7; opacity: 0.8; text-align: justify;">
+                                        Write about your character's early life and origins. Where did they come
+                                        from? What was their childhood like?
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <div style="font-family: 'Space Mono', monospace; opacity: 0.8;font-weight: 600; font-size: 10px; margin-bottom: 5px;">
+                                        chapter 2: present day .
+                                      </div>
+                                      <div style="font-family: 'Space Mono', monospace; font-size: 9px; line-height: 1.7; opacity: 0.8; text-align: justify;">
+                                        What are they doing now? How did they become who they are today? What's
+                                        their current story?
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+<!---------------------------------------------------
+-----------------------------------------------------
+
+            ABILITIES TAB
+
+----------------------------------------------------
+---------------------------------------------------->
+                <div class="tab-pane fade" id="abilities">
+
+                    <!--- ABILITY 1 ----->
+                    <div class="card rounded-0 p-3 mb-2" style="box-shadow: 2px 2px 4px rgba(0,0,0,0.2); background: linear-gradient(135deg, rgba(199,179,255,0.15), rgba(158,212,255,0.15));">
+                        <div class="row no-gutters">
+                            <div class="col-auto pr-3">
+                                <!--- icon color ----->
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #C7B3FF, #9ED4FF); display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+                                    <!--- icon ----->
+                                    <i class="fas fa-bolt" style="color: white; font-size: 22px;"></i>
+                                </div>
+                            </div>
+                            <div class="col-auto"><div class="card h-100" style="background: rgba(204,204,204,0.3); width: 2px;"></div></div>
+                            <div class="col px-2">
+                                <div style="font-family: 'Space Grotesk', sans-serif; color: #C7B3FF; font-weight: 700; font-size: 13px; margin-bottom: 5px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
+                                    ABILITY NAME 1
+                                </div>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 10px; opacity: 0.8; line-height: 1.6;">
+                                    Description of the ability or power.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--- ABILITY 2 ----->
+                    <div class="card rounded-0 p-3 mb-2" style="box-shadow: 2px 2px 4px rgba(0,0,0,0.2); background: linear-gradient(135deg, rgba(158,212,255,0.15), rgba(255,179,217,0.15));">
+                        <div class="row no-gutters">
+                            <div class="col-auto pr-3">
+                                <!--- icon color ----->
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #9ED4FF, #FFB3D9); display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+                                    <!--- icon ----->
+                                    <i class="fas fa-shield" style="color: white; font-size: 22px;"></i>
+                                </div>
+                            </div>
+                            <div class="col-auto"><div class="card h-100" style="background: rgba(204,204,204,0.3); width: 2px;"></div></div>
+                            <div class="col px-2">
+                                <div style="font-family: 'Space Grotesk', sans-serif; color: #9ED4FF; font-weight: 700; font-size: 13px; margin-bottom: 5px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
+                                    ABILITY NAME 2
+                                </div>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 10px; opacity: 0.8; line-height: 1.6;">
+                                    Description of the ability or power.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--- ABILITY 3 ----->
+                    <div class="card rounded-0 p-3 mb-3" style="box-shadow: 2px 2px 4px rgba(0,0,0,0.2); background: linear-gradient(135deg, rgba(255,179,217,0.15), rgba(179,255,217,0.15));">
+                        <div class="row no-gutters">
+                            <div class="col-auto pr-3">
+                                <!--- icon color ----->
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #FFB3D9, #B3FFD9); display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+                                    <!--- icon ----->
+                                    <i class="fas fa-wand-sparkles" style="color: white; font-size: 22px;"></i>
+                                </div>
+                            </div>
+                            <div class="col-auto"><div class="card h-100" style="background: rgba(204,204,204,0.3); width: 2px;"></div></div>
+                            <div class="col px-2">
+                                <div style="font-family: 'Space Grotesk', sans-serif; color: #FFB3D9; font-weight: 700; font-size: 13px; margin-bottom: 5px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
+                                    ABILITY NAME 3
+                                </div>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 10px; opacity: 0.8; line-height: 1.6;">
+                                    Description of the ability or power.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--- ADD MORE ABOVE ----->
+
+                    <!--- TRIVIA ----->
+                    <div class="card rounded-0 p-3" style="box-shadow: 2px 2px 4px rgba(0,0,0,0.2); background: linear-gradient(135deg, rgba(179,255,217,0.15), rgba(255,234,179,0.15));">
+                        <div style="font-family: 'Space Grotesk', sans-serif; color: #B3FFD9; font-weight: 700; font-size: 11px; margin-bottom: 10px;text-shadow: 1px 1px 1px rgba(0,0,0,0.1);">
+                            <i class="fas fa-lightbulb"></i> TRIVIA & FACTS
+                        </div>
+                        <div style="font-family: 'Space Mono', monospace; font-size: 9px; opacity: 0.8; line-height: 1.8;">
+                            <div class="mb-1"><span style="color: #C7B3FF; font-size: 12px;">✦</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                            <div class="mb-1"><span style="color: #9ED4FF; font-size: 12px;">✦</span> Duis sollicitudin elit sed tellus blandit viverra sed eget odio.</div>
+                            <div class="mb-1"><span style="color: #FFB3D9; font-size: 12px;">✦</span>  Donec accumsan tempor lacus, et venenatis elit feugiat non.</div>
+                            <!--- ADD MORE ABOVE ----->
+                        </div>
+                    </div>
+
+                </div>
+
+<!---------------------------------------------------
+-----------------------------------------------------
+
+            RELATIONS TAB
+
+----------------------------------------------------
+---------------------------------------------------->
+                <div class="tab-pane fade" id="relations">
+
+                    <!--- RELATIONSHIP 1 ----->
+                    <div class="card rounded-0 p-2 mb-2" style="box-shadow: 2px 2px 4px rgba(0,0,0,0.2); background: linear-gradient(135deg, rgba(199,179,255,0.15), rgba(158,212,255,0.15));">
+                        <div class="row no-gutters">
+                            <div class="col-auto pr-2">
+                                <img src="IMGLINK_HERE" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid #C7B3FF; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
+                            </div>
+                            <div class="col">
+                                <a href="LINK_HERE" style="font-family: 'Space Grotesk', sans-serif; color: #C7B3FF; font-weight: 700; font-size: 12px;">
+                                    CHARACTER NAME
+                                </a>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 8px; color: #999; margin-bottom: 4px; letter-spacing: 0.5px;">
+                                    RELATIONSHIP TYPE <i class="fas fa-heart" style="font-size: 10px;"></i>
+                                </div>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 9px; opacity: 0.8; line-height: 1.5;">
+                                    Brief description of the relationship and how they know each other.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--- RELATIONSHIP 2 ----->
+                    <div class="card rounded-0 p-2 mb-2" style="box-shadow: 2px 2px 4px rgba(0,0,0,0.2); background: linear-gradient(135deg, rgba(158,212,255,0.15), rgba(255,179,217,0.15));">
+                        <div class="row no-gutters">
+                            <div class="col-auto pr-2">
+                                <img src="IMGLINK_HERE" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid #9ED4FF; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
+                            </div>
+                            <div class="col">
+                                <a href="LINK_HERE" style="font-family: 'Space Grotesk', sans-serif; color: #9ED4FF; font-weight: 700; font-size: 12px;">
+                                    CHARACTER NAME
+                                </a>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 8px; color: #999; margin-bottom: 4px; letter-spacing: 0.5px;">
+                                    RELATIONSHIP TYPE <i class="fas fa-user-group" style="font-size: 10px;"></i>
+                                </div>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 9px; opacity: 0.8; line-height: 1.5;">
+                                    Brief description of the relationship and how they know each other.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--- RELATIONSHIP 3 ----->
+                    <!-- (If this is the last relationship, remove mb-3 from div class) -->
+                    <div class="card rounded-0 p-2 mb-3" style="box-shadow: 2px 2px 4px rgba(0,0,0,0.2);  background: linear-gradient(135deg, rgba(255,179,217,0.15), rgba(179,255,217,0.15));">
+                        <div class="row no-gutters">
+                            <div class="col-auto pr-2">
+                                <img src="IMGLINK_HERE" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid #FFB3D9; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
+                            </div>
+                            <div class="col">
+                                <a href="LINK_HERE" style="font-family: 'Space Grotesk', sans-serif; color: #FFB3D9; font-weight: 700; font-size: 12px;">
+                                    CHARACTER NAME
+                                </a>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 8px; color: #999; margin-bottom: 4px; letter-spacing: 0.5px;">
+                                    RELATIONSHIP TYPE <i class="fas fa-skull" style="font-size: 10px;"></i>
+                                </div>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 9px; opacity: 0.8; line-height: 1.5;">
+                                    Brief description of the relationship and how they know each other.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <!--- ADD MORE ABOVE ----->
+
+            </div>
+        </div>
+    </div>
+
+<!---------------------------------------------------
+-----------------------------------------------------
+
+            CODE CREDIT
+        Please don't remove <3
+
+----------------------------------------------------
+---------------------------------------------------->
+
+    <div class="text-center text-muted mt-3 mb-4" style="font-family: 'Space Mono', monospace; font-size: 9px;">
+        <a style="color: #999; margin-top: 5px;" href="https://toyhou.se/Bunnii-e">
+            ✦ code <i class="fa-light fa-rabbit"></i> by bunnii-e ✦
+        </a>
+    </div>
+
+</div>

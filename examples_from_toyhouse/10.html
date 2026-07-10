@@ -1,0 +1,234 @@
+
+
+Music Players & Customisation Tutorial
+F2U / No need Credits
+but please don't use this code for Pay To Use stuff without re-linking to this tutorial, I want everyone to know it's free to have music players !
+
+ If this player doesn't work it means you have an issue with the hosting website "File Garden"
+BASIC MP3 PLAYER
+No-Loop
+Music will stop when it end.	<audio controls=""><source src="MP3LINK"></audio>
+Loop
+Music will start over when it end.	<audio controls="" loop=""><source src="MP3LINK"></audio>
+
+
+How does it works ?
+Place a link to a mp3 file instead of MP3LINK
+You can't use YouTube link, the mp3 file have to be downloaded and hosted somewhere.
+A list of possible Hosting Websites is provided further down below.
+
+Example of link that work (start by "https://" end with ".mp3") :
+https://file.garden/Zdidnpzmo3pLm3r4/SHE_like_the_banana_made_with_ditty.it(1).mp3
+Writing #t=10 after the end of the link will make the music start at 10seconds. Works with any numbers.
+
+Base Appearance of the Player vary depending on the browser
+78093436_qAefBEDPjtyDQru.png	fghhd.jpg
+78093428_N6ETS8OGrqpxiF9.png	jhgjg.jpg
+Where do I put the code ?
+04b6e9ebf217ad5afb83b0a2aa71846e.gif	Disable "WYSIWYG" (What You See Is What You Get) which will show your page as code. and place the player code at the right place.
+
+To help place it correctly you can for example write "aaaa" where you want to put it on your page, and then in the code mode look for the "aaaa" and replace it with the player, so it'll be at the right place !
+
+"Ctrl+F" allow you to search for a specific word in your code, so you can use it to find the "aaaa" more easily.
+
+Featured Hosting Method
+▸ https://filegarden.com/
+▸ Create an account
+▸ Upload File
+▸ Use the "copy url" option
+Other Hosting Websites Methods
+(clic for links to tutorials on how to use them)
+File Garden
+SndUP
+Dropbox
+Vocaroo
+Google Drive⚠
+Discord⚠
+
+My player is visible but doesn't play the music ?
+95% of the time it's an issues with the link.
+If the link is fine : watch if there is any <em> that are right before the player code, and delete them, it might fix it.
+If you're still having issues, feel free to <ask for help in the comments>.
+
+
+Variants & Customisation
+Text Above
+TEXT HERE
+<div align="center">TEXT HERE<br><audio controls=""><source src="MP3LINK"></audio></div>
+
+Change "TEXT HERE' into any text you want !
+Change div align="center" to div align="right" or div align="left" to place the text and player how you want.
+Text color will be based off the theme you're using. select the text and change the color manually if needed
+Pop Up Text
+Hover the player !
+
+<audio class="tooltipster" controls="" title="TEXT HERE"><source src="MP3LINK"></audio>
+
+Change "TEXT HERE' into any text you want !
+Floating
+<div align="right"><div class="fixed-bottom"><audio controls=""><source src="MP3FLINKHERE"></audio></div></div>
+
+Use either <div class="fixed-bottom"> or <div class="fixed-top"> to chose if you want the player up or down.
+Use <div align="left"> and <div align="right"> or <div align="center"> just before the code to chose the placement.
+
+Floating + Centered Name of Song
+
+<div align="right"><div class="fixed-bottom">
+<table style="width: 0%;"><tbody><tr><td style="width: 100%; text-align: center; background-color: transparent; border-color: transparent; border-style: double;">
+<span style="color: default;">Song Name<br><p>
+<audio controls=""><source src="MP3LINK"></audio>
+</p></span></td></tr></tbody></table></div></div>
+
+Custom Size
+(Thanks to @CriticalOS for sharing this !)
+
+
+<p><audio controls="" style="width:100px;height:25px;"><source src="MP3LINK"><br></audio></p>
+
+Change the "100" and "25" to chose the width and height. Avoid going above 80 for the height.
+Ghost
+
+
+<audio controls="" style="opacity:0.35;"><source src="MP3LINK"></audio>
+
+Change 0.35 to any number from 0.01 to 0.99 to chose the opacity. ( 0.25 = 25% etc ) I recommand to stay between 0.10 and 0.80.
+Colored Outline
+Any Colors, Squared and Rounded borders !
+
+
+[ ! Warning ! ]
+All Colored Players might display weirdly on Apple devices.
+<explanation here>
+<audio controls="" style="background:rgb(191, 255, 0);padding:2px; width:270px;height:35px;border-radius:0px;"><source src="MP3LINK"></audio>
+
+<audio controls="" style="background:rgb(204, 0, 255);padding:4px; width:270px;height:40px;border-radius:40px;"><source src="MP3LINK"></audio>
+
+Change 'rgb(191, 255, 0)' to chose the color. <rgb generator here>.
+Change the number in padding:4px to change the width of the color around the player. I recommand to stay between 1 and 10.Change border-radius:40px to change the roundness of the borders ( stay between 0px and 50px )
+
+Website Theme's Color
+Automatically use the website's theme color !
+
+
+(Seems to works with the default themes, I'm not sure for the custom ones.)
+<audio class="btn btn-primary" controls="" style="padding:4px; width:270px;height:40px;border-radius:40px;"><source src="MP3LINK"></audio>
+
+Replacing the 'rgb(xxx, xxx, xxx)' part in any other player by 'primary' should work as well !
+Colored Animated Stripes
+
+
+
+
+<div class="progress" style="width:270px;border-radius:0px;"><div class="progress-bar progress-bar-striped progress-bar-animated" style="height:35px;background-color:rgb(255, 77, 196);"><audio controls="" style="padding:5px; width:270px;height:35px;opacity:0.7;"><source src="MP3LINK"></audio></div></div>
+
+<div class="progress" style="width:270px;border-radius:60px;"><div class="progress-bar progress-bar-striped progress-bar-animated" style="height:35px;background-color:rgb(255, 77, 196);"><audio controls="" style="mix-blend-mode: darken;padding:5px; width:270px;height:35px;border-radius:60px;opacity:0.7;"><source src="MP3LINK"></audio></div></div>
+
+<div class="progress" style="width:270px;border-radius:60px;"><div class="progress-bar progress-bar-striped progress-bar-animated" style="height:35px;background-color:rgb(182, 21, 83);"><audio controls="" style="mix-blend-mode: screen;padding:5px; width:270px;height:35px;border-radius:60px;opacity:1.0;"><source src="MP3LINK"></audio></div></div>
+
+<div class="progress" style="width:270px;border-radius:60px;"><div class="progress-bar progress-bar-striped progress-bar-animated" style="height:35px;width: 100%; background-color: rgb(255, 102, 255);"><div class="progress-bar progress-bar-striped progress-bar-animated" style="height:35px;width: 50%; background-color: rgb(255, 179, 255);"><audio controls="" style="padding:5px; width:270px;height:35px;border-radius:60px;opacity:0.3;"><source src="MP3LINK"></audio></div></div></div>
+
+Change 'rgb(26 140, 255)' to chose the color. <rgb generator here>.
+Change 'opacity:0.70' to any number between '0.01' and '1.00' to make the 'player' part more or less visible.
+Change border-radius:60px to change the roundness of the borders ( stay between 0px and 50px )
+
+Colored Filters
+Any Colors, Squared and Rounded borders !
+(Thanks Crowman for this one !)
+Warning : Those Players look quite drastically different on Chrome/Firefox/Apple
+so be aware the color you see might not be what others see !
+
+PS : For custom width don't forget to change the two occurrence of "style="width:270px;height:40px;' in the code.
+<div class="card bg" style="background: rgb(26, 140, 255);width:270px;height:40px;"><audio controls="" style="mix-blend-mode: darken;width:270px;height:40px;"><source src="MP3LINK"></audio></div>
+
+<div class="card bg" style="background: rgb(255, 102, 0);width:270px;height:40px;border-radius:50px;"><audio controls="" style="mix-blend-mode: darken;width:270px;height:40px;border-radius:50px;"><source src="MP3LINK"></audio></div>
+
+Change 'rgb(26 140, 255)' to chose the color. <rgb generator here>.
+Change border-radius:40px to change the roundness of the borders ( stay between 0px and 50px )
+
+You can replace 'darken' by any of those others adjective for various color effects, there's too many for me to list concisely here so have fun ! ( a pretty cool one imo is difference )
+darken , lighten , normal , multiply , screen , overlay , color-dodge , color-burn , hard-light , soft-light , difference , exclusion , hue , saturation , color , luminosity
+Colored Inside + Ghost Controls
+Any Colors, Squared and Rounded borders !
+Warning : When no specified width the player will take the full length of the line. If you go for custom width do not forget to change the two occurrence of "style="width:270px;height:40px;' in the code.	<div class="card bg" style="background: rgb(255, 173, 51);"><audio controls="" style="opacity:0.20;"><source src="MP3LINK"></audio></div>
+
+<div class="card bg" style="background: rgb(77, 184, 255);width:270px;height:40px;"><audio controls="" style="opacity:0.20;width:270px;height:40px;"><source src="MP3LINK"></audio></div>
+
+<div class="card bg" style="background: rgb(255, 77, 255);width:270px;height:40px;border-radius:50px;"><audio controls="" style="opacity:0.20;width:270px;height:40px;border-radius:50px;"><source src="MP3LINK"></audio></div>
+
+Change 'rgb(77, 184, 255)' to chose the color. <rgb generator here>.
+Change 'opacity:0.20' to any number between '0.01' and '1.00' to make the 'player' part more or less visible. Higher number mean less visible background colour.Change border-radius:40px to change the roundness of the borders ( stay between 0px and 50px )
+Image as Background
+
+
+<audio controls="" style="background-image: url('IMAGEURL');background-size: cover; background-position: center center; padding:4px; width:270px;height:40px;border-radius:40px;"><source src="MP3LINK"></audio>
+
+Use any url instead of 'IMAGEURL' , if the link break the code will too, so prefer to host the file yourself. [ FileGarden, imgBB, Google Drive, Dropbox, etc ]
+Any image type should be usable ;  GIF , WEBP , JPG , PNG , etc.
+
+You can adjust the way the image fit the player by editing :
+' background-size: cover ' to : auto , contain , cover , 50% , 50px , etc  <more infos>
+and
+' background-position: center center ' to :  center top , right top , left center , left bottom , etc.
+Fake MP4 Player
+
+This use a MP3 File and a GIF/WEBP image,
+they are separated and can be customised idependently.
+<audio controls="" style="background-color:transparent; background-image: url('IMAGEURL');background-size:cover; background-position: center bottom; padding:4px; width:270px;height:190px;border-radius:40px;"><source src="MP3LINK"></audio>
+
+The effect is mainly obtained by playing with the " height;190px " part.
+Refer to " Image as Background " and " Custom Size "  for more detailed explainations.
+MP4 Player
+
+<span class="fr-video fr-fvc fr-dvi fr-draggable" contenteditable="false"><video class="fr-fvc fr-dvi fr-draggable" controls="" width="250"><source src="MP4LINKHERE" type="video/mp4"></video></span>
+
+Change the number in " width="250" to set the size of the video.
+Floating MP4 Player
+
+<div align="right"><div class="fixed-bottom"><span class="fr-video fr-fvc fr-dvi fr-draggable" contenteditable="false"><video class="fr-fvc fr-dvi fr-draggable" controls="" width="250"><source src="MP4LINKHERE" type="video/mp4"></video></span></div></div>
+
+
+Make Your Own
+***this part need to be updated***
+here is a player that have all the possible customisation option, edit and remove what you want or not !
+Floating	Non-Floating
+<div align="right">
+<div class="fixed-bottom">
+<table style="width: 0%;"><tbody><tr><td style="width: 100%; text-align: center; background-color: transparent; border-color: transparent; border-style: double;">
+<span style="color: rgb(204, 51, 255); text-shadow: 0px 0px 15px;"><strong>Song Title</strong></span><br>
+<audio controls="" style="opacity:0.99; border-radius:40px; background: rgb(204, 51, 255); padding:2px; width:300px; height:35px;">
+<source src="MP3LINK"></audio>
+</td></tr></tbody></table></div></div>	<div align="center">
+<span style="color:rgb(204, 51, 255);text-shadow: 0px 0px 15px;">
+<strong>Song Title</strong><br></span>
+<audio controls="" style="opacity:0.99; border-radius:40px; background: rgb(204, 51, 255); padding:2px; width:300px; height:35px;">
+<source src="MP3LINK"></audio>
+<div align="right">
+right , left , center
+<div class="fixed-bottom">
+fixed-bottom , fixed-top , fixed-middle
+color: rgb(204, 51, 255);
+<Color code>xxx, xxx, xxx (number between 0 and 255. 0=black 255=white)
+text-shadow: 0px 0px 15px;
+Glowing text effect. 0=none
+opacity:0.99;
+1.00 = 100% / 0.01 = 1%
+border radius:40px;
+Rounded Player. 0px=none
+padding:2px;
+Width of the colored outline. 0px=none
+width:300px; height:35px;
+Player Size
+
+
+Unavailable Features
+At the moment, Toyhouse block a certain number of coding features (for users safety I assume), so not all the normally available options in html will works.
+I tried to test several ways to make them works for each to be sure they don't, but I might have missed one that do work, so if you figure out a way, do let me know !
+I do not have a premium Toyhouse account so I can only test the html option and not the CCS.
+- Autoplay / Autostart  ( Tested / seems to be blocked )
+- Setting the starting volume( Tested / seem to be blocked )
+- Playlist( Not Tested / assuming it would be blocked since complex coding. You can always just put a bunch of player one after another thought ! )
+
+If you have trouble making it work or questions feel free to comment I'll try and help. Please include your code when asking for help so I can see where the problem is.
+No need to credit me, but do consider crediting the Musics you use ! One exception ; If used in P2U templates, a link to this tutorial IS required ! (I just don't want people to think they have to pay to get a music player)
+If this tutorial was helpful to you, feel free to check out my art as a thanks, I would really appreciate it !
+

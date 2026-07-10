@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Протокол 0 — Админка</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='7' fill='%23f4f6fa' stroke='%230089a3' stroke-width='2'/%3E%3Ctext x='16' y='23' font-family='Consolas,monospace' font-size='19' font-weight='700' fill='%230089a3' text-anchor='middle'%3E0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-head">
+  <header class="topbar">
+    <div class="topbar-brand">Протокол 0 <span class="topbar-brand-sub">/ админка</span></div>
+
+    <div class="char-switcher">
+      <select id="characterSelect" class="char-select" aria-label="Персонаж"></select>
+      <button id="btnNewChar" class="icon-btn" title="Новый персонаж">＋</button>
+      <button id="btnRenameChar" class="icon-btn" title="Переименовать">✎</button>
+      <button id="btnDeleteChar" class="icon-btn icon-btn-danger" title="Удалить">🗑</button>
+      <button id="btnExportData" class="icon-btn" title="Скачать резервную копию всех персонажей (JSON)">⇩</button>
+      <button id="btnImportData" class="icon-btn" title="Загрузить персонажей из JSON-файла">⇧</button>
+      <input id="importFile" type="file" accept="application/json" style="display:none">
+    </div>
+  </header>
+
+  <nav class="mobile-tabs">
+    <button class="tab-btn mobile-tab active" data-panel="form">Форма</button>
+    <button class="tab-btn mobile-tab" data-panel="preview">Превью</button>
+    <button class="tab-btn mobile-tab" data-panel="code">Код</button>
+  </nav>
+
+  <div class="pane-tabs">
+    <button class="tab-btn pane-tab active" data-pane="preview">Превью</button>
+    <button class="tab-btn pane-tab" data-pane="code">Код</button>
+  </div>
+</div>
+
+<!-- форма создания нового персонажа -->
+<div id="newCharModal" class="modal hidden">
+  <div class="modal-box">
+    <h3>Новый персонаж</h3>
+    <label class="field-label">Имя (для списка)
+      <input id="newCharName" type="text" class="field-input" placeholder="Например: Ирэн Соколова">
+    </label>
+    <label class="field-label">Шаблон
+      <select id="newCharTemplate" class="field-input"></select>
+    </label>
+    <div class="modal-actions">
+      <button id="btnNewCharCancel" class="btn">Отмена</button>
+      <button id="btnNewCharCreate" class="btn btn-primary">Создать</button>
+    </div>
+  </div>
+</div>
+
+<main class="layout">
+  <section id="panel-form" class="panel panel-form">
+    <div id="formRoot"></div>
+  </section>
+
+  <section id="panel-preview" class="panel panel-preview">
+    <iframe id="previewFrame" class="preview-frame" title="Превью страницы персонажа"></iframe>
+  </section>
+
+  <section id="panel-code" class="panel panel-code">
+    <div class="code-actions">
+      <button id="btnCopyCode" class="btn btn-primary">Скопировать код (для Toyhouse)</button>
+      <button id="btnDownloadRender" class="btn">Скачать рендер (.html)</button>
+    </div>
+    <textarea id="codeOutput" class="code-output" readonly spellcheck="false"></textarea>
+  </section>
+</main>
+
+<script src="templater.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

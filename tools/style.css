@@ -1,0 +1,370 @@
+/* Протокол 0 — редактор шаблонов. Стили самого инструмента (не имеют отношения к
+   ограничениям Toyhouse — это обычная веб-страница, тут можно всё). */
+
+:root {
+  --bg: #0b0e14;
+  --panel: #12161f;
+  --panel2: #171c28;
+  --edge: rgba(255,255,255,.08);
+  --edge-strong: rgba(255,255,255,.16);
+  --ink: #e7ecf3;
+  --mute: #8b93a5;
+  --dim: #5c6474;
+  --accent: #00fbff;
+  --accent-dim: rgba(0,251,255,.12);
+  --danger: #ff5470;
+  --radius: 8px;
+  --mono: 'Consolas', 'SFMono-Regular', 'Cascadia Code', monospace;
+  --sans: 'Segoe UI', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+/* ---------- app head (topbar + tabs, pinned as one block) ---------- */
+
+.app-head {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  background: var(--bg);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--edge);
+  flex-wrap: wrap;
+}
+
+.topbar-brand {
+  font-family: var(--mono);
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.topbar-brand-sub {
+  color: var(--dim);
+  font-weight: 400;
+}
+
+.char-switcher {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  row-gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: flex-end;
+}
+
+.char-select {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 260px;
+  background: var(--panel2);
+  color: var(--ink);
+  border: 1px solid var(--edge-strong);
+  border-radius: var(--radius);
+  padding: 7px 10px;
+  font-size: 13px;
+}
+
+.icon-btn {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel2);
+  border: 1px solid var(--edge-strong);
+  border-radius: var(--radius);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 14px;
+}
+.icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+.icon-btn-danger:hover { border-color: var(--danger); color: var(--danger); }
+
+/* ---------- modal (new character) ---------- */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0,0,0,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal.hidden { display: none; }
+
+.modal-box {
+  width: 100%;
+  max-width: 380px;
+  background: var(--panel);
+  border: 1px solid var(--edge-strong);
+  border-radius: 12px;
+  padding: 18px;
+}
+.modal-box h3 { margin: 0 0 14px; font-size: 15px; }
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* ---------- mobile / panel tabs ---------- */
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--mute);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.mobile-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--edge);
+  background: var(--bg);
+}
+
+/* pane-tabs: переключатель Превью/Код для ПК-раскладки (правая колонка) —
+   на мобилке за это отвечает .mobile-tabs, тут скрыт */
+.pane-tabs {
+  display: none;
+  border-bottom: 1px solid var(--edge);
+  background: var(--bg);
+}
+
+/* ---------- layout / panels ---------- */
+
+.layout {
+  display: block;
+}
+
+.panel { display: none; padding: 14px; }
+.panel.active { display: block; }
+
+@media (min-width: 900px) {
+  .mobile-tabs { display: none; }
+  .pane-tabs { display: flex; }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .panel-form {
+    display: block;
+    grid-column: 1;
+    grid-row: 1;
+    border-right: 1px solid var(--edge);
+    min-height: calc(100vh - 54px);
+  }
+
+  /* правая колонка управляется отдельным классом .pane-active (переключатель
+     .pane-tabs), не .active (тот — только для мобильной раскладки с одной видимой
+     панелью) — иначе оба переключателя конфликтуют за один и тот же класс */
+  .panel-preview, .panel-code {
+    display: none;
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: 95px;
+  }
+  .panel-preview.pane-active, .panel-code.pane-active { display: block; }
+}
+
+/* ---------- form ---------- */
+
+.field-label {
+  display: block;
+  font-size: 12px;
+  color: var(--mute);
+  margin-bottom: 12px;
+}
+.field-label > span.label-text { display: block; margin-bottom: 4px; }
+
+.field-input, .field-textarea, select.field-input {
+  width: 100%;
+  background: var(--panel2);
+  color: var(--ink);
+  border: 1px solid var(--edge-strong);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  font-size: 13.5px;
+  font-family: var(--sans);
+}
+.field-input:focus, .field-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.field-textarea { min-height: 70px; resize: vertical; }
+
+.field-label-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.field-label-checkbox .label-text { margin-bottom: 0; }
+.field-input-checkbox {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.field-section {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid var(--edge);
+}
+.field-section-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.group-block {
+  margin-top: 18px;
+}
+.group-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.group-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.group-item {
+  background: var(--panel2);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.group-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.group-item-label {
+  font-size: 11px;
+  color: var(--dim);
+  font-family: var(--mono);
+}
+.group-item-actions { display: flex; gap: 4px; }
+.group-item-actions button {
+  background: none;
+  border: 1px solid var(--edge-strong);
+  color: var(--mute);
+  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+}
+.group-item-actions button:hover { color: var(--ink); border-color: var(--accent); }
+
+/* ---------- buttons ---------- */
+
+.btn {
+  background: var(--panel2);
+  color: var(--ink);
+  border: 1px solid var(--edge-strong);
+  border-radius: var(--radius);
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn-primary {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-small { padding: 5px 10px; font-size: 12px; }
+.btn-add {
+  width: 100%;
+  border-style: dashed;
+  color: var(--mute);
+}
+.btn-add:hover { color: var(--accent); }
+
+/* ---------- preview / code panels ---------- */
+
+.preview-frame {
+  width: 100%;
+  height: calc(100vh - 100px);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.code-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.code-output {
+  width: 100%;
+  height: calc(100vh - 150px);
+  background: var(--panel2);
+  color: var(--ink);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  padding: 12px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+  white-space: pre;
+  overflow: auto;
+}
+
+.empty-hint {
+  color: var(--dim);
+  font-size: 13px;
+  padding: 20px 0;
+  text-align: center;
+}
