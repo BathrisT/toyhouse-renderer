@@ -4,15 +4,19 @@
   (это внешний список папок-плиток) — этот шаблон вставляется НА страницу самой папки,
   как "аккаунт" организации внутри сети, по аналогии с профилем персонажа.
 
-  Структурно проще character_page.html: тут максимум 2 вкладки, поэтому левое меню не
-  нужно — простой одноколоночный профиль + горизонтальные вкладки-пилюли ТОЛЬКО если
-  включено "Руководство" (см. ниже), иначе вкладок нет вообще, просто одна страница
-  "О нас". "О нас" всегда единственная обязательная вкладка (дефолт), "Руководство"
-  скрываемо через {{#вкладка_руководство_показать|checkbox=1}}.
+  Структурно проще character_page.html: тут максимум 3 вкладки, поэтому левое меню не
+  нужно — простой одноколоночный профиль + горизонтальные вкладки-пилюли. "О нас" всегда
+  обязательна (дефолт), "Руководство" и "Партнёры" скрываемы через
+  {{#вкладка_X_показать|checkbox=1}} независимо друг от друга (движок не умеет
+  "показать пилюли только если хотя бы одна из двух включена" — полоса пилюль рендерится
+  всегда, просто с одной вкладкой "О нас", если обе опциональные скрыты).
 
   Один акцентный цвет на выбор (не два, как у Мира — организации это не про
-  "разные миры", тут одна цветовая идентичность): {{акцент_цвет|color}}, тот же приём
-  альфа-суффикса, что и статус_цвет в character_page.html.
+  "разные миры", тут одна цветовая идентичность): {{акцент_цвет|color}}, объявлен
+  один раз как --accent в style корневого div (та же схема --signal/--flare), везде
+  используется через var(--accent) — сырая подстановка {{акцент_цвет}} только там,
+  где нужен хекс-альфа-суффикс (var(...) так не умеет), тот же приём, что и
+  статус_цвет в character_page.html.
 
   Синтаксис плейсхолдеров — в templates/README.md.
 -->
@@ -20,23 +24,30 @@
   --void:#ffffff; --panel:#f4f6fa; --panel2:#ffffff;
   --edge:rgba(15,23,42,.10); --edge2:rgba(15,23,42,.16);
   --ink:#12161f; --mute:#5c6472; --dim:#8b93a1;
+  --accent:{{акцент_цвет|color=#0089a3}};
   --mono:'Consolas','SFMono-Regular','Cascadia Code',monospace;
   --sans:'Segoe UI',-apple-system,'Helvetica Neue',Arial,sans-serif;
   background:var(--void); color:var(--ink); font-family:var(--sans); max-width:760px; margin:0 auto; -webkit-font-smoothing:antialiased;">
 
-  <div class="d-flex align-items-center" style="margin-bottom:16px;">
-    <div style="font-family:var(--mono); font-size:11px; letter-spacing:2px; font-weight:700; color:var(--ink); white-space:nowrap; margin-right:6px;">ПРОТОКОЛ</div>
-    <div class="d-flex align-items-center justify-content-center" style="width:14px; height:14px; border:1px solid var(--dim); color:var(--dim); font-family:var(--mono); font-weight:700; font-size:8px; border-radius:3px; flex:0 0 auto; margin-right:8px;">0</div>
-    <div style="font-family:var(--mono); font-size:9px; letter-spacing:1.5px; color:var(--dim);">· КОРПОРАТИВНЫЙ АККАУНТ</div>
-  </div>
+  <!-- шапка организации: квадратная эмблема (не круглая — отличие от персонажа-человека),
+       фирменная строка "ПРОТОКОЛ 0" теперь ЧАСТЬ карточки (не отдельной голой строкой
+       над ней), тип организации приколот в правый верхний угол -->
+  <div style="position:relative; padding:18px; background:var(--panel2); border:1px solid var(--edge2); border-radius:10px;">
+    <div class="d-flex align-items-center" style="margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--edge);">
+      <div style="font-family:var(--mono); font-size:11px; letter-spacing:2px; font-weight:700; color:var(--ink); white-space:nowrap; margin-right:6px;">ПРОТОКОЛ</div>
+      <div class="d-flex align-items-center justify-content-center" style="width:15px; height:15px; border:1px solid var(--accent); color:var(--accent); font-family:var(--mono); font-weight:700; font-size:8px; border-radius:3px; background:{{акцент_цвет}}1a; flex:0 0 auto; margin-right:8px;">0</div>
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:1.5px; color:var(--dim);">· КОРПОРАТИВНЫЙ АККАУНТ</div>
+    </div>
 
-  <!-- шапка организации: квадратная эмблема (не круглая — отличие от персонажа-человека) -->
-  <div class="d-flex align-items-center" style="padding:18px; background:var(--panel2); border:1px solid var(--edge2); border-radius:10px;">
-    <img src="{{эмблема_url=https://placehold.co/120x120/f4f6fa/0089a3?text=%D0%9E}}" style="width:64px; height:64px; border-radius:12px; object-fit:cover; flex:0 0 auto; margin-right:16px; background:var(--panel);">
-    <div style="min-width:0;">
-      <div style="font-size:19px; font-weight:700; color:var(--ink); line-height:1.2;">{{название_компании~Архив Протокола, сектор 4}}</div>
-      <div class="mt-1" style="font-size:12.5px; color:var(--mute);">{{тэглайн~Учёт, хранение, контроль доступа}}</div>
-      <div class="d-inline-block mt-2" style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:{{акцент_цвет|color=#0089a3}}; background:{{акцент_цвет}}1a; border:1px solid {{акцент_цвет}}40; padding:2px 8px; border-radius:20px;">{{статус~АКТИВНА}}</div>
+    <div style="position:absolute; top:16px; right:16px; font-family:var(--mono); font-size:9px; letter-spacing:1px; color:var(--dim); text-transform:uppercase; text-align:right;">{{тип_организации~Акционерное общество}}</div>
+
+    <div class="d-flex align-items-center">
+      <img src="{{эмблема_url=https://placehold.co/120x120/f4f6fa/0089a3?text=%D0%9E}}" style="width:64px; height:64px; border-radius:12px; object-fit:cover; flex:0 0 auto; margin-right:16px; background:var(--panel);">
+      <div style="min-width:0;">
+        <div style="font-size:19px; font-weight:700; color:var(--ink); line-height:1.2;">{{название_компании~Архив Протокола, сектор 4}}</div>
+        <div class="mt-1" style="font-size:12.5px; color:var(--mute);">{{тэглайн~Учёт, хранение, контроль доступа}}</div>
+        <div class="d-inline-block mt-2" style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--accent); background:{{акцент_цвет}}1a; border:1px solid {{акцент_цвет}}40; padding:2px 8px; border-radius:20px;">{{статус~АКТИВНА}}</div>
+      </div>
     </div>
   </div>
 
@@ -47,16 +58,21 @@
     <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Локация</div><div style="font-size:13.5px; color:var(--ink); font-weight:600;">{{локация~АРКТУР-9}}</div></div>
   </div>
 
-  {{#вкладка_руководство_показать|checkbox=1}}
-  <ul class="nav nav-pills mt-4" style="border-bottom:1px solid var(--edge); padding-bottom:10px;">
-    <li class="nav-item mr-2">
-      <a class="nav-link active" data-toggle="tab" href="#tab-o-nas" style="padding:7px 14px; border-radius:20px; font-size:12.5px; font-weight:600; color:var(--ink);">О нас</a>
+  <ul class="nav nav-pills mt-4" style="border-bottom:1px solid var(--edge); padding-bottom:10px; flex-wrap:wrap;">
+    <li class="nav-item mr-2 mb-1">
+      <a class="nav-link active" data-toggle="tab" href="#tab-o-nas" style="padding:7px 14px; border-radius:20px; font-size:12.5px; font-weight:600; color:var(--ink); background:var(--panel2); border:1px solid var(--edge2);">О нас</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#tab-rukovodstvo" style="padding:7px 14px; border-radius:20px; font-size:12.5px; font-weight:600; color:var(--ink);">Руководство</a>
+    {{#вкладка_руководство_показать|checkbox=1}}
+    <li class="nav-item mr-2 mb-1">
+      <a class="nav-link" data-toggle="tab" href="#tab-rukovodstvo" style="padding:7px 14px; border-radius:20px; font-size:12.5px; font-weight:600; color:var(--ink); background:var(--panel2); border:1px solid var(--edge2);">Руководство</a>
     </li>
+    {{/вкладка_руководство_показать}}
+    {{#вкладка_партнеры_показать|checkbox=1}}
+    <li class="nav-item mb-1">
+      <a class="nav-link" data-toggle="tab" href="#tab-partnery" style="padding:7px 14px; border-radius:20px; font-size:12.5px; font-weight:600; color:var(--ink); background:var(--panel2); border:1px solid var(--edge2);">Партнёры</a>
+    </li>
+    {{/вкладка_партнеры_показать}}
   </ul>
-  {{/вкладка_руководство_показать}}
 
   <div class="tab-content mt-3">
     <div class="tab-pane fade show active" id="tab-o-nas">
@@ -66,6 +82,30 @@
       {{#доп_описание}}
       <div class="mt-3 p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; font-size:13px; line-height:1.7; color:var(--mute);">{{доп_описание|textarea~Дополнительно, если есть что рассказать...}}</div>
       {{/доп_описание}}
+
+      <div class="mt-4" style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim);">// ЛЕНТА</div>
+
+      {{#each посты}}
+      <div class="mt-3 p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:8px;">
+        <div class="d-flex align-items-center">
+          <img src="{{../эмблема_url}}" style="width:26px; height:26px; border-radius:6px; object-fit:cover; margin-right:8px;">
+          <div style="font-size:12.5px; font-weight:600; color:var(--ink); margin-right:8px;">{{../название_компании}}</div>
+          <div style="font-size:11px; color:var(--dim);">· {{время~2 дня назад}}</div>
+        </div>
+        {{#текст}}
+        <div class="mt-2" style="font-size:13.5px; color:var(--ink); line-height:1.55;">{{текст~Текст поста...}}</div>
+        {{/текст}}
+        {{#картинка_url}}
+        <img src="{{картинка_url~https://...}}" class="mt-2 w-100" style="border-radius:6px; display:block;">
+        {{/картинка_url}}
+        <div class="d-flex mt-3" style="font-size:12px; color:var(--dim);">
+          <span style="margin-right:22px;"><i class="fa-regular fa-heart mr-1"></i>{{лайки}}</span>
+          <span style="margin-right:22px;"><i class="fa-regular fa-comment mr-1"></i>{{комменты}}</span>
+          <span style="margin-right:22px;"><i class="fa-solid fa-retweet mr-1"></i>{{репосты}}</span>
+          <span><i class="fa-regular fa-eye mr-1"></i>{{просмотры}}</span>
+        </div>
+      </div>
+      {{/each}}
     </div>
 
     {{#вкладка_руководство_показать}}
@@ -74,17 +114,42 @@
       <div class="row">
         {{#each руководство}}
         <div class="col-12 col-md-6 mb-3">
-          <div class="d-flex align-items-center p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:8px;">
+          <div class="d-flex align-items-center p-3" style="position:relative; background:var(--panel2); border:1px solid var(--edge); border-radius:8px;">
             <img src="{{портрет_url~https://placehold.co/96x96}}" style="width:48px; height:48px; border-radius:50%; object-fit:cover; flex:0 0 auto; margin-right:12px; background:var(--panel);">
             <div style="min-width:0;">
               <div style="font-size:13.5px; font-weight:700; color:var(--ink);">{{имя~И. Соколова}}</div>
-              <div style="font-family:var(--mono); font-size:10px; letter-spacing:.5px; color:{{акцент_цвет}};">{{должность~архивариус-связной}}</div>
+              <div style="font-family:var(--mono); font-size:10px; letter-spacing:.5px; color:var(--accent);">{{должность~архивариус-связной}}</div>
             </div>
+            {{#ссылка}}
+            <a href="{{ссылка|url}}" class="stretched-link"></a>
+            {{/ссылка}}
           </div>
         </div>
         {{/each}}
       </div>
     </div>
     {{/вкладка_руководство_показать}}
+
+    {{#вкладка_партнеры_показать}}
+    <div class="tab-pane fade" id="tab-partnery">
+      <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:12px;">// ПАРТНЁРЫ</div>
+      <div class="row">
+        {{#each партнеры}}
+        <div class="col-12 col-md-6 mb-3">
+          <div class="d-flex align-items-center p-3" style="position:relative; background:var(--panel2); border:1px solid var(--edge); border-radius:8px;">
+            <img src="{{логотип_url~https://placehold.co/96x96}}" style="width:44px; height:44px; border-radius:8px; object-fit:cover; flex:0 0 auto; margin-right:12px; background:var(--panel);">
+            <div style="min-width:0;">
+              <div style="font-size:13.5px; font-weight:700; color:var(--ink);">{{название~Такион-3, архивная миссия}}</div>
+              <div style="font-size:11.5px; color:var(--mute);">{{описание~совместные раскопки сектора 7}}</div>
+            </div>
+            {{#ссылка}}
+            <a href="{{ссылка|url}}" class="stretched-link"></a>
+            {{/ссылка}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/вкладка_партнеры_показать}}
   </div>
 </div>

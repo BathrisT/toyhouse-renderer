@@ -106,9 +106,15 @@
       return node.filter !== null || node.default !== null || node.placeholder !== null;
     }
 
-    function walkGroup(nodes) {
-      const gFields = [];
-      const gSeen = new Set();
+    const groupSeen = {}; // name -> Set полей уже зарегистрированных для этой группы
+
+    // Одна и та же группа может встречаться в шаблоне НЕСКОЛЬКО раз (например, у карт
+    // мира {{#each карты}} обходится дважды — один раз для пилюль-переключателей, один
+    // раз для самого контента) — поля из ВСЕХ вхождений должны попасть в форму, поэтому
+    // gFields/gSeen переданы снаружи и переиспользуются между вызовами, а не создаются
+    // заново на каждое вхождение (иначе поля, объявленные только во втором вхождении,
+    // молча не попадали бы в форму).
+    function walkGroup(nodes, gFields, gSeen) {
       (function walk(nodes) {
         for (const node of nodes) {
           if (node.type === 'var') addField(gFields, gSeen, node);
@@ -118,7 +124,6 @@
           }
         }
       })(nodes);
-      return gFields;
     }
 
     (function walkTop(nodes) {
@@ -127,7 +132,8 @@
           addField(fields, fieldNames, node);
         } else if (node.type === 'section') {
           if (node.isEach) {
-            if (!groups[node.name]) groups[node.name] = walkGroup(node.children);
+            if (!groups[node.name]) { groups[node.name] = []; groupSeen[node.name] = new Set(); }
+            walkGroup(node.children, groups[node.name], groupSeen[node.name]);
           } else {
             if (hasMeta(node)) addField(fields, fieldNames, node);
             walkTop(node.children);

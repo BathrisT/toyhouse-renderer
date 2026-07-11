@@ -522,13 +522,19 @@
     card.appendChild(header);
 
     fieldDefs.forEach(fd => {
-      const wrap = el('label', { class: 'field-label' });
-      wrap.appendChild(el('span', { class: 'label-text', text: prettifyLabel(fd.name) }));
+      const isCheckbox = fd.filter === 'checkbox';
+      const wrap = el('label', { class: isCheckbox ? 'field-label field-label-checkbox' : 'field-label' });
       const input = buildFieldInput(fd, item[fd.name], (val) => {
         item[fd.name] = val;
         scheduleUpdate();
       });
-      wrap.appendChild(input);
+      if (isCheckbox) {
+        wrap.appendChild(input);
+        wrap.appendChild(el('span', { class: 'label-text', text: prettifyLabel(fd.name) }));
+      } else {
+        wrap.appendChild(el('span', { class: 'label-text', text: prettifyLabel(fd.name) }));
+        wrap.appendChild(input);
+      }
       card.appendChild(wrap);
     });
 
