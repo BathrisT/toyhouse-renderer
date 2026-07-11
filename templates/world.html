@@ -1,0 +1,201 @@
+<!--
+  ШАБЛОН: Протокол 0 — Мир (туристическая подача целого мира/планеты в сети).
+  Отдельная самостоятельная страница (не карточка персонажа) — левое меню-вкладки,
+  та же механика, что у character_page.html (переиспользуем проверенный узел
+  collapse/mobileNav, см. КРИТИЧНО #4 в возможности_и_ограничения.md), но тон подачи
+  тёплый/зазывающий ("рекламируем миру туристам"), а не архивно-холодный, как в Досье.
+
+  Фирменная деталь: редактируемый двухцветный градиент (градиент_1/градиент_2),
+  единый по всей странице — у каждого мира свой, т.к. миры разные. Используется ТОЛЬКО
+  как чистый background:linear-gradient(...) на отдельных div, никогда не смешивается
+  с background-image в одном свойстве (КРИТИЧНО #2).
+
+  Каждая вкладка — {{#вкладка_X_показать|checkbox=1}}, можно скрыть и назначить
+  стартовой (см. templates/README.md, паттерн из character_page.html).
+
+  Синтаксис плейсхолдеров — в templates/README.md.
+-->
+<div id="protocol0-world" style="
+  --void:#ffffff; --panel:#f4f6fa; --panel2:#ffffff; --panel3:#eef1f6;
+  --edge:rgba(15,23,42,.10); --edge2:rgba(15,23,42,.16);
+  --ink:#12161f; --mute:#5c6472; --dim:#8b93a1;
+  --mono:'Consolas','SFMono-Regular','Cascadia Code',monospace;
+  --sans:'Segoe UI',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  background:var(--void); color:var(--ink); font-family:var(--sans); max-width:1000px; margin:0 auto; min-height:100vh; -webkit-font-smoothing:antialiased;">
+
+  <div class="row no-gutters align-content-start" style="min-height:100vh;">
+
+    <!-- ============================== LEFT RAIL / NAV ============================== -->
+    <div class="col-12 col-md-3">
+      <div class="d-flex flex-column" style="position:sticky; top:0; z-index:30; background:var(--panel); border-right:1px solid var(--edge); border-bottom:1px solid var(--edge);">
+
+        <div class="d-flex align-items-center justify-content-between px-3 py-3" style="border-bottom:1px solid var(--edge);">
+          <div class="d-flex flex-column align-items-start">
+            <div class="d-flex align-items-center">
+              <div style="font-family:var(--mono); font-size:12px; letter-spacing:3px; font-weight:700; color:var(--ink); white-space:nowrap; margin-right:6px;">ПРОТОКОЛ</div>
+              <div class="d-flex align-items-center justify-content-center" style="width:16px; height:16px; border:1px solid {{градиент_1|color=#0089a3}}; color:{{градиент_1}}; font-family:var(--mono); font-weight:700; font-size:9px; border-radius:3px; background:{{градиент_1}}1a; flex:0 0 auto;">0</div>
+            </div>
+            <div class="d-none d-md-block mt-1" style="font-family:var(--mono); font-size:9px; letter-spacing:2px; color:var(--dim); white-space:nowrap;">СЕТЬ N-МИРОВ</div>
+          </div>
+          <a class="d-md-none" data-toggle="collapse" href="#mobileNavWorld" role="button" style="width:34px; height:34px; display:flex; align-items:center; justify-content:center; border-radius:6px; border:1px solid var(--edge); color:var(--ink); text-decoration:none; flex:0 0 auto;">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+        </div>
+
+        <div class="collapse d-md-block" id="mobileNavWorld">
+        <ul class="nav nav-pills flex-column px-2 py-2">
+          {{#вкладка_о_мире_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_о_мире_старт|checkbox=1}}active{{/вкладка_о_мире_старт}}" data-toggle="tab" href="#tab-o-mire" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-earth-americas" style="width:16px; text-align:center; color:{{градиент_1}}; margin-right:10px;"></i><span>О мире</span>
+            </a>
+          </li>
+          {{/вкладка_о_мире_показать}}
+          {{#вкладка_карта_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_карта_старт|checkbox}}active{{/вкладка_карта_старт}}" data-toggle="tab" href="#tab-karta" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-map" style="width:16px; text-align:center; color:{{градиент_1}}; margin-right:10px;"></i><span>Карта</span>
+            </a>
+          </li>
+          {{/вкладка_карта_показать}}
+          {{#вкладка_города_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_города_старт|checkbox}}active{{/вкладка_города_старт}}" data-toggle="tab" href="#tab-goroda" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-city" style="width:16px; text-align:center; color:{{градиент_1}}; margin-right:10px;"></i><span>Города</span>
+            </a>
+          </li>
+          {{/вкладка_города_показать}}
+          {{#вкладка_достопримечательности_показать|checkbox=1}}
+          <li class="nav-item">
+            <a class="nav-link {{#вкладка_достопримечательности_старт|checkbox}}active{{/вкладка_достопримечательности_старт}}" data-toggle="tab" href="#tab-dostoprim" style="display:flex; align-items:center; padding:10px 12px; margin:2px 0; border-radius:6px; color:var(--ink); font-size:13px; font-weight:600; white-space:nowrap;">
+              <i class="fa-solid fa-landmark" style="width:16px; text-align:center; color:{{градиент_1}}; margin-right:10px;"></i><span>Достопримечательности</span>
+            </a>
+          </li>
+          {{/вкладка_достопримечательности_показать}}
+        </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== CONTENT ============================== -->
+    <div class="col-12 col-md-9">
+      <div class="tab-content">
+
+        <!-- ==================== О МИРЕ ==================== -->
+        {{#вкладка_о_мире_показать}}
+        <div class="tab-pane fade {{#вкладка_о_мире_старт}}show active{{/вкладка_о_мире_старт}}" id="tab-o-mire">
+
+          <!-- hero: картинка + фирменный градиент мира — раздельными слоями, не составным background -->
+          <div style="position:relative; height:260px;">
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background-image:url('{{обложка_url=https://placehold.co/1200x400/eef1f6/c7ced9?text=%20}}'); background-position:center; background-size:cover;"></div>
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(135deg, {{градиент_1}}b3 0%, {{градиент_2|color=#7b2ff7}}00 65%);"></div>
+            <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(0deg, rgba(3,5,10,.55) 0%, rgba(3,5,10,0) 60%);"></div>
+            <div style="position:absolute; left:24px; bottom:18px; right:24px;">
+              <div style="font-size:26px; font-weight:700; color:#ffffff; line-height:1.1;">{{название_мира~АРКТУР-9}}</div>
+              <div class="mt-1" style="font-size:13px; color:rgba(255,255,255,.85);">{{тэглайн~Крупный транзитный узел на окраине известного пространства}}</div>
+            </div>
+          </div>
+
+          <div class="px-3 px-md-4 py-4">
+            <!-- полоса фактов -->
+            <div class="row">
+              <div class="col-6 col-md-3 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-users" style="color:{{градиент_1}};"></i>
+                  <div class="mt-2" style="font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Население</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{население~2.4 млн}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-cloud-sun" style="color:{{градиент_1}};"></i>
+                  <div class="mt-2" style="font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Климат</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{климат~умеренный}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-flag" style="color:{{градиент_1}};"></i>
+                  <div class="mt-2" style="font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Фракции</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{фракции~Архив Протокола, независимые кланы}}</div>
+                </div>
+              </div>
+              <div class="col-6 col-md-3 mb-3">
+                <div class="p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; height:100%;">
+                  <i class="fa-solid fa-door-open" style="color:{{градиент_1}};"></i>
+                  <div class="mt-2" style="font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Статус</div>
+                  <div style="font-size:14px; color:var(--ink); font-weight:600;">{{статус~открыт для посещения}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin:8px 0 10px;">// О МИРЕ</div>
+            <div style="font-size:13.5px; line-height:1.7; color:var(--ink);">{{описание|textarea~Мир на пересечении нескольких транзитных маршрутов Протокола — сюда стекаются архивисты, торговцы и те, кто предпочитает не привлекать лишнего внимания. Официально открыт для посещения; неофициально — стоит знать, куда не стоит соваться после заката.}}</div>
+          </div>
+        </div>
+        {{/вкладка_о_мире_показать}}
+
+        <!-- ==================== КАРТА ==================== -->
+        {{#вкладка_карта_показать}}
+        <div class="tab-pane fade {{#вкладка_карта_старт}}show active{{/вкладка_карта_старт}}" id="tab-karta">
+          <div class="px-3 px-md-4 py-4">
+            <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:14px;">// КАРТА</div>
+            <img src="{{карта_url~https://placehold.co/1000x700/eef1f6/8b93a1?text=%D0%9A%D0%B0%D1%80%D1%82%D0%B0}}" class="w-100" style="border-radius:8px; border:1px solid var(--edge); display:block;">
+          </div>
+        </div>
+        {{/вкладка_карта_показать}}
+
+        <!-- ==================== ГОРОДА ==================== -->
+        {{#вкладка_города_показать}}
+        <div class="tab-pane fade {{#вкладка_города_старт}}show active{{/вкладка_города_старт}}" id="tab-goroda">
+          <div class="px-3 px-md-4 py-4">
+            <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:14px;">// ГОРОДА</div>
+            <div class="row">
+              {{#each города}}
+              <div class="col-12 col-md-6 mb-3">
+                <div style="position:relative; background:var(--panel2); border:1px solid var(--edge); border-radius:8px; overflow:hidden;">
+                  <div style="height:140px; background-image:url('{{картинка_url~https://placehold.co/600x400}}'); background-position:center; background-size:cover;"></div>
+                  <div class="p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div style="font-size:14.5px; font-weight:700; color:var(--ink);">{{название~Норт-Хэвен}}</div>
+                      <div style="font-family:var(--mono); font-size:9.5px; letter-spacing:1px; color:#ffffff; background:linear-gradient(135deg, {{градиент_1}}, {{градиент_2}}); padding:2px 8px; border-radius:20px; white-space:nowrap;">{{роль~СТОЛИЦА}}</div>
+                    </div>
+                    <div class="mt-1" style="font-size:12.5px; line-height:1.6; color:var(--mute);">{{описание|textarea~Административный центр, известен архивными хранилищами и вечными очередями в них.}}</div>
+                  </div>
+                  <a href="{{ссылка|url}}" class="stretched-link"></a>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        {{/вкладка_города_показать}}
+
+        <!-- ==================== ДОСТОПРИМЕЧАТЕЛЬНОСТИ ==================== -->
+        {{#вкладка_достопримечательности_показать}}
+        <div class="tab-pane fade {{#вкладка_достопримечательности_старт}}show active{{/вкладка_достопримечательности_старт}}" id="tab-dostoprim">
+          <div class="px-3 px-md-4 py-4">
+            <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:14px;">// ДОСТОПРИМЕЧАТЕЛЬНОСТИ</div>
+            <div class="row">
+              {{#each достопримечательности}}
+              <div class="col-12 col-md-4 mb-3">
+                <div style="position:relative; background:var(--panel2); border:1px solid var(--edge); border-radius:8px; overflow:hidden;">
+                  <div style="height:110px; background-image:url('{{картинка_url~https://placehold.co/600x400}}'); background-position:center; background-size:cover;"></div>
+                  <div class="p-3">
+                    <i class="{{иконка|icon~fa-solid fa-mountain}} mb-1" style="color:{{градиент_1}};"></i>
+                    <div style="font-size:13.5px; font-weight:700; color:var(--ink);">{{название~Разлом Тишины}}</div>
+                    <div class="mt-1" style="font-size:12px; line-height:1.6; color:var(--mute);">{{описание|textarea~Место, где сигнал Протокола необъяснимо пропадает на 40 секунд. Популярно у туристов, не рекомендовано архивистам.}}</div>
+                  </div>
+                  <a href="{{ссылка|url}}" class="stretched-link"></a>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        {{/вкладка_достопримечательности_показать}}
+
+      </div>
+    </div>
+  </div>
+</div>

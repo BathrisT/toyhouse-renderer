@@ -1,0 +1,90 @@
+<!--
+  ШАБЛОН: Протокол 0 — организация (то, что видно ВНУТРИ папки, если папка это не
+  фотоальбом, а профиль компании/фракции/агентства). Не путать с templates/folders.html
+  (это внешний список папок-плиток) — этот шаблон вставляется НА страницу самой папки,
+  как "аккаунт" организации внутри сети, по аналогии с профилем персонажа.
+
+  Структурно проще character_page.html: тут максимум 2 вкладки, поэтому левое меню не
+  нужно — простой одноколоночный профиль + горизонтальные вкладки-пилюли ТОЛЬКО если
+  включено "Руководство" (см. ниже), иначе вкладок нет вообще, просто одна страница
+  "О нас". "О нас" всегда единственная обязательная вкладка (дефолт), "Руководство"
+  скрываемо через {{#вкладка_руководство_показать|checkbox=1}}.
+
+  Один акцентный цвет на выбор (не два, как у Мира — организации это не про
+  "разные миры", тут одна цветовая идентичность): {{акцент_цвет|color}}, тот же приём
+  альфа-суффикса, что и статус_цвет в character_page.html.
+
+  Синтаксис плейсхолдеров — в templates/README.md.
+-->
+<div id="protocol0-org" style="
+  --void:#ffffff; --panel:#f4f6fa; --panel2:#ffffff;
+  --edge:rgba(15,23,42,.10); --edge2:rgba(15,23,42,.16);
+  --ink:#12161f; --mute:#5c6472; --dim:#8b93a1;
+  --mono:'Consolas','SFMono-Regular','Cascadia Code',monospace;
+  --sans:'Segoe UI',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  background:var(--void); color:var(--ink); font-family:var(--sans); max-width:760px; margin:0 auto; -webkit-font-smoothing:antialiased;">
+
+  <div class="d-flex align-items-center" style="margin-bottom:16px;">
+    <div style="font-family:var(--mono); font-size:11px; letter-spacing:2px; font-weight:700; color:var(--ink); white-space:nowrap; margin-right:6px;">ПРОТОКОЛ</div>
+    <div class="d-flex align-items-center justify-content-center" style="width:14px; height:14px; border:1px solid var(--dim); color:var(--dim); font-family:var(--mono); font-weight:700; font-size:8px; border-radius:3px; flex:0 0 auto; margin-right:8px;">0</div>
+    <div style="font-family:var(--mono); font-size:9px; letter-spacing:1.5px; color:var(--dim);">· КОРПОРАТИВНЫЙ АККАУНТ</div>
+  </div>
+
+  <!-- шапка организации: квадратная эмблема (не круглая — отличие от персонажа-человека) -->
+  <div class="d-flex align-items-center" style="padding:18px; background:var(--panel2); border:1px solid var(--edge2); border-radius:10px;">
+    <img src="{{эмблема_url=https://placehold.co/120x120/f4f6fa/0089a3?text=%D0%9E}}" style="width:64px; height:64px; border-radius:12px; object-fit:cover; flex:0 0 auto; margin-right:16px; background:var(--panel);">
+    <div style="min-width:0;">
+      <div style="font-size:19px; font-weight:700; color:var(--ink); line-height:1.2;">{{название_компании~Архив Протокола, сектор 4}}</div>
+      <div class="mt-1" style="font-size:12.5px; color:var(--mute);">{{тэглайн~Учёт, хранение, контроль доступа}}</div>
+      <div class="d-inline-block mt-2" style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:{{акцент_цвет|color=#0089a3}}; background:{{акцент_цвет}}1a; border:1px solid {{акцент_цвет}}40; padding:2px 8px; border-radius:20px;">{{статус~АКТИВНА}}</div>
+    </div>
+  </div>
+
+  <!-- полоса фактов -->
+  <div class="row mt-3">
+    <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Основана</div><div style="font-size:13.5px; color:var(--ink); font-weight:600;">{{основана~2019}}</div></div>
+    <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Руководитель</div><div style="font-size:13.5px; color:var(--ink); font-weight:600;">{{руководитель~И. Соколова}}</div></div>
+    <div class="col-6 col-md-4 mb-2"><div style="font-family:var(--mono); font-size:10px; letter-spacing:1px; color:var(--dim); text-transform:uppercase;">Локация</div><div style="font-size:13.5px; color:var(--ink); font-weight:600;">{{локация~АРКТУР-9}}</div></div>
+  </div>
+
+  {{#вкладка_руководство_показать|checkbox=1}}
+  <ul class="nav nav-pills mt-4" style="border-bottom:1px solid var(--edge); padding-bottom:10px;">
+    <li class="nav-item mr-2">
+      <a class="nav-link active" data-toggle="tab" href="#tab-o-nas" style="padding:7px 14px; border-radius:20px; font-size:12.5px; font-weight:600; color:var(--ink);">О нас</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#tab-rukovodstvo" style="padding:7px 14px; border-radius:20px; font-size:12.5px; font-weight:600; color:var(--ink);">Руководство</a>
+    </li>
+  </ul>
+  {{/вкладка_руководство_показать}}
+
+  <div class="tab-content mt-3">
+    <div class="tab-pane fade show active" id="tab-o-nas">
+      <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:10px;">// ЦЕЛЬ</div>
+      <div style="font-size:13.5px; line-height:1.7; color:var(--ink);">{{миссия|textarea~Вести учёт всего, что попадает в сектор 4, и следить, чтобы оно там и оставалось — задокументированным, промаркированным и по возможности не создающим проблем.}}</div>
+
+      {{#доп_описание}}
+      <div class="mt-3 p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:6px; font-size:13px; line-height:1.7; color:var(--mute);">{{доп_описание|textarea~Дополнительно, если есть что рассказать...}}</div>
+      {{/доп_описание}}
+    </div>
+
+    {{#вкладка_руководство_показать}}
+    <div class="tab-pane fade" id="tab-rukovodstvo">
+      <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:12px;">// РУКОВОДСТВО</div>
+      <div class="row">
+        {{#each руководство}}
+        <div class="col-12 col-md-6 mb-3">
+          <div class="d-flex align-items-center p-3" style="background:var(--panel2); border:1px solid var(--edge); border-radius:8px;">
+            <img src="{{портрет_url~https://placehold.co/96x96}}" style="width:48px; height:48px; border-radius:50%; object-fit:cover; flex:0 0 auto; margin-right:12px; background:var(--panel);">
+            <div style="min-width:0;">
+              <div style="font-size:13.5px; font-weight:700; color:var(--ink);">{{имя~И. Соколова}}</div>
+              <div style="font-family:var(--mono); font-size:10px; letter-spacing:.5px; color:{{акцент_цвет}};">{{должность~архивариус-связной}}</div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/вкладка_руководство_показать}}
+  </div>
+</div>
