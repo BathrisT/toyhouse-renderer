@@ -1,0 +1,41 @@
+<!--
+  ШАБЛОН: Протокол 0 — папки (навигационная сетка разделов).
+  Отдельный самостоятельный виджет (не карточка персонажа) — сетка кликабельных
+  плиток-"папок" с картинкой, иконкой и подписью, обычно ссылки на подгалереи/разделы.
+  Не путать с шаблоном character_page — этот вставляется отдельно, где нужен такой
+  навигационный блок. Любое число плиток через {{#each папки}}.
+
+  Переосмысление классического паттерна "custom folders" (см. examples_from_toyhouse/
+  13_folders.html в исходниках гайда) под наши правила безопасности: там иконка+подпись
+  лежат прямо внутри <a>, у нас — паттерн stretched-link (див с контентом + пустая
+  <a class="stretched-link"> поверх), т.к. блочные элементы внутри <a> шинкует
+  санитайзер Тойхауза (см. КРИТИЧНО #3 в возможности_и_ограничения.md). Слои картинки
+  и затемнения — раздельные <div>, не составной background (см. КРИТИЧНО #2 там же).
+
+  Синтаксис плейсхолдеров — в templates/README.md.
+-->
+<div id="protocol0-folders" style="
+  --void:#ffffff; --edge:rgba(15,23,42,.10);
+  --mono:'Consolas','SFMono-Regular','Cascadia Code',monospace;
+  --sans:'Segoe UI',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --dim:#8b93a1;
+  background:var(--void); font-family:var(--sans); max-width:1000px; margin:0 auto;">
+
+  <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:2px; color:var(--dim); margin-bottom:10px;">{{заголовок=// РАЗДЕЛЫ}}</div>
+
+  <div class="row no-gutters">
+    {{#each папки}}
+    <div class="col-6 col-md-2 p-1">
+      <div style="position:relative; height:92px; border-radius:8px; overflow:hidden; border:1px solid var(--edge); box-shadow:2px 2px 6px rgba(0,0,0,.08);">
+        <div style="position:absolute; top:0; left:0; right:0; bottom:0; background-image:url('{{картинка_url~https://placehold.co/300x200}}'); background-position:center; background-size:cover;"></div>
+        <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.35);"></div>
+        <div class="d-flex flex-column align-items-center justify-content-center text-center" style="position:relative; height:100%; padding:8px; color:#ffffff;">
+          <i class="{{иконка~fa-solid fa-star}} fa-lg mb-1"></i>
+          <div style="font-family:var(--mono); font-size:11px; letter-spacing:.5px; line-height:1.2;">{{название~Название}}</div>
+        </div>
+        <a href="{{ссылка|url}}" class="stretched-link"></a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

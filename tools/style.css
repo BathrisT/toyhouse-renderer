@@ -241,6 +241,47 @@ html, body {
   cursor: pointer;
 }
 
+/* ---------- color picker (палитра + «другой») ---------- */
+
+.color-picker { display: block; position: relative; }
+
+.color-swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.color-swatch {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--edge-strong);
+  cursor: pointer;
+  padding: 0;
+}
+.color-swatch.selected {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+.color-swatch-other {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel2);
+  color: var(--mute);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.color-native-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .field-section {
   margin-top: 22px;
   padding-top: 14px;

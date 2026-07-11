@@ -61,8 +61,16 @@
 
   // ---------------------------------------------------------------- template loading
 
+  // Обычные fetch() без обхода кэша на некоторых серверах (например `python -m http.server`,
+  // который не шлёт Cache-Control) браузер всё равно может закэшировать надолго — правки
+  // в шаблоне тогда не подхватятся без жёсткой перезагрузки. cache:'no-store' + случайный
+  // параметр в URL надёжно обходят это.
+  function noCacheUrl(url) {
+    return url + (url.indexOf('?') === -1 ? '?' : '&') + '_=' + Math.random().toString(36).slice(2);
+  }
+
   async function loadManifest() {
-    const res = await fetch('../templates/manifest.json');
+    const res = await fetch(noCacheUrl('../templates/manifest.json'), { cache: 'no-store' });
     if (!res.ok) throw new Error('Не смог загрузить manifest.json (' + res.status + ')');
     state.manifest = await res.json();
   }
@@ -71,7 +79,7 @@
     if (state.templateCache[templateId]) return state.templateCache[templateId];
     const meta = state.manifest.find(t => t.id === templateId);
     if (!meta) throw new Error('Шаблон "' + templateId + '" не найден в manifest.json');
-    const res = await fetch('../templates/' + meta.файл);
+    const res = await fetch(noCacheUrl('../templates/' + meta.файл), { cache: 'no-store' });
     if (!res.ok) throw new Error('Не смог загрузить шаблон ' + meta.файл + ' (' + res.status + ')');
     const raw = await res.text();
 
@@ -147,6 +155,65 @@
 
   // ---------------------------------------------------------------- form rendering
 
+  // Готовая палитра для |color: сначала показываем эти свотчи, «Другой» открывает
+  // обычный нативный выбор цвета (для чего угодно за пределами палитры).
+  const COLOR_PRESETS = ['#00fbff', '#1c121d', '#a678da', '#f4e8f6', '#e39eef', '#000000', '#ffffff'];
+
+  function isPresetColor(value) {
+    return COLOR_PRESETS.some(p => p.toLowerCase() === (value || '').toLowerCase());
+  }
+
+  function buildColorInput(fieldDef, initialValue, onChange) {
+    const fallback = fieldDef.default || '#0089a3';
+    let value = initialValue || fallback;
+
+    const wrap = el('div', { class: 'color-picker' });
+    const row = el('div', { class: 'color-swatch-row' });
+
+    // спрятанный нативный input[type=color] — открывается по клику на «Другой»,
+    // сам по себе не виден, но именно он выдаёт итоговое значение для «своего» цвета
+    const native = el('input', { type: 'color', class: 'color-native-input' });
+    native.value = /^#[0-9a-f]{6}$/i.test(value) ? value : fallback;
+
+    const otherBtn = el('button', { type: 'button', class: 'color-swatch color-swatch-other', title: 'Другой цвет', text: '?' });
+
+    function refresh() {
+      row.querySelectorAll('.color-swatch[data-color]').forEach(sw => {
+        sw.classList.toggle('selected', sw.dataset.color.toLowerCase() === value.toLowerCase());
+      });
+      const custom = !isPresetColor(value);
+      otherBtn.classList.toggle('selected', custom);
+      otherBtn.style.background = custom ? value : '';
+      otherBtn.textContent = custom ? '' : '?';
+    }
+
+    COLOR_PRESETS.forEach(color => {
+      const sw = el('button', { type: 'button', class: 'color-swatch', title: color });
+      sw.dataset.color = color;
+      sw.style.background = color;
+      sw.addEventListener('click', () => {
+        value = color;
+        native.value = color;
+        refresh();
+        onChange(value);
+      });
+      row.appendChild(sw);
+    });
+
+    otherBtn.addEventListener('click', () => native.click());
+    native.addEventListener('input', () => {
+      value = native.value;
+      refresh();
+      onChange(value);
+    });
+
+    row.appendChild(otherBtn);
+    refresh();
+    wrap.appendChild(row);
+    wrap.appendChild(native);
+    return wrap;
+  }
+
   // Строит <input>/<textarea> под fieldDef (учитывает |textarea, |url, |number, |color,
   // |checkbox, и placeholder из {{поле~подсказка}} — в отличие от {{поле=дефолт}}, значение
   // НЕ подставляется, только показывается серым как подсказка формата).
@@ -160,17 +227,18 @@
       input.addEventListener('change', () => onChange(input.checked ? '1' : ''));
       return input;
     }
+    if (fieldDef.filter === 'color') {
+      return buildColorInput(fieldDef, initialValue, onChange);
+    }
     let input;
     if (fieldDef.filter === 'textarea') {
       input = el('textarea', { class: 'field-textarea' });
-    } else if (fieldDef.filter === 'color') {
-      input = el('input', { type: 'color', class: 'field-input field-input-color' });
     } else {
       const type = fieldDef.filter === 'url' ? 'url' : (fieldDef.filter === 'number' ? 'number' : 'text');
       input = el('input', { type: type, class: 'field-input' });
     }
     if (fieldDef.placeholder) input.setAttribute('placeholder', fieldDef.placeholder);
-    input.value = initialValue || (fieldDef.filter === 'color' ? '#0089a3' : '');
+    input.value = initialValue || '';
     input.addEventListener('input', () => onChange(input.value));
     return input;
   }
