@@ -167,14 +167,24 @@
     return String(val).trim() !== '';
   }
 
-  function render(nodes, contextStack) {
+  // renderers — необязательная карта {filterName: (rawValue) => html}. Движок сам не
+  // знает про markdown/marked (остаётся без зависимостей) — если у поля filter==='markdown'
+  // и renderers.markdown передан, значение вставляется КАК ЕСТЬ (уже готовый HTML от
+  // конвертера), без escapeHtml. Без renderers.markdown — обычное экранирование, как у
+  // любого другого поля (безопасный fallback, если marked не загрузился).
+  function render(nodes, contextStack, renderers) {
     let out = '';
     for (const node of nodes) {
       if (node.type === 'text') { out += node.value; continue; }
       if (node.type === 'index') { out += (contextStack[0] && contextStack[0].__index__) || ''; continue; }
       if (node.type === 'var') {
         const val = resolveVar(node.name, contextStack);
-        out += escapeHtml(val === undefined || val === null ? '' : val);
+        const raw = val === undefined || val === null ? '' : String(val);
+        if (node.filter && renderers && typeof renderers[node.filter] === 'function') {
+          out += renderers[node.filter](raw);
+        } else {
+          out += escapeHtml(raw);
+        }
         continue;
       }
       if (node.type === 'section') {
@@ -183,10 +193,10 @@
           const arr = Array.isArray(val) ? val : [];
           arr.forEach((item, idx) => {
             const itemCtx = Object.assign({}, item, { __index__: idx + 1 });
-            out += render(node.children, [itemCtx].concat(contextStack));
+            out += render(node.children, [itemCtx].concat(contextStack), renderers);
           });
         } else if (isTruthy(val)) {
-          out += render(node.children, contextStack);
+          out += render(node.children, contextStack, renderers);
         }
         continue;
       }
@@ -194,8 +204,8 @@
     return out;
   }
 
-  function renderTemplate(ast, data) {
-    return render(ast, [data]);
+  function renderTemplate(ast, data, renderers) {
+    return render(ast, [data], renderers);
   }
 
   global.Templater = {

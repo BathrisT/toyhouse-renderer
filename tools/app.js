@@ -439,9 +439,123 @@
     return wrap;
   }
 
+  // ---------------------------------------------------------------- markdown (|markdown)
+
+  // Свой renderer для marked — marked отдаёт голые теги без единого стиля, а <style>
+  // на Тойхаузе нельзя, поэтому стили вшиваются прямо в каждый сгенерированный тег.
+  // Использует var(--ink)/var(--accent1)/... — эти переменные должны быть объявлены на
+  // корневом div шаблона, куда попадёт результат (см. templates/reader.html).
+  let markdownConverter = null;
+
+  function buildMarkedRenderer() {
+    const renderer = new marked.Renderer();
+    const serif = 'var(--serif, Georgia, serif)';
+
+    renderer.heading = function (text, level) {
+      const size = level <= 2 ? '22px' : '17px';
+      return '<div style="font-family:' + serif + '; font-size:' + size + '; font-weight:700; color:var(--ink); margin:28px 0 12px; line-height:1.3;">' + text + '</div>';
+    };
+    renderer.paragraph = function (text) {
+      return '<p style="font-family:' + serif + '; font-size:16px; line-height:1.75; color:var(--ink); margin:0 0 18px;">' + text + '</p>';
+    };
+    renderer.strong = function (text) { return '<strong style="font-weight:700;">' + text + '</strong>'; };
+    renderer.em = function (text) { return '<em style="font-style:italic;">' + text + '</em>'; };
+    renderer.blockquote = function (quote) {
+      return '<div style="border-left:2px solid var(--accent1); padding:2px 0 2px 16px; margin:20px 0; font-style:italic; color:var(--mute);">' + quote + '</div>';
+    };
+    renderer.list = function (body, ordered) {
+      const tag = ordered ? 'ol' : 'ul';
+      return '<' + tag + ' style="font-family:' + serif + '; font-size:16px; line-height:1.75; color:var(--ink); margin:0 0 18px; padding-left:22px;">' + body + '</' + tag + '>';
+    };
+    renderer.listitem = function (text) { return '<li style="margin-bottom:6px;">' + text + '</li>'; };
+    renderer.hr = function () {
+      return '<div style="text-align:center; margin:32px 0; font-family:var(--mono); font-size:11px; letter-spacing:6px; color:var(--dim);">• • •</div>';
+    };
+    renderer.link = function (href, title, text) {
+      return '<a href="' + href + '" style="color:var(--accent1); text-decoration:underline;">' + text + '</a>';
+    };
+    renderer.image = function (href, title, text) {
+      let out = '<img src="' + href + '" alt="' + (text || '') + '" style="width:100%; border-radius:8px; display:block; margin:20px 0 4px; object-fit:cover;">';
+      if (title) out += '<div style="text-align:center; font-family:var(--mono); font-size:11.5px; color:var(--dim); margin-bottom:20px;">' + title + '</div>';
+      return out;
+    };
+    renderer.codespan = function (code) {
+      return '<code style="font-family:var(--mono); background:var(--panel3); padding:1px 5px; border-radius:4px; font-size:14px;">' + code + '</code>';
+    };
+    return renderer;
+  }
+
+  // Возвращает функцию (markdownText) => html, либо null если marked не загрузился
+  // (например упал CDN) — тогда движок сам откатится на обычное экранирование поля.
+  function getMarkdownConverter() {
+    if (markdownConverter) return markdownConverter;
+    if (typeof marked === 'undefined') return null;
+    marked.setOptions({ renderer: buildMarkedRenderer(), breaks: true });
+    markdownConverter = function (text) { return marked.parse(text || ''); };
+    return markdownConverter;
+  }
+
+  // Панель форматирования над textarea — вставляет markdown-синтаксис в позицию курсора,
+  // чтобы не печатать **/##/> руками (особенно неудобно с телефонной клавиатуры).
+  function buildMarkdownInput(fieldDef, initialValue, onChange) {
+    const wrap = el('div', { class: 'markdown-field' });
+    const toolbar = el('div', { class: 'markdown-toolbar' });
+    const textarea = el('textarea', { class: 'field-textarea markdown-textarea' });
+    if (fieldDef.placeholder) textarea.setAttribute('placeholder', fieldDef.placeholder);
+    textarea.value = initialValue || '';
+    textarea.addEventListener('input', () => onChange(textarea.value));
+
+    function fireChange() {
+      textarea.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+
+    function wrapSelection(before, after, placeholderText) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const hasSelection = end > start;
+      const middle = hasSelection ? textarea.value.slice(start, end) : placeholderText;
+      textarea.value = textarea.value.slice(0, start) + before + middle + after + textarea.value.slice(end);
+      const selStart = start + before.length;
+      const selEnd = selStart + middle.length;
+      textarea.focus();
+      textarea.setSelectionRange(hasSelection ? selEnd : selStart, selEnd);
+      fireChange();
+    }
+
+    function prefixLine(prefix) {
+      const start = textarea.selectionStart;
+      const value = textarea.value;
+      const lineStart = value.lastIndexOf('\n', start - 1) + 1;
+      textarea.value = value.slice(0, lineStart) + prefix + value.slice(lineStart);
+      const cursorPos = start + prefix.length;
+      textarea.focus();
+      textarea.setSelectionRange(cursorPos, cursorPos);
+      fireChange();
+    }
+
+    const buttons = [
+      { label: 'Ж', title: 'Жирный', action: function () { wrapSelection('**', '**', 'жирный текст'); } },
+      { label: 'К', title: 'Курсив', action: function () { wrapSelection('*', '*', 'курсив'); } },
+      { label: 'H2', title: 'Заголовок', action: function () { prefixLine('## '); } },
+      { label: '•', title: 'Список', action: function () { prefixLine('- '); } },
+      { label: '“', title: 'Цитата', action: function () { prefixLine('> '); } },
+      { label: '—', title: 'Разделитель сцены', action: function () { wrapSelection('\n\n---\n\n', '', ''); } },
+      { label: '🖼', title: 'Картинка', action: function () { wrapSelection('![', '](https://... "подпись, необязательно")', 'описание'); } },
+    ];
+    buttons.forEach(function (b) {
+      const btn = el('button', { type: 'button', class: 'markdown-toolbar-btn', title: b.title, text: b.label });
+      btn.addEventListener('click', function (e) { e.preventDefault(); b.action(); });
+      toolbar.appendChild(btn);
+    });
+
+    wrap.appendChild(toolbar);
+    wrap.appendChild(textarea);
+    return wrap;
+  }
+
   // Строит <input>/<textarea> под fieldDef (учитывает |textarea, |url, |number, |color,
-  // |checkbox, |icon, и placeholder из {{поле~подсказка}} — в отличие от {{поле=дефолт}},
-  // значение НЕ подставляется, только показывается серым как подсказка формата).
+  // |checkbox, |icon, |markdown, и placeholder из {{поле~подсказка}} — в отличие от
+  // {{поле=дефолт}}, значение НЕ подставляется, только показывается серым как подсказка формата).
   // |checkbox — булево поле: значение "1" = включено, "" = выключено (используется
   // вместе с {{#поле}}...{{/поле}} в шаблоне для условных блоков — показать/скрыть
   // пункт меню, назначить вкладку стартовой и т.д.)
@@ -457,6 +571,9 @@
     }
     if (fieldDef.filter === 'icon') {
       return buildIconInput(fieldDef, initialValue, onChange);
+    }
+    if (fieldDef.filter === 'markdown') {
+      return buildMarkdownInput(fieldDef, initialValue, onChange);
     }
     let input;
     if (fieldDef.filter === 'textarea') {
@@ -605,7 +722,8 @@
     const character = getActiveCharacter();
     if (!character) return;
     const tpl = await loadTemplate(character.templateId);
-    const fragment = Templater.renderTemplate(tpl.ast, character.данные).trim();
+    const md = getMarkdownConverter();
+    const fragment = Templater.renderTemplate(tpl.ast, character.данные, md ? { markdown: md } : undefined).trim();
 
     document.getElementById('codeOutput').value = fragment;
     document.getElementById('previewFrame').srcdoc = buildFullDocument(fragment, character.название);

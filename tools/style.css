@@ -309,6 +309,39 @@ html, body {
 }
 .field-textarea { min-height: 70px; resize: vertical; }
 
+/* ---------- markdown field (|markdown) ---------- */
+
+.markdown-field { display: block; }
+
+.markdown-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.markdown-toolbar-btn {
+  flex: 0 0 auto;
+  min-width: 30px;
+  height: 28px;
+  padding: 0 8px;
+  background: var(--panel2);
+  color: var(--ink);
+  border: 1px solid var(--edge-strong);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.markdown-toolbar-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.markdown-textarea {
+  min-height: 220px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
 .field-label-checkbox {
   display: flex;
   align-items: center;

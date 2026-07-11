@@ -1,0 +1,48 @@
+<!--
+  ШАБЛОН: Протокол 0 — читалка (для лора и подобного длинного текста).
+  Отдельная самостоятельная страница — один документ, без вкладок, без навигации,
+  без кнопки "назад". Текст пишется в markdown ({{текст|markdown}}) — конвертация в
+  HTML происходит В ИНСТРУМЕНТЕ (tools/app.js, marked.js + свой renderer с вшитыми
+  inline-стилями под тему), на Тойхауз улетает уже готовый статичный HTML — ни
+  markdown-синтаксиса, ни marked, ни какого-либо JS там не будет. Это значит: если
+  позже захочется поправить текст главы, править нужно тут, в инструменте (данные
+  живут в localStorage как markdown-исходник), а не в уже вставленном на Тойхаузе
+  HTML — тот статичный, без обратной связи с markdown.
+
+  Своя типографика — сериф для заголовка/подзаголовка/тела текста (--serif), только
+  внутри этой страницы, сознательное исключение из общей sans+mono системы ради
+  "режима чтения" (см. design_brainstorm.md). Системный сериф (Georgia и fallback-
+  стек), не гугл-шрифт — не проверено вживую, пропустит ли Тойхауз <link> на внешний
+  шрифт в поле профиля, а системный гарантированно работает везде без риска.
+
+  Фирменный градиент (градиент_1/градиент_2) — та же схема, что у world.html:
+  объявлен один раз как --accent1/--accent2 в style корневого div, используется
+  точечно (лого-метка + разделитель под заголовком), не разбросан по всей странице.
+
+  Поддержка markdown-картинок: ![подпись-alt](URL "необязательная подпись под фото") —
+  подпись в кавычках попадёт под картинку мелким текстом, если её не писать — просто
+  картинка без подписи.
+
+  Синтаксис плейсхолдеров и |markdown — в templates/README.md.
+-->
+<div id="protocol0-reader" style="
+  --void:#ffffff; --panel3:#f4f6fa;
+  --edge:rgba(15,23,42,.10);
+  --ink:#12161f; --mute:#5c6472; --dim:#8b93a1;
+  --accent1:{{градиент_1|color=#0089a3}}; --accent2:{{градиент_2|color=#7b2ff7}};
+  --mono:'Consolas','SFMono-Regular','Cascadia Code',monospace;
+  --serif:Georgia,'Iowan Old Style','Palatino Linotype','Book Antiqua',Palatino,serif;
+  background:var(--void); color:var(--ink); font-family:var(--serif); max-width:680px; margin:0 auto; padding:44px 20px 90px; -webkit-font-smoothing:antialiased;">
+
+  <div class="d-flex align-items-center" style="margin-bottom:40px;">
+    <div style="font-family:var(--mono); font-size:10px; letter-spacing:2px; font-weight:700; color:var(--ink); white-space:nowrap; margin-right:6px;">ПРОТОКОЛ</div>
+    <div class="d-flex align-items-center justify-content-center" style="width:14px; height:14px; border:1px solid var(--accent1); color:var(--accent1); font-family:var(--mono); font-weight:700; font-size:8px; border-radius:3px; background:{{градиент_1}}1a; flex:0 0 auto;">0</div>
+  </div>
+
+  <div style="font-size:32px; font-weight:700; line-height:1.25; color:var(--ink);">{{заголовок~Название главы}}</div>
+  <div class="mt-2" style="font-size:15px; font-style:italic; color:var(--mute);">{{подзаголовок~Короткий подзаголовок или эпиграф}}</div>
+
+  <div style="height:2px; margin:26px 0 34px; background:linear-gradient(90deg, var(--accent1), var(--accent2), transparent);"></div>
+
+  <div id="reader-body">{{текст|markdown~Текст главы в markdown — **жирный**, *курсив*, ## заголовки, > цитаты, списки, ![картинки](url) и разделители сцен через панель форматирования в редакторе.}}</div>
+</div>
