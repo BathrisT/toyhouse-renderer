@@ -6,6 +6,7 @@
 <title>Протокол 0 — Админка</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='7' fill='%23f4f6fa' stroke='%230089a3' stroke-width='2'/%3E%3Ctext x='16' y='23' font-family='Consolas,monospace' font-size='19' font-weight='700' fill='%230089a3' text-anchor='middle'%3E0%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 
@@ -49,6 +50,24 @@
     <div class="modal-actions">
       <button id="btnNewCharCancel" class="btn">Отмена</button>
       <button id="btnNewCharCreate" class="btn btn-primary">Создать</button>
+    </div>
+  </div>
+</div>
+
+<!-- выбор иконки для полей |icon -->
+<div id="iconPickerModal" class="modal hidden">
+  <div class="modal-box icon-picker-box">
+    <h3>Выбор иконки</h3>
+    <input id="iconPickerSearch" type="text" class="field-input" placeholder="Поиск: корона, discord, fire...">
+    <div id="iconPickerGrid" class="icon-picker-grid"></div>
+    <label class="field-label">Свой класс (если нет в списке)
+      <div class="icon-picker-custom-row">
+        <input id="iconPickerCustomInput" type="text" class="field-input" placeholder="fa-solid fa-...">
+        <button id="btnIconPickerApplyCustom" class="btn btn-small">ОК</button>
+      </div>
+    </label>
+    <div class="modal-actions">
+      <button id="btnIconPickerCancel" class="btn">Отмена</button>
     </div>
   </div>
 </div>

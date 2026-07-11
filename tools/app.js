@@ -214,9 +214,234 @@
     return wrap;
   }
 
+  // Курируемая «избранная» подборка под тематику Протокола 0 — показывается сразу,
+  // без поиска (быстро, тематично, не нужно листать полторы тысячи иконок). cls —
+  // то, что попадёт в атрибут class целиком.
+  const ICON_FEATURED = [
+    { cls: 'fa-solid fa-star', label: 'Звезда' },
+    { cls: 'fa-solid fa-heart', label: 'Сердце' },
+    { cls: 'fa-solid fa-bookmark', label: 'Закладка' },
+    { cls: 'fa-solid fa-flag', label: 'Флаг' },
+    { cls: 'fa-solid fa-tag', label: 'Тег' },
+    { cls: 'fa-solid fa-bell', label: 'Колокол' },
+    { cls: 'fa-solid fa-gear', label: 'Шестерня' },
+    { cls: 'fa-solid fa-lock', label: 'Замок' },
+    { cls: 'fa-solid fa-lock-open', label: 'Открытый замок' },
+    { cls: 'fa-solid fa-eye', label: 'Глаз' },
+    { cls: 'fa-solid fa-eye-slash', label: 'Скрыть' },
+    { cls: 'fa-solid fa-magnifying-glass', label: 'Поиск' },
+    { cls: 'fa-solid fa-link', label: 'Ссылка' },
+    { cls: 'fa-solid fa-globe', label: 'Глобус' },
+    { cls: 'fa-solid fa-compass', label: 'Компас' },
+    { cls: 'fa-solid fa-map', label: 'Карта' },
+    { cls: 'fa-solid fa-book', label: 'Книга' },
+    { cls: 'fa-solid fa-book-open', label: 'Открытая книга' },
+    { cls: 'fa-solid fa-folder', label: 'Папка' },
+    { cls: 'fa-solid fa-folder-open', label: 'Открытая папка' },
+    { cls: 'fa-solid fa-images', label: 'Галерея' },
+    { cls: 'fa-solid fa-image', label: 'Картинка' },
+    { cls: 'fa-solid fa-camera', label: 'Камера' },
+    { cls: 'fa-solid fa-music', label: 'Музыка' },
+    { cls: 'fa-solid fa-video', label: 'Видео' },
+    { cls: 'fa-solid fa-file', label: 'Файл' },
+    { cls: 'fa-solid fa-envelope', label: 'Письмо' },
+    { cls: 'fa-solid fa-comment', label: 'Комментарий' },
+    { cls: 'fa-solid fa-share-nodes', label: 'Поделиться' },
+    { cls: 'fa-solid fa-thumbtack', label: 'Кнопка' },
+    { cls: 'fa-solid fa-calendar', label: 'Календарь' },
+    { cls: 'fa-solid fa-clock', label: 'Часы' },
+    { cls: 'fa-solid fa-circle-info', label: 'Инфо' },
+    { cls: 'fa-solid fa-circle-check', label: 'Галочка' },
+    { cls: 'fa-solid fa-circle-xmark', label: 'Крестик' },
+    { cls: 'fa-solid fa-gift', label: 'Подарок' },
+    { cls: 'fa-solid fa-trophy', label: 'Трофей' },
+    { cls: 'fa-solid fa-medal', label: 'Медаль' },
+    { cls: 'fa-solid fa-key', label: 'Ключ' },
+    { cls: 'fa-solid fa-palette', label: 'Палитра' },
+    { cls: 'fa-solid fa-paintbrush', label: 'Кисть' },
+    { cls: 'fa-solid fa-pen-nib', label: 'Перо' },
+    { cls: 'fa-solid fa-wand-magic-sparkles', label: 'Магия' },
+    { cls: 'fa-solid fa-user', label: 'Пользователь' },
+    { cls: 'fa-solid fa-user-group', label: 'Группа' },
+    { cls: 'fa-solid fa-crown', label: 'Корона' },
+    { cls: 'fa-solid fa-mask', label: 'Маска' },
+    { cls: 'fa-solid fa-ghost', label: 'Призрак' },
+    { cls: 'fa-solid fa-skull', label: 'Череп' },
+    { cls: 'fa-solid fa-dragon', label: 'Дракон' },
+    { cls: 'fa-solid fa-paw', label: 'Лапа' },
+    { cls: 'fa-solid fa-feather', label: 'Перо (птица)' },
+    { cls: 'fa-solid fa-hat-wizard', label: 'Шляпа волшебника' },
+    { cls: 'fa-solid fa-handshake', label: 'Рукопожатие' },
+    { cls: 'fa-solid fa-fire', label: 'Огонь' },
+    { cls: 'fa-solid fa-bolt', label: 'Молния' },
+    { cls: 'fa-solid fa-snowflake', label: 'Снежинка' },
+    { cls: 'fa-solid fa-droplet', label: 'Капля' },
+    { cls: 'fa-solid fa-leaf', label: 'Лист' },
+    { cls: 'fa-solid fa-tree', label: 'Дерево' },
+    { cls: 'fa-solid fa-mountain', label: 'Гора' },
+    { cls: 'fa-solid fa-water', label: 'Вода' },
+    { cls: 'fa-solid fa-sun', label: 'Солнце' },
+    { cls: 'fa-solid fa-moon', label: 'Луна' },
+    { cls: 'fa-solid fa-wind', label: 'Ветер' },
+    { cls: 'fa-solid fa-seedling', label: 'Росток' },
+    { cls: 'fa-solid fa-meteor', label: 'Метеор' },
+    { cls: 'fa-solid fa-robot', label: 'Робот' },
+    { cls: 'fa-solid fa-satellite', label: 'Спутник' },
+    { cls: 'fa-solid fa-satellite-dish', label: 'Антенна' },
+    { cls: 'fa-solid fa-rocket', label: 'Ракета' },
+    { cls: 'fa-solid fa-atom', label: 'Атом' },
+    { cls: 'fa-solid fa-dna', label: 'ДНК' },
+    { cls: 'fa-solid fa-microchip', label: 'Микрочип' },
+    { cls: 'fa-solid fa-radiation', label: 'Радиация' },
+    { cls: 'fa-solid fa-biohazard', label: 'Биоопасность' },
+    { cls: 'fa-solid fa-brain', label: 'Мозг' },
+    { cls: 'fa-solid fa-circle-nodes', label: 'Сеть/связи' },
+    { cls: 'fa-solid fa-network-wired', label: 'Сеть (кабель)' },
+    { cls: 'fa-solid fa-shield', label: 'Щит' },
+    { cls: 'fa-solid fa-shield-halved', label: 'Щит (гербовый)' },
+    { cls: 'fa-solid fa-user-shield', label: 'Защита пользователя' },
+    { cls: 'fa-solid fa-user-lock', label: 'Ограниченный доступ' },
+    { cls: 'fa-solid fa-vial', label: 'Пробирка' },
+    { cls: 'fa-solid fa-flask', label: 'Колба' },
+    { cls: 'fa-solid fa-syringe', label: 'Шприц' },
+    { cls: 'fa-solid fa-pills', label: 'Таблетки' },
+    { cls: 'fa-solid fa-heart-crack', label: 'Разбитое сердце' },
+    { cls: 'fa-solid fa-triangle-exclamation', label: 'Предупреждение' },
+    { cls: 'fa-solid fa-skull-crossbones', label: 'Череп с костями' },
+    { cls: 'fa-solid fa-ban', label: 'Запрет' },
+    { cls: 'fa-solid fa-circle-exclamation', label: 'Внимание' },
+    { cls: 'fa-solid fa-house', label: 'Дом' },
+    { cls: 'fa-solid fa-building', label: 'Здание' },
+    { cls: 'fa-solid fa-city', label: 'Город' },
+    { cls: 'fa-solid fa-earth-americas', label: 'Мир/планета' },
+    { cls: 'fa-solid fa-location-dot', label: 'Локация' },
+    { cls: 'fa-solid fa-door-open', label: 'Открытая дверь' },
+    { cls: 'fa-solid fa-archway', label: 'Арка' },
+    { cls: 'fa-solid fa-landmark', label: 'Памятник' },
+    { cls: 'fa-brands fa-discord', label: 'Discord' },
+    { cls: 'fa-brands fa-telegram', label: 'Telegram' },
+    { cls: 'fa-brands fa-x-twitter', label: 'X / Twitter' },
+    { cls: 'fa-brands fa-instagram', label: 'Instagram' },
+    { cls: 'fa-brands fa-tumblr', label: 'Tumblr' },
+    { cls: 'fa-brands fa-deviantart', label: 'DeviantArt' },
+    { cls: 'fa-brands fa-twitch', label: 'Twitch' },
+    { cls: 'fa-brands fa-youtube', label: 'YouTube' },
+    { cls: 'fa-brands fa-tiktok', label: 'TikTok' },
+    { cls: 'fa-brands fa-patreon', label: 'Patreon' },
+    { cls: 'fa-brands fa-github', label: 'GitHub' },
+    { cls: 'fa-brands fa-spotify', label: 'Spotify' },
+    { cls: 'fa-brands fa-bluesky', label: 'Bluesky' },
+    { cls: 'fa-brands fa-pinterest', label: 'Pinterest' },
+    { cls: 'fa-brands fa-facebook', label: 'Facebook' },
+  ];
+
+  let iconPickerCallback = null;
+
+  // Полный список иконок Font Awesome Free (~1880 штук) — сжатая версия официальных
+  // метаданных (только id/label/стили/поисковые термины, без SVG-путей — оригинальный
+  // файл весит ~4.8МБ, наш tools/icon-list.json — ~250КБ). Грузится один раз в фоне
+  // при старте инструмента (см. init()), используется только когда что-то ищут —
+  // без запроса показывается компактная ICON_FEATURED.
+  const iconLibrary = { list: null, loading: null };
+
+  function loadIconLibrary() {
+    if (iconLibrary.list) return Promise.resolve(iconLibrary.list);
+    if (iconLibrary.loading) return iconLibrary.loading;
+    iconLibrary.loading = fetch('icon-list.json')
+      .then(res => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+      .then(list => { iconLibrary.list = list; return list; })
+      .catch(() => { iconLibrary.list = []; return []; });
+    return iconLibrary.loading;
+  }
+
+  function fullLibraryEntryToPreset(entry) {
+    const style = entry.styles[0]; // solid, если есть — оно первое в метаданных FA
+    return { cls: style + ' fa-' + entry.id, label: entry.label };
+  }
+
+  function renderIconGrid(filterText) {
+    const grid = document.getElementById('iconPickerGrid');
+    grid.innerHTML = '';
+    const q = filterText.trim().toLowerCase();
+
+    if (!q) {
+      renderIconCells(grid, ICON_FEATURED);
+      return;
+    }
+
+    if (!iconLibrary.list) {
+      grid.appendChild(el('div', { class: 'icon-picker-empty', text: 'Загружаю полный список иконок…' }));
+      loadIconLibrary().then(() => {
+        // если модалка всё ещё открыта с тем же запросом — перерисовать уже по полному списку
+        if (!document.getElementById('iconPickerModal').classList.contains('hidden')) {
+          renderIconGrid(document.getElementById('iconPickerSearch').value);
+        }
+      });
+      return;
+    }
+
+    const matches = iconLibrary.list.filter(entry => entry.s.includes(q));
+    const list = matches.slice(0, 120).map(fullLibraryEntryToPreset);
+    renderIconCells(grid, list, matches.length > 120 ? matches.length : null);
+  }
+
+  function renderIconCells(grid, list, totalMatches) {
+    if (!list.length) {
+      grid.appendChild(el('div', { class: 'icon-picker-empty', text: 'Ничего не найдено — впиши свой класс ниже.' }));
+      return;
+    }
+    list.forEach(icon => {
+      const cell = el('button', { type: 'button', class: 'icon-picker-cell', title: icon.cls });
+      cell.appendChild(el('i', { class: icon.cls }));
+      cell.appendChild(el('span', { text: icon.label }));
+      cell.addEventListener('click', () => {
+        if (iconPickerCallback) iconPickerCallback(icon.cls);
+        closeIconPicker();
+      });
+      grid.appendChild(cell);
+    });
+    if (totalMatches) {
+      grid.appendChild(el('div', { class: 'icon-picker-more', text: 'Показаны первые 120 из ' + totalMatches + ' — уточни запрос.' }));
+    }
+  }
+
+  function openIconPicker(currentValue, onSelect) {
+    iconPickerCallback = onSelect;
+    document.getElementById('iconPickerSearch').value = '';
+    document.getElementById('iconPickerCustomInput').value = currentValue || '';
+    renderIconGrid('');
+    document.getElementById('iconPickerModal').classList.remove('hidden');
+    document.getElementById('iconPickerSearch').focus();
+  }
+
+  function closeIconPicker() {
+    document.getElementById('iconPickerModal').classList.add('hidden');
+    iconPickerCallback = null;
+  }
+
+  function buildIconInput(fieldDef, initialValue, onChange) {
+    let value = initialValue || fieldDef.default || '';
+    const wrap = el('div', { class: 'icon-picker-field' });
+    const btn = el('button', { type: 'button', class: 'icon-picker-trigger' });
+    const preview = el('i', { class: value || 'fa-solid fa-icons' });
+    const label = el('span', { class: 'icon-picker-trigger-label', text: value || 'Выбрать иконку' });
+    btn.appendChild(preview);
+    btn.appendChild(label);
+    btn.addEventListener('click', () => {
+      openIconPicker(value, (newVal) => {
+        value = newVal;
+        preview.className = value;
+        label.textContent = value;
+        onChange(value);
+      });
+    });
+    wrap.appendChild(btn);
+    return wrap;
+  }
+
   // Строит <input>/<textarea> под fieldDef (учитывает |textarea, |url, |number, |color,
-  // |checkbox, и placeholder из {{поле~подсказка}} — в отличие от {{поле=дефолт}}, значение
-  // НЕ подставляется, только показывается серым как подсказка формата).
+  // |checkbox, |icon, и placeholder из {{поле~подсказка}} — в отличие от {{поле=дефолт}},
+  // значение НЕ подставляется, только показывается серым как подсказка формата).
   // |checkbox — булево поле: значение "1" = включено, "" = выключено (используется
   // вместе с {{#поле}}...{{/поле}} в шаблоне для условных блоков — показать/скрыть
   // пункт меню, назначить вкладку стартовой и т.д.)
@@ -229,6 +454,9 @@
     }
     if (fieldDef.filter === 'color') {
       return buildColorInput(fieldDef, initialValue, onChange);
+    }
+    if (fieldDef.filter === 'icon') {
+      return buildIconInput(fieldDef, initialValue, onChange);
     }
     let input;
     if (fieldDef.filter === 'textarea') {
@@ -546,6 +774,7 @@
     setupPaneTabs();
     document.querySelector('.panel-form').classList.add('active');
     document.getElementById('panel-preview').classList.add('pane-active');
+    loadIconLibrary(); // грузим в фоне заранее, чтобы к открытию попапа список уже был готов
 
     document.getElementById('btnNewChar').addEventListener('click', openNewCharModal);
     document.getElementById('btnNewCharCancel').addEventListener('click', closeNewCharModal);
@@ -561,6 +790,20 @@
       const file = e.target.files[0];
       if (file) importBackup(file);
       e.target.value = '';
+    });
+
+    document.getElementById('iconPickerSearch').addEventListener('input', (e) => renderIconGrid(e.target.value));
+    document.getElementById('btnIconPickerCancel').addEventListener('click', closeIconPicker);
+    document.getElementById('btnIconPickerApplyCustom').addEventListener('click', () => {
+      const val = document.getElementById('iconPickerCustomInput').value.trim();
+      if (val && iconPickerCallback) iconPickerCallback(val);
+      closeIconPicker();
+    });
+    document.getElementById('iconPickerCustomInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('btnIconPickerApplyCustom').click();
+    });
+    document.getElementById('iconPickerModal').addEventListener('click', (e) => {
+      if (e.target.id === 'iconPickerModal') closeIconPicker();
     });
 
     try {
